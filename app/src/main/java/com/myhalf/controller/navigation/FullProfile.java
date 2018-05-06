@@ -26,6 +26,7 @@ import com.myhalf.controller.tools.Storage;
 import com.myhalf.model.backend.DBManager;
 import com.myhalf.model.backend.DBManagerFactory;
 import com.myhalf.model.backend.Finals;
+import com.myhalf.model.entities.Enums;
 import com.myhalf.model.entities.UserSeeker;
 
 public class FullProfile extends Fragment implements View.OnClickListener {
@@ -64,8 +65,6 @@ public class FullProfile extends Fragment implements View.OnClickListener {
     @Override
     public void onResume() {
         super.onResume();
-        Storage.getFromStorage(this,Finals.FireBase.storage.MAIN_PICTURE,vbMainPicture,userProfile);
-
     }
 
     @Override
@@ -75,18 +74,20 @@ public class FullProfile extends Fragment implements View.OnClickListener {
         userProfile = (UserSeeker) bundle.getSerializable(Finals.App.USER_SEEKER);
 
         findViews();
+        if (userProfile.getAboutMe().getGender() == Enums.Gender.FEMALE)
+            vbMainPicture.setImageResource(R.drawable.student_female);
         setItemsText();
         if (userProfile == activityUser) {
             bChangeDetails.setVisibility(View.VISIBLE);
             bToChat.setVisibility(View.GONE);
 
         }
-        Storage.getFromStorage(this,Finals.FireBase.storage.MAIN_PICTURE,vbMainPicture,activityUser);
-        Storage.getFromStorage(this,Finals.FireBase.storage.SMALL_PICTURE_1,ImageView1,activityUser);
-        Storage.getFromStorage(this,Finals.FireBase.storage.SMALL_PICTURE_2,ImageView2,activityUser);
-        Storage.getFromStorage(this,Finals.FireBase.storage.SMALL_PICTURE_3,ImageView3,activityUser);
-        Storage.getFromStorage(this,Finals.FireBase.storage.SMALL_PICTURE_4,ImageView4,activityUser);
-        Storage.getFromStorage(this,Finals.FireBase.storage.SMALL_PICTURE_5,ImageView5,activityUser);
+        Storage.getFromStorage(this, Finals.FireBase.storage.MAIN_PICTURE, vbMainPicture, activityUser);
+        Storage.getFromStorage(this, Finals.FireBase.storage.SMALL_PICTURE_1, ImageView1, activityUser);
+        Storage.getFromStorage(this, Finals.FireBase.storage.SMALL_PICTURE_2, ImageView2, activityUser);
+        Storage.getFromStorage(this, Finals.FireBase.storage.SMALL_PICTURE_3, ImageView3, activityUser);
+        Storage.getFromStorage(this, Finals.FireBase.storage.SMALL_PICTURE_4, ImageView4, activityUser);
+        Storage.getFromStorage(this, Finals.FireBase.storage.SMALL_PICTURE_5, ImageView5, activityUser);
     }
 
     private void changeDetailsOnClick() {

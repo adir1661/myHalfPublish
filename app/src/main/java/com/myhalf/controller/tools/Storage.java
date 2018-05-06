@@ -30,16 +30,7 @@ import java.lang.ref.WeakReference;
 public class Storage {
 
     //----------------------------------download from storage---------------------------------------------
-    private static void downloadImageToView(String storageDirectory, String imageName, ImageView destinationImage, Fragment fragment) {
-        Glide.with(fragment)//TODO: create more effective query, to save image on cache
-                .using(new FirebaseImageLoader())
-                .load(FirebaseStorage.getInstance().getReference().child(storageDirectory+imageName))
-                .diskCacheStrategy(DiskCacheStrategy.NONE)
-                .skipMemoryCache(true)
-                .error(destinationImage.getDrawable())
-                .into(destinationImage);
 
-    }
     private static void downloadImageToView(String storageDirectory, String imageName, ImageView destinationImage, Activity activity) {
         Glide.with(activity)//TODO: create more effective query, to save image on cache
                 .using(new FirebaseImageLoader())
@@ -52,9 +43,7 @@ public class Storage {
     }
 
     public static void getFromStorage(Fragment fragment, String pictureString, ImageView imageView, UserSeeker userSeeker) {
-        String storageDirectory = "images/"+ userSeeker.getId() +"/" ;
-        String imageName = pictureString +".jpg";
-        downloadImageToView(storageDirectory, imageName, imageView,fragment);
+        getFromStorage(fragment.getActivity(),pictureString,imageView,userSeeker);
     }
     public static void getFromStorage(Activity activity, String pictureString, ImageView imageView, UserSeeker userSeeker) {
         String storageDirectory = "images/"+ userSeeker.getId() +"/" ;

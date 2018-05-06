@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "702829829190",
+    "firebase_url": "https://myhalfpublish.firebaseio.com",
+    "project_id": "myhalfpublish",
+    "storage_bucket": "myhalfpublish.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:702829829190:android:a1d4abfcbc53a5a8",
+        "android_client_info": {
+          "package_name": "com.myhalf"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "702829829190-vh6doa6cntd4qer6v7dlaekmvfdva960.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2QhyoRPfF--38FoG7fMOEymDknPUj9YI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

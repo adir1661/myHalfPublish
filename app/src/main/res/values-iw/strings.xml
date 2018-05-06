@@ -1,0 +1,112 @@
+<resources>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">הגדרות</string>
+    <string name="age">גיל</string>
+    <string name="title_home">בית</string>
+    <string name="title_dashboard">dashboard</string>
+    <string name="title_activity_log_in">logIn</string>
+    <string name="edit_profile">עריכת פרופיל</string>
+    <string name="app_name">החצי שלי</string>
+    <string name="status">מצב משפחתי</string>
+    <string name="view">מגזר</string>
+    <string name="RegisterAsMatch">הירשם כממליץ</string>
+    <string name="fillVariable">נא למלא את כל השדות</string>
+    <string name="registrationDone">ההרשמה בוצעה</string>
+    <string name="go_to_search">התחל חיפוש</string>
+    <string name="more_details">פרטים נוספים</string>
+    <string name="title_notifications">התראות</string>
+    <string name="birthday">תאריך לידה</string>
+    <string name="day">יום</string>
+    <string name="month">חודש</string>
+    <string name="year">שנה</string>
+    <string name="bRegistered">משתמש רשום לחץ כאן</string>
+    <string name="name">שם</string>
+    <string name="password">סיסמא</string>
+    <string name="city">עיר מגורים</string>
+    <string name="email">מייל</string>
+    <string name="radioButtonMan">גבר</string>
+    <string name="radioButtonWoman">אישה</string>
+    <string name="matchmakerButton">הרשמה לממליצים</string>
+    <string name="MALE">Male</string>
+    <string name="FEMALE">Female</string>
+
+    <string name="AllOptions">All options</string>
+    <string name="Single">Single</string>
+    <string name="divorced">Divorced</string>
+    <string name="DivorcedWithChildren">Divorced with children</string>
+    <string name="WidowWithChildren">Widow with children</string>
+    <string name="fromAge">מגיל</string>
+    <string name="toAge">עד גיל</string>
+
+    <string-array name="ViewOfMan">
+        <item>מסורתי</item>
+        <item>דתי</item>
+        <item>דתי לאומי</item>
+        <item>דתי לאומי תורני</item>
+        <item>חרדי</item>
+        <item>חרדי מודרני</item>
+        <item>ברסלב</item>
+        <item>חב"ד</item>
+        <item>חוזר בתשובה</item>
+        <item>דתי לייט</item>
+        <item>חילוני</item>
+    </string-array>
+
+    <string-array name="ViewOfWoman">
+        <item>מסורתית</item>
+        <item>דתיה</item>
+        <item>דתית לאומי</item>
+        <item>דתיה לאומי תורני</item>
+        <item>חרדית</item>
+        <item>חרדית מודרנית</item>
+        <item>ברסלבית</item>
+        <item>חב"דית</item>
+        <item>חוזרת בתשובה</item>
+        <item>דתיה לייט</item>
+        <item>חילונית</item>
+    </string-array>
+
+
+    <string-array name="StatusOfMan">
+        <item>רווק</item>
+        <item>גרוש</item>
+        <item>אלמן</item>
+    </string-array>
+
+    <string-array name="StatusOfWoman">
+        <item>רווקה</item>
+        <item>גרושה</item>
+        <item>אלמנה</item>
+    </string-array>
+
+
+    <string-array name="Witness">
+        <item>אשכנזי</item>
+        <item>עדות המזרח</item>
+        <item>תימני</item>
+        <item>רוסי</item>
+        <item>צרפתי</item>
+        <item>אתיופי</item>
+        <item>אמריקאי</item>
+        <item>מעורב</item>
+        <item>לא רלוונטי</item>
+    </string-array>
+    <string name="widow">אלמנה</string>
+    <string name="fromHeight">מגובה</string>
+    <string name="toHeight">עד גובה</string>
+    <string name="search">חפש</string>
+    <string name="witness">מוצא</string>
+    <string name="start_search">התחל חיפוש</string>
+    <string name="forRegistering">הירשם</string>
+    <string name="loginButtob">הרשמה</string>
+    <string name="details">פרטים</string>
+    <string name="height">גובה</string>
+    <string name="about_me">על עצמי</string>
+    <string name="without_children">בלי ילדים</string>
+    <string name="with_children">עם ילדים</string>
+
+
+</resources>

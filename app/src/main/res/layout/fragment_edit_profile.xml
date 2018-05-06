@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/editProfileLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+    <!-- yosef dont delete this linear layout please...-->
+    <LinearLayout
+        android:id="@+id/dummyLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="horizontal"></LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            app:cardElevation="6dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="6dp">
+
+                    <ImageButton
+                        android:id="@+id/ibMainPicture"
+                        android:layout_width="match_parent"
+                        android:layout_height="360dp"
+                        android:layout_gravity="center"
+                        android:background="#ffffff"
+                        android:contentDescription="TODO"
+                        android:padding="0dp"
+                        android:scaleType="centerCrop"
+                        android:src="@mipmap/student" />
+
+                    <TextView
+                        android:id="@+id/tvName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start|bottom"
+                        android:background="#33151515"
+                        android:paddingEnd="5dp"
+                        android:paddingLeft="5dp"
+                        android:paddingStart="5dp"
+                        android:text="Adir Abargil"
+                        android:textColor="#ffffffff"
+                        android:textSize="40sp" />
+                </android.support.v7.widget.CardView>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:orientation="horizontal">
+
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#ededed">
+
+                            <ImageButton
+                                android:id="@+id/imageButton1"
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:layout_margin="20dp"
+                                android:background="#ffffff"
+                                android:elevation="6dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_menu_camera" />
+
+                            <ImageButton
+                                android:id="@+id/imageButton2"
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:layout_margin="20dp"
+                                android:background="#ffffff"
+                                android:elevation="6dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_menu_camera"
+
+                                />
+
+                            <ImageButton
+                                android:id="@+id/imageButton3"
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:layout_margin="20dp"
+                                android:background="#ffffff"
+                                android:elevation="6dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_menu_camera"
+
+                                />
+
+                            <ImageButton
+                                android:id="@+id/imageButton4"
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:layout_margin="20dp"
+                                android:background="#ffffff"
+                                android:elevation="6dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_menu_camera"
+
+                                />
+
+                            <ImageButton
+                                android:id="@+id/imageButton5"
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:layout_margin="20dp"
+                                android:background="#ffffff"
+                                android:elevation="6dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_menu_camera"
+
+                                />
+                        </LinearLayout>
+                    </HorizontalScrollView>
+                </LinearLayout>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="-3dp">
+
+                    <EditText
+                        android:id="@+id/bStatus"
+                        android:name=".MyActivity"
+                        style="@style/EditTextLikeButtonStyle"
+                        android:layout_margin="5dp"
+                        android:hint="@string/status"
+                        android:label="My new title" />
+                </android.support.v7.widget.CardView>
+
+
+                <!--<RadioGroup-->
+                <!--android:id="@+id/radioGroupChildren"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="@dimen/standardHeight"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_marginTop="5dp"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:visibility="gone">-->
+
+
+                <!--<RadioButton-->
+                <!--android:id="@+id/withChildren"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:paddingEnd="5dp"-->
+                <!--android:paddingRight="5dp"-->
+                <!--android:text="@string/with_children"-->
+                <!--android:textSize="20sp" />-->
+
+                <!--<RadioButton-->
+                <!--android:id="@+id/withoutChildren"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:paddingEnd="5dp"-->
+                <!--android:paddingRight="5dp"-->
+                <!--android:text="@string/without_children"-->
+                <!--android:textSize="20sp" />-->
+                <!--</RadioGroup>-->
+
+
+                <EditText
+                    android:id="@+id/bWitness"
+                    style="@style/EditTextLikeButtonStyle"
+                    android:hint="@string/witness" />
+
+                <EditText
+                    android:id="@+id/bView"
+                    style="@style/EditTextLikeButtonStyle"
+                    android:hint="@string/view" />
+
+                <EditText
+                    android:id="@+id/bCity"
+                    style="@style/EditTextLikeButtonStyle"
+                    android:hint="@string/city" />
+
+
+                <LinearLayout
+                    android:id="@+id/su1m"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+
+                        android:gravity="center_vertical|start"
+                        android:hint="@string/height"
+                        android:textColor="@color/cardview_dark_background"
+                        android:textSize="20sp" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <SeekBar
+                            android:id="@+id/sbHeight"
+                            style="@style/SeekBarWithoutSteps"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:max="90"
+                            android:progress="40" />
+
+                        <EditText
+                            android:id="@+id/etHieght"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="170"
+                            android:textSize="20sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/about_me"
+                    android:textSize="20sp" />
+
+                <!--<com.github.florent37.materialtextfield.MaterialTextField-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginLeft="@dimen/margin"-->
+                <!--android:layout_marginRight="@dimen/margin"-->
+                <!--app:mtf_labelColor="#666">-->
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+                    <EditText
+                        android:id="@+id/etDescription"
+                        style="@style/Widget.AppCompat.EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="תיאור קצר"
+                        android:inputType="textLongMessage" />
+                </ScrollView>
+
+                <!--</com.github.florent37.materialtextfield.MaterialTextField>-->
+
+                <Button
+                    android:id="@+id/bGoToSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/mybutton"
+                    android:elevation="6dp"
+                    android:text="@string/search"
+                    android:textColor="#ffffff" />
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"/>
+</LinearLayout>

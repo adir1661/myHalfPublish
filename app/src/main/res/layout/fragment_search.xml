@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/searchLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <!-- yosef dont delete this linear layout please..-->
+    <LinearLayout
+        android:id="@+id/dummyLayout"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_width="0dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:paddingLeft="35dp"
+            android:paddingRight="35dp">
+            <!--android:background="@color/bright_red"-->
+
+
+            <LinearLayout
+                android:id="@+id/Age"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp">
+
+                <EditText
+                    android:id="@+id/fromAge"
+                    style="@style/EditTextAgeHeightStyle"
+                    android:hint="@string/fromAge"
+                    android:layout_marginEnd="10dp"
+
+                    android:elevation="6dp"
+                    />
+
+                <EditText
+                    android:id="@+id/toAge"
+                    style="@style/EditTextAgeHeightStyle"
+                    android:hint="@string/toAge"
+                    android:layout_marginStart="10dp"
+
+                    android:paddingStart="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingEnd="5dp"
+                    android:elevation="6dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:id="@+id/Height"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp">
+
+                <EditText
+                    android:id="@+id/fromHeight"
+                    style="@style/EditTextAgeHeightStyle"
+                    android:hint="@string/fromHeight"
+                    android:layout_marginEnd="10dp"
+                    android:paddingStart="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingEnd="5dp"/>
+
+                <EditText
+                    android:id="@+id/toHeight"
+                    style="@style/EditTextAgeHeightStyle"
+                    android:hint="@string/toHeight"
+                    android:layout_marginStart="10dp"
+
+                    android:paddingStart="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingEnd="5dp"/>
+
+            </LinearLayout>
+
+                <EditText
+                    android:id="@+id/bStatus"
+                    style="@style/EditTextLikeButtonStyle"
+                    android:hint="@string/status"/>
+
+                <EditText
+                    android:id="@+id/bWitness"
+                    style="@style/EditTextLikeButtonStyle"
+                    android:hint="@string/witness"/>
+
+                <EditText
+                    android:id="@+id/bView"
+                    style="@style/EditTextLikeButtonStyle"
+                    android:hint="@string/view"/>
+
+                <EditText
+                    android:id="@+id/bCity"
+                    style="@style/EditTextLikeButtonStyle"
+                    android:hint="@string/city"/>
+
+                <Button
+                    android:id="@+id/search"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
+                    android:textColor="#ffffff"
+                    android:background="@drawable/mybutton"
+                    android:text="@string/search"
+                    android:layout_gravity="center_horizontal"
+                    android:elevation="6dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

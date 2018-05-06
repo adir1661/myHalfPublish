@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/itMyProfile"
+            android:icon="@drawable/ic_action_name"
+            android:title="My Profile" />
+        <!--TODO: change the icons of each menu-->
+        <item
+            android:id="@+id/itSearchSettings"
+            android:icon="@drawable/ic_search"
+            android:title="Search Setting" />
+        <item
+            android:id="@+id/itSearchResults"
+            android:icon="@drawable/ic_search_results"
+            android:title="Search Results" />
+
+        <!--<item-->
+            <!--android:id="@+id/itConversations"-->
+            <!--android:icon="@drawable/ic_menu_manage"-->
+            <!--android:title="My Conversations" />-->
+    </group>
+
+    <!--<item android:title="Communicate">-->
+        <!--<menu>-->
+
+            <!--<item-->
+                <!--android:id="@+id/itSettings"-->
+                <!--android:icon="@drawable/ic_menu_manage"-->
+                <!--android:title="Settings" />-->
+            <!--&lt;!&ndash;<item&ndash;&gt;-->
+                <!--&lt;!&ndash;android:id="@+id/nav_share"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:icon="@drawable/ic_menu_share"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:title="Share" />&ndash;&gt;-->
+            <!--&lt;!&ndash;<item&ndash;&gt;-->
+                <!--&lt;!&ndash;android:id="@+id/nav_send"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:icon="@drawable/ic_menu_send"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:title="Send" />&ndash;&gt;-->
+        <!--</menu>-->
+    <!--</item>-->
+
+</menu>

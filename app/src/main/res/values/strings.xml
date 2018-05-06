@@ -113,6 +113,13 @@
     <string name="about_me">About me</string>
     <string name="without_children">Without children</string>
     <string name="with_children">With children</string>
+    <string name="from_camera">מהמצלמה</string>
+    <string name="from_mm_card">מכרטיס זיכרון</string>
+    <string name="select_image">Select Image</string>
+
+    <string name="cancel">ביטול</string>
+    <string name="ok">OK</string>
+
 
 
 </resources>

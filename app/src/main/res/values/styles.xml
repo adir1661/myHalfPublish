@@ -52,20 +52,23 @@
 
         </style>
 
-        <style name="EditTextLikeButtonStyle">
+        <style name="EditTextLikeButton">
 
             <item name="android:layout_width">match_parent</item>
-            <item name="android:layout_height">40dp</item>
+            <item name="android:layout_height">wrap_content</item>
             <item name="android:layout_gravity">center_horizontal</item>
             <item name="android:gravity">center_vertical|start</item>
-            <item name="android:layout_marginTop">10dp</item>
+            <item name="android:layout_margin">10dp</item>
+            <item name="android:layout_marginLeft">20dp</item>
+            <item name="android:layout_marginRight">20dp</item>
             <item name=" android:textSize">20sp</item>
             <item name="android:background">@drawable/white_button</item>
+            <item name="android:padding">10dp</item>
             <item name="android:paddingStart">7dp</item>
             <!--<item name="android:background">@drawable/bg_button</item>-->
         </style>
 
-    <!--my button-->
+
     <style name="myButtonStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>

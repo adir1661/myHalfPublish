@@ -65,7 +65,12 @@ public class AdapterRecycleView extends RecyclerView.Adapter<AdapterRecycleView.
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
 
         final UserSeeker userSeeker = filterList.get(position);
-
+        if (userSeeker.getAboutMe().getGender() == Enums.Gender.FEMALE) {
+            Drawable drawable = mContext.getResources().getDrawable(R.drawable.student_female);
+            holder.ivMainPicture.setImageDrawable(drawable);
+        }
+        else
+            holder.ivMainPicture.setImageResource(R.drawable.student);
         Storage.getFromStorage(mContext,Finals.FireBase.storage.MAIN_PICTURE,holder.ivMainPicture,userSeeker);
 
         holder.tvName.setText(bigLetterFirst(userSeeker.getAboutMe().getName()));
@@ -184,10 +189,7 @@ public class AdapterRecycleView extends RecyclerView.Adapter<AdapterRecycleView.
 
 
 
-        if (userSeeker.getAboutMe().getGender() == Enums.Gender.FEMALE)//TODO: delete this "if" after implementing picture...
-            holder.ivMainPicture.setImageResource(R.drawable.student_female);
-        else
-            holder.ivMainPicture.setImageResource(R.drawable.student);
+
         if (animatioFlag) {
             final View view = holder.itemView;
             view.setVisibility(View.INVISIBLE);

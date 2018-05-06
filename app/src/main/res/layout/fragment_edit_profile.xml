@@ -16,7 +16,6 @@
         android:focusableInTouchMode="true"
         android:orientation="horizontal"></LinearLayout>
 
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -35,7 +34,10 @@
             app:cardElevation="6dp">
 
             <LinearLayout
-                style="@style/EditTextLikeButton">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="5dp">
 
                 <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
@@ -150,59 +152,58 @@
                     app:cardCornerRadius="5dp"
                     app:cardElevation="-3dp">
 
-
                     <EditText
                         android:id="@+id/bStatus"
                         android:name=".MyActivity"
-                        style="@style/EditTextLikeButton"
-
-                        android:hint="@string/status" />
+                        style="@style/EditTextLikeButtonStyle"
+                        android:hint="@string/status"
+                        android:label="My new title" />
                 </android.support.v7.widget.CardView>
 
 
-                <RadioGroup
-                android:id="@+id/radioGroupChildren"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/standardHeight"
-                android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal"
-                android:visibility="gone">
+                <!--<RadioGroup-->
+                <!--android:id="@+id/radioGroupChildren"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="@dimen/standardHeight"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_marginTop="5dp"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:visibility="gone">-->
 
 
-                <RadioButton
-                android:id="@+id/withChildren"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingEnd="5dp"
-                android:paddingRight="5dp"
-                android:text="@string/with_children"
-                android:textSize="20sp" />
+                <!--<RadioButton-->
+                <!--android:id="@+id/withChildren"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:paddingEnd="5dp"-->
+                <!--android:paddingRight="5dp"-->
+                <!--android:text="@string/with_children"-->
+                <!--android:textSize="20sp" />-->
 
-                <RadioButton
-                android:id="@+id/withoutChildren"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingEnd="5dp"
-                android:paddingRight="5dp"
-                android:text="@string/without_children"
-                android:textSize="20sp" />
-                </RadioGroup>
+                <!--<RadioButton-->
+                <!--android:id="@+id/withoutChildren"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:paddingEnd="5dp"-->
+                <!--android:paddingRight="5dp"-->
+                <!--android:text="@string/without_children"-->
+                <!--android:textSize="20sp" />-->
+                <!--</RadioGroup>-->
 
 
                 <EditText
                     android:id="@+id/bWitness"
-                    style="@style/EditTextLikeButton"
+                    style="@style/EditTextLikeButtonStyle"
                     android:hint="@string/witness" />
 
                 <EditText
                     android:id="@+id/bView"
-                    style="@style/EditTextLikeButton"
+                    style="@style/EditTextLikeButtonStyle"
                     android:hint="@string/view" />
 
                 <EditText
                     android:id="@+id/bCity"
-                    style="@style/EditTextLikeButton"
+                    style="@style/EditTextLikeButtonStyle"
                     android:hint="@string/city" />
 
 
@@ -210,9 +211,7 @@
                     android:id="@+id/su1m"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_margin="10dp"
-                    android:background=" @drawable/white_button">
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -246,6 +245,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:text="170"
+                            android:inputType="number"
                             android:textSize="20sp" />
                     </LinearLayout>
 

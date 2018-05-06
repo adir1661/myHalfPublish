@@ -120,7 +120,6 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         findViews();
-        //TODO: put an image man/woman as default
         if (activityUser.getAboutMe().getGender()== Enums.Gender.FEMALE)
             ibMainPicture.setImageResource(R.drawable.student_female);
 

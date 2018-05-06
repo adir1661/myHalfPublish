@@ -25,6 +25,7 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import com.myhalf.R;
+import com.myhalf.controller.tools.Storage;
 import com.myhalf.model.backend.Finals;
 import com.myhalf.model.entities.Enums;
 import com.myhalf.model.entities.UserSeeker;
@@ -64,6 +65,8 @@ public class AdapterRecycleView extends RecyclerView.Adapter<AdapterRecycleView.
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
 
         final UserSeeker userSeeker = filterList.get(position);
+
+        Storage.getFromStorage(mContext,Finals.FireBase.storage.MAIN_PICTURE,holder.ivMainPicture,userSeeker);
 
         holder.tvName.setText(bigLetterFirst(userSeeker.getAboutMe().getName()));
         holder.tvAge.setText(userSeeker.getAboutMe().getBirthday().findAge() + "");

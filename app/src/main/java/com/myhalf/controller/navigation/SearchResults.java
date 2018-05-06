@@ -86,10 +86,11 @@ public class SearchResults extends Fragment {
     }
 
     private boolean matchToSearch(UserSeeker element) {
+        if (element!=null)
+            return true;
 
         int fromAge = sharedPreferences.getInt(Finals.DB.FROM_AGE, 0);
         int toAge = sharedPreferences.getInt(Finals.DB.TO_AGE, 100);
-
         int fromHeight = sharedPreferences.getInt(Finals.DB.FROM_HEIGHT, 0);
         int toHeight = sharedPreferences.getInt(Finals.DB.TO_HEIGHT, 220);
         String status = null;

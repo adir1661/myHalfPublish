@@ -81,8 +81,12 @@ public class FullProfile extends Fragment implements View.OnClickListener {
             bToChat.setVisibility(View.GONE);
 
         }
-
-
+        Storage.getFromStorage(this,Finals.FireBase.storage.MAIN_PICTURE,vbMainPicture,activityUser);
+        Storage.getFromStorage(this,Finals.FireBase.storage.SMALL_PICTURE_1,ImageView1,activityUser);
+        Storage.getFromStorage(this,Finals.FireBase.storage.SMALL_PICTURE_2,ImageView2,activityUser);
+        Storage.getFromStorage(this,Finals.FireBase.storage.SMALL_PICTURE_3,ImageView3,activityUser);
+        Storage.getFromStorage(this,Finals.FireBase.storage.SMALL_PICTURE_4,ImageView4,activityUser);
+        Storage.getFromStorage(this,Finals.FireBase.storage.SMALL_PICTURE_5,ImageView5,activityUser);
     }
 
     private void changeDetailsOnClick() {

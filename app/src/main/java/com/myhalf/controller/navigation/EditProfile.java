@@ -131,6 +131,10 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
         Storage.getFromStorage(this,Finals.FireBase.storage.MAIN_PICTURE,ibMainPicture,activityUser);
         Storage.getFromStorage(this,Finals.FireBase.storage.SMALL_PICTURE_1,imageButton1,activityUser);
         Storage.getFromStorage(this,Finals.FireBase.storage.SMALL_PICTURE_2,imageButton2,activityUser);
+        Storage.getFromStorage(this,Finals.FireBase.storage.SMALL_PICTURE_3,imageButton3,activityUser);
+        Storage.getFromStorage(this,Finals.FireBase.storage.SMALL_PICTURE_4,imageButton4,activityUser);
+        Storage.getFromStorage(this,Finals.FireBase.storage.SMALL_PICTURE_5,imageButton5,activityUser);
+
 
 
     }

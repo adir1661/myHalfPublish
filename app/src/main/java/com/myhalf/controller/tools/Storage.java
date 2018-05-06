@@ -40,13 +40,27 @@ public class Storage {
                 .into(destinationImage);
 
     }
+    private static void downloadImageToView(String storageDirectory, String imageName, ImageView destinationImage, Activity activity) {
+        Glide.with(activity)//TODO: create more effective query, to save image on cache
+                .using(new FirebaseImageLoader())
+                .load(FirebaseStorage.getInstance().getReference().child(storageDirectory+imageName))
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .skipMemoryCache(true)
+                .error(destinationImage.getDrawable())
+                .into(destinationImage);
+
+    }
 
     public static void getFromStorage(Fragment fragment, String pictureString, ImageView imageView, UserSeeker userSeeker) {
         String storageDirectory = "images/"+ userSeeker.getId() +"/" ;
         String imageName = pictureString +".jpg";
         downloadImageToView(storageDirectory, imageName, imageView,fragment);
     }
-
+    public static void getFromStorage(Activity activity, String pictureString, ImageView imageView, UserSeeker userSeeker) {
+        String storageDirectory = "images/"+ userSeeker.getId() +"/" ;
+        String imageName = pictureString +".jpg";
+        downloadImageToView(storageDirectory, imageName, imageView,activity);
+    }
     // -------------------------------------upload to storage------------------------------------------------
 
     public static String sendToStorage(Activity activity,String pictureString,UserSeeker userSeeker,Uri imageUri){

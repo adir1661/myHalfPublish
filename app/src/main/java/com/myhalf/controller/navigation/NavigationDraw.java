@@ -207,7 +207,8 @@ public class NavigationDraw extends AppCompatActivity implements NavigationView.
 //            // Commit the transaction
 //            transaction.commit();
 //
-//        } else if (id == R.id.itSettings) {
+        } else if (id == R.id.itSettings) {
+            MyFragmentManager.replaceFragmentInContainer(this,new Settings(),R.id.NavigationDrawContainer);
 //
 //
 //        } else if (id == R.id.nav_share) {

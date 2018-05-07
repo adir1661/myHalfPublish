@@ -18,12 +18,12 @@
             android:icon="@drawable/ic_search_results"
             android:title="Search Results" />
 
-        <!--<item-->
-            <!--android:id="@+id/itConversations"-->
-            <!--android:icon="@drawable/ic_menu_manage"-->
-            <!--android:title="My Conversations" />-->
-    </group>
 
+    </group>
+    <item
+        android:id="@+id/itSettings"
+        android:icon="@drawable/ic_menu_manage"
+        android:title="My Conversations" />
     <!--<item android:title="Communicate">-->
         <!--<menu>-->
 

@@ -29,3 +29,4 @@ build.gradle
 
 .idea/modules.xml
 app/google-services.json
+.idea/workspace.xml

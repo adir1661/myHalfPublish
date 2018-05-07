@@ -119,6 +119,7 @@
     <string name="delete_account">מחיקת חשבון</string>
     <string name="gert_takanon">אני מאשר שקראתי ואני מסכים ל</string>
     <string name="takanon">תקנון</string>
+    <string name="long_text_policy">Your Text</string>
 
 
 </resources>

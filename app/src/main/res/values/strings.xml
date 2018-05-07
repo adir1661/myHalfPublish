@@ -120,6 +120,7 @@
     <string name="cancel">ביטול</string>
     <string name="ok">OK</string>
     <string name="Language">שפה</string>
+    <string name="long_text_policy">Your Text</string>
 
-
+    R.string.long_text_policy
 </resources>

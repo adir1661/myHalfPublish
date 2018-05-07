@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.myhalf.R;
 import com.myhalf.controller.navigation.NavigationDraw;
+import com.myhalf.controller.navigation.Takanon;
 import com.myhalf.controller.tools.Formatter;
 import com.myhalf.model.backend.DBManager;
 import com.myhalf.model.backend.DBManagerFactory;
@@ -53,6 +54,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private String birthday = "";
     private boolean flag_dateClicked = false;
 
+    private TextView tvTakanon;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,29 +76,37 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         tvToLogin = (TextView)findViewById( R.id.tvToLogin );
         radioGroupGender= (RadioGroup) findViewById(R.id.radioGroupGender);
 
+        tvTakanon = (TextView) findViewById(R.id.tvTakanon);
+
         radioWoman.setOnClickListener(this);
         radioMan.setOnClickListener(this);
         bRegister.setOnClickListener( this );
         bBirthday.setOnClickListener( this );
         tvToLogin.setOnClickListener( this );
+        tvTakanon.setOnClickListener( this );
     }
 
     @Override
     public void onClick(View v) {
-         if ( v == bRegister ) {
+        if (v == bRegister) {
             bRegisterOnClick();
-         }
-         else if (v == bBirthday){
-             birthDayOnClick();
-         }else if (v == tvToLogin) {
+        } else if (v == bBirthday) {
+            birthDayOnClick();
+        } else if (v == tvToLogin) {
             //for registered user
-             toLoginOnClick();
-         }else if (v == radioMan){
+            toLoginOnClick();
+        } else if (v == radioMan) {
 
-         }else if (v == radioWoman) {
-             String herName = ((EditText)findViewById(R.id.etUserName)).getText().toString();
+        } else if (v == radioWoman) {
+            String herName = ((EditText) findViewById(R.id.etUserName)).getText().toString();
+        } else if (v == tvTakanon) {
+            takanonOnClick();
+        }
+    }
 
-         }
+    private void takanonOnClick() {
+        Intent takanon = new Intent(RegisterActivity.this, Takanon.class);
+        RegisterActivity.this.startActivity(takanon);
     }
 
     private void toLoginOnClick() {

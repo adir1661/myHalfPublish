@@ -26,6 +26,7 @@ import com.android.volley.toolbox.Volley;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.myhalf.R;
 import com.myhalf.controller.tools.MessageAdapter;
+import com.myhalf.controller.tools.Storage;
 import com.myhalf.model.backend.Finals;
 import com.myhalf.model.entities.UserSeeker;
 
@@ -33,6 +34,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -54,7 +57,7 @@ public class SingleChatActivity extends AppCompatActivity {
     private EditText etInput;
     boolean myMessage = true;
     private List<ChatBubble> ChatBubbles;
-    private ArrayAdapter<ChatBubble> adapter;
+    private MessageAdapter adapter;
     BroadcastReceiver mReceiver;
     IntentFilter mIntentFilter;
     CircleImageView circleImageView;
@@ -65,32 +68,15 @@ public class SingleChatActivity extends AppCompatActivity {
         setContentView(R.layout.fragment_chat);
 
 
-        Bundle chatData = getIntent().getExtras();
-        if (chatData != null) {
-            otherUser = (UserSeeker) chatData.getSerializable(Finals.App.USER_SEEKER);
-            String name = otherUser.getAboutMe().getName();
-
-            TextView textView = (TextView) findViewById(R.id.tvOtherUserTitle);
-            textView.setText(name);
-            token = otherUser.getFirebaseToken();
-//            String imgUrl=chatData.getString("img");
-//            int defaultImage = getResources().getIdentifier(imgUrl, null, getPackageName());
-//            Drawable drawable = getResources().getDrawable(defaultImage);
-//
-//            CircleImageView circleImageView=(CircleImageView)findViewById(R.id.circleImageView);
-//            circleImageView.setImageDrawable(drawable);
-        }else {
-            token ="dXHm45SqagA:APA91bGSR-IW5UzYDZU9obUu4jhJlWnWqICq9q-P9UIHqzyxApgsgUqhM139wqxy7tyMnW2h8Ee4tTTodZD4n7KyRw_z0N4nRDZgfnOauBazl_tRsnOQWA96OVvoMh42Zn1KN3Zgtv9g";
-        }
+        setActivityView();
 
         ChatBubbles = new ArrayList<>();
-
-        listView = (ListView) findViewById(R.id.list_msg);
+        listView = findViewById(R.id.list_msg);
         btnSend = findViewById(R.id.btn_chat_send);
-        etInput = (EditText) findViewById(R.id.etInput);
+        etInput = findViewById(R.id.etInput);
 
         //set ListView adapter first
-        adapter = new MessageAdapter(this, R.layout.left_chat_bubble, ChatBubbles);
+        adapter = new MessageAdapter(this, 0, ChatBubbles);
         listView.setAdapter(adapter);
 
         //event for button SEND
@@ -105,40 +91,42 @@ public class SingleChatActivity extends AppCompatActivity {
             @Override
             public void onReceive(Context context, Intent intent) {
                 if (intent.getAction() == "GET_MESSAGE") {
+                    Date currentTime = Calendar.getInstance().getTime();
                     myMessage = false;
                     String name = intent.getExtras().getString("name");
                     String text = intent.getExtras().getString("text");
-                    ChatBubble ChatBubble = new ChatBubble(text, myMessage);
+                    ChatBubble ChatBubble = new ChatBubble(text, myMessage,currentTime,otherUser);
                     ChatBubbles.add(ChatBubble);
                     adapter.notifyDataSetChanged();
                 }
             }
         };
         mIntentFilter = new IntentFilter("GET_MESSAGE");
+    }
 
-        circleImageView = (CircleImageView) findViewById(R.id.circleImageView);
-        circleImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Get token
-                String token = FirebaseInstanceId.getInstance().getToken();
-
-                // Log and toast
-                String msg = getString(R.string.msg_token_fmt, token);
-                Log.d(TAG, msg);
-//                Toast.makeText(SingleChatActivity.this, msg, Toast.LENGTH_SHORT).show();
-
-            }
-        });
+    private void setActivityView() {
+        Bundle chatData = getIntent().getExtras();
+        if (chatData != null) {
+            otherUser = (UserSeeker) chatData.getSerializable(Finals.App.USER_SEEKER);
+            String name = otherUser.getAboutMe().getName();
+            TextView textView = (TextView) findViewById(R.id.tvOtherUserTitle);
+            textView.setText(name);
+            token = otherUser.getFirebaseToken();
+            circleImageView = findViewById(R.id.circleImageView);
+            Storage.getFromStorage(this,Finals.FireBase.storage.MAIN_PICTURE,circleImageView,otherUser);
+        }else {
+            token ="dXHm45SqagA:APA91bGSR-IW5UzYDZU9obUu4jhJlWnWqICq9q-P9UIHqzyxApgsgUqhM139wqxy7tyMnW2h8Ee4tTTodZD4n7KyRw_z0N4nRDZgfnOauBazl_tRsnOQWA96OVvoMh42Zn1KN3Zgtv9g";
+        }
     }
 
     private void sendMessage() {
         if (etInput.getText().toString().trim().equals("")) {
             Toast.makeText(SingleChatActivity.this, "Please input some text...", Toast.LENGTH_SHORT).show();
         } else {
+            Date currentTime = Calendar.getInstance().getTime();
             myMessage = true;// make the text on the  left side
             //add message to list
-            ChatBubble ChatBubble = new ChatBubble(etInput.getText().toString(), myMessage);
+            ChatBubble ChatBubble = new ChatBubble(etInput.getText().toString(), myMessage,currentTime,activityUser);
             ChatBubbles.add(ChatBubble);
             adapter.notifyDataSetChanged();
             sendFCMPush(activityUser.getAboutMe().getName(), etInput.getText().toString(),token);

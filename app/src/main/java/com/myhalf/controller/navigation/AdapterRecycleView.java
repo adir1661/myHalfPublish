@@ -72,7 +72,6 @@ public class AdapterRecycleView extends RecyclerView.Adapter<AdapterRecycleView.
         else
             holder.ivMainPicture.setImageResource(R.drawable.student);
         Storage.getFromStorage(mContext,Finals.FireBase.storage.MAIN_PICTURE,holder.ivMainPicture,userSeeker);
-
         holder.tvName.setText(bigLetterFirst(userSeeker.getAboutMe().getName()));
         holder.tvAge.setText(userSeeker.getAboutMe().getBirthday().findAge() + "");
         if (userSeeker.getAboutMe().getStatus() != null)

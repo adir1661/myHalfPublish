@@ -4,12 +4,12 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true">
+        android:layout_alignParentLeft="false">
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:id="@+id/circleImageView"
-            android:src="@drawable/img_adir"
+            android:src="@drawable/student"
             android:scaleType="centerCrop"/>
         <LinearLayout
             android:layout_width="wrap_content"

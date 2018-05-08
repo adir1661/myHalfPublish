@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.myhalf.controller.DeleteAccount"
+    tools:showIn="@layout/activity_delete_account"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="נשמח אם תוכל לשתף מדוע הנך מוחק את החשבון"
+        android:background="@color/blue_primary_male"
+        android:gravity="center"
+        android:padding="5dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="מצאתי את החצי שלי דרך האפליקציה"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="מצאתי את החצי שלי באופן אחר"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="אני באמצע קשר כעת"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="החלטתי לקחת הפסקה משידוכים לעת עתה"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="לא רלוונטי"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="סיבה אחרת"/>
+    </RadioGroup>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="כאן המקום לומר תודה, להאיר הארה, או סתם לשפוך את הלב"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/standardHeight"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp">
+
+        <Button
+            android:id="@+id/deleteAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/standardHeight"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@color/bright_red"
+            android:text="@string/deleteFreeze_account"
+            android:textColor="#ffffff"
+            android:padding="10dp"/>
+
+        <Button
+            android:id="@+id/freezeAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/standardHeight"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@color/blue_primary_dark_male"
+            android:text="הקפאת חשבון"
+            android:textColor="#ffffff"
+            android:padding="10dp"/>
+
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/standardHeight"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@color/blue_primary_dark_male"
+            android:text="ביטול"
+            android:textColor="#ffffff"
+            android:padding="10dp"/>
+    </LinearLayout>
+
+</LinearLayout>

@@ -116,10 +116,16 @@
     <string name="whtch_my_card">צופים בכרטיס שלי</string>
     <string name="who_can_see_my_card">מי יוכל לראות את הכרטיס שלי:</string>
     <string name="by_choice">לפי בחירה</string>
-    <string name="delete_account">מחיקת חשבון</string>
-    <string name="gert_takanon">אני מאשר שקראתי ואני מסכים ל</string>
+    <string name="deleteFreeze_account">מחיקת / הקפאת חשבון</string>
+    <string name="get_takanon">אני מאשר שקראתי ואני מסכים ל</string>
     <string name="takanon">תקנון</string>
     <string name="long_text_policy">Your Text</string>
+    <string name="ok">אישור</string>
+    <string name="Language">שפה</string>
+    <string name="cancel">ביטול</string>
+    <string name="select_image">בחר תמונה</string>
+    <string name="from_mm_card">מכרטיס זיכרון</string>
+    <string name="from_camera">מהמצלמה</string>
 
 
 </resources>

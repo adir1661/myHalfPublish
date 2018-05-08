@@ -129,7 +129,7 @@
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/gert_takanon"/>
+                    android:text="@string/get_takanon"/>
 
                 <TextView
                     android:id="@+id/tvTakanon"

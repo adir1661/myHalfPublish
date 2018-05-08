@@ -1,0 +1,140 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.myhalf.controller.navigation.Settings"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/get_nfn_when"
+        android:background="@color/blue_primary_male"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/send_me_msg"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/whtch_my_card"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="מתקבלת הודעה חדשה בפורום"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/who_can_see_my_card"
+        android:background="@color/blue_primary_male"
+        android:layout_marginTop="15dp"/>
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/all_users" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/by_choice" />
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="invisible">
+
+
+        <EditText
+            android:id="@+id/bStatus"
+            style="@style/EditTextLikeButton"
+            android:hint="@string/status"/>
+
+
+        <LinearLayout
+            android:id="@+id/Age"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal">
+
+            <EditText
+                android:id="@+id/fromAge"
+                style="@style/EditTextAgeHeightStyle"
+                android:hint="@string/fromAge"
+                android:layout_marginEnd="10dp" />
+
+            <EditText
+                android:id="@+id/toAge"
+                style="@style/EditTextAgeHeightStyle"
+                android:hint="@string/toAge"
+                android:layout_marginStart="10dp"
+
+                android:paddingStart="5dp"
+                android:paddingLeft="5dp"
+                android:paddingEnd="5dp"
+                android:elevation="6dp"/>
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/bView"
+            style="@style/EditTextLikeButton"
+            android:hint="@string/view"/>
+
+    </LinearLayout>
+
+
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/blue_primary_male"
+    android:text="@string/Language"/>
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hebrew" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/English" />
+        </RadioGroup>
+
+
+    <Button
+        android:id="@+id/bGoToSearch"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/mybutton"
+        android:text="@string/save"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/deleteAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@color/bright_red"
+        android:text="@string/deleteFreeze_account"
+        android:textColor="#ffffff" />
+
+
+</LinearLayout>

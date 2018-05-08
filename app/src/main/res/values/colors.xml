@@ -9,7 +9,7 @@
     <color name="pink_theme">#ffb8b8</color>
     <color name="pink_primary_dark">#a18888</color>
     <color name="shakuf">#4bb89393</color>
-    <color name="blue_primary_dark_male">#0028ae</color>
+    <color name="blue_primary_dark_male">#444d6c</color>
     <color name="blue_primary_male">#1c51ff</color>
     <color name="colorAccent_male">#f4d397</color>
     <color name="darkCyan">#008B8B</color>
@@ -18,7 +18,7 @@
     <color name="light_steelBLue">#B0C4DE</color>
     <color name="windowBackground_male">#F0F8FF</color>
     <color name="dark_gray">#747474</color>
-    <color name="bright_red">#ff0080</color>
+    <color name="bright_red">#ff0004</color>
     <color name="black">#000000</color>
 
 

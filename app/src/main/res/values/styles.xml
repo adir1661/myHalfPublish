@@ -1,15 +1,18 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-    <item name="colorPrimary">@color/light_pink_button</item>
-    <item name="colorPrimaryDark">@color/pink_primary_dark</item>
-    <item name="colorAccent">@color/colorAccent</item>
-    <item name="android:navigationBarColor" tools:ignore="NewApi"> @color/pink_primary_dark</item>
-    <item name="cardViewStyle">@style/CardView</item>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/light_pink_button</item>
+        <item name="colorPrimaryDark">@color/pink_primary_dark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:navigationBarColor" tools:ignore="NewApi">@color/pink_primary_dark
+        </item>
+        <item name="cardViewStyle">@style/CardView</item>
 
 
-</style>
+    </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="Background" parent="Theme.AppCompat.NoActionBar">
@@ -17,9 +20,11 @@
         <item name="colorPrimary">@color/light_pink_button</item>
         <item name="colorPrimaryDark">@color/shakuf</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:navigationBarColor" tools:ignore="NewApi"> @color/pink_primary_dark</item>
+        <item name="android:navigationBarColor" tools:ignore="NewApi">@color/pink_primary_dark
+        </item>
         <item name="android:textColorPrimary">@color/dark_gray</item>
     </style>
+
     <style name="SeekBarWithoutSteps" parent="Base.Widget.AppCompat.SeekBar.Discrete">
         <item name="tickMark">@null</item>
     </style>
@@ -31,40 +36,41 @@
     </style>
 
     <style name="AppTheme.Male">
-        <item name="colorPrimary" >@color/light_staleGrey</item>
+        <item name="colorPrimary">@color/light_staleGrey</item>
         <item name="colorPrimaryDark">@color/staleGrey</item>
         <item name="colorAccent">@color/darkCyan</item>
-        <item name="android:navigationBarColor" tools:ignore="NewApi"> @color/pink_primary_dark</item>
+        <item name="android:navigationBarColor" tools:ignore="NewApi">@color/pink_primary_dark
+        </item>
         <item name="android:windowBackground">@color/windowBackground_male</item>
         <!--<item name="android:navigationBarColor" tools:ignore="DuplicateDefinition,NewApi"> @color/staleGrey</item>-->
 
     </style>
 
 
-        <style name="EditTextAgeHeightStyle">
-            <item name="android:layout_width">match_parent</item>
-            <item name="android:layout_height">match_parent</item>
-            <item name="android:layout_gravity">start</item>
-            <item name="android:layout_weight">1</item>
-            <item name="android:paddingStart">5dp</item>
-            <!--<item name="android:elevation">6dp</item>-->
-            <item name="android:background">@drawable/white_button</item>
+    <style name="EditTextAgeHeightStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_gravity">start</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:paddingStart">5dp</item>
+        <!--<item name="android:elevation">6dp</item>-->
+        <item name="android:background">@drawable/white_button</item>
 
-        </style>
+    </style>
 
-        <style name="EditTextLikeButtonStyle">
-            <item name="android:layout_margin">5dp</item>
+    <style name="EditTextLikeButton">
+        <item name="android:layout_margin">5dp</item>
 
-            <item name="android:layout_width">match_parent</item>
-            <item name="android:layout_height">40dp</item>
-            <item name="android:layout_gravity">center_horizontal</item>
-            <item name="android:gravity">center_vertical|start</item>
-            <item name="android:layout_marginTop">10dp</item>
-            <item name=" android:textSize">20sp</item>
-            <item name="android:background">@drawable/white_button</item>
-            <item name="android:paddingStart">7dp</item>
-            <!--<item name="android:background">@drawable/bg_button</item>-->
-        </style>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:gravity">center_vertical|start</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name=" android:textSize">20sp</item>
+        <item name="android:background">@drawable/white_button</item>
+        <item name="android:paddingStart">7dp</item>
+        <!--<item name="android:background">@drawable/bg_button</item>-->
+    </style>
 
     <!--my button-->
     <style name="myButtonStyle">

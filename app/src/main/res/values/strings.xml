@@ -2,12 +2,12 @@
 
     <string name="app_name">My Half</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="default_notification_channel_id">fcm_default_channel</string>
-    <string name="msg_token_fmt">InstanceID Token: %s</string>
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <string name="msg_token_fmt" translatable="false">InstanceID Token: %s</string>
     <string name="title_dashboard">dashboard</string>
     <string name="title_notifications">notifications</string>
     <string name="title_activity_log_in">logIn</string>
-    <string name="log_in_Button">Log in</string>
+    <string name="log_in_Button" translatable="false">Log in</string>
     <string name="email">Email</string>
     <string name="radioButtonMan">Man</string>
     <string name="radioButtonWoman">Woman</string>
@@ -113,6 +113,27 @@
     <string name="about_me">About me</string>
     <string name="without_children">Without children</string>
     <string name="with_children">With children</string>
+    <string name="select_image">Select Image</string>
 
+    <string name="cancel">cancel</string>
+    <string name="ok">OK</string>
+    <string name="Language">Language</string>
+    <string name="long_text_policy">Your Text</string>
+    <string name="title_activity_delete_account" translatable="false">DeleteAccount</string>
+    <string name="hebrew">Hbrew</string>
+    <string name="English">English</string>
+    <string name="all_users">All users</string>
+    <string name="save">Save</string>
+    <string name="get_nfn_when">Get notifications when</string>
+    <string name="send_me_msg">Send me a message</string>
+    <string name="whtch_my_card">Watch my card</string>
+    <string name="who_can_see_my_card">Who can see my card</string>
+    <string name="by_choice">By choice</string>
+    <string name="deleteFreeze_account">Delete \\ Freeze account</string>
+    <string name="get_takanon">I confirm that I have read and I agree to the</string>
+    <string name="takanon">Rules</string>
+    <string name="from_mm_card">From memory cad</string>
+    <string name="from_camera">From camera</string>
 
+    R.string.long_text_policy
 </resources>

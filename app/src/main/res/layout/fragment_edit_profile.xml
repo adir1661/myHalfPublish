@@ -156,55 +156,55 @@
                     <EditText
                         android:id="@+id/bStatus"
                         android:name=".MyActivity"
-                        style="@style/EditTextLikeButtonStyle"
+                        style="@style/EditTextLikeButton"
                         android:hint="@string/status"
                         android:label="My new title" />
                 </android.support.v7.widget.CardView>
 
 
-                <!--<RadioGroup-->
-                <!--android:id="@+id/radioGroupChildren"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="@dimen/standardHeight"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:layout_marginTop="5dp"-->
-                <!--android:orientation="horizontal"-->
-                <!--android:visibility="gone">-->
+                <RadioGroup
+                android:id="@+id/radioGroupChildren"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/standardHeight"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:visibility="gone">
 
 
-                <!--<RadioButton-->
-                <!--android:id="@+id/withChildren"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:paddingEnd="5dp"-->
-                <!--android:paddingRight="5dp"-->
-                <!--android:text="@string/with_children"-->
-                <!--android:textSize="20sp" />-->
+                    <RadioButton
+                    android:id="@+id/withChildren"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/with_children"
+                    android:textSize="20sp" />
 
-                <!--<RadioButton-->
-                <!--android:id="@+id/withoutChildren"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:paddingEnd="5dp"-->
-                <!--android:paddingRight="5dp"-->
-                <!--android:text="@string/without_children"-->
-                <!--android:textSize="20sp" />-->
-                <!--</RadioGroup>-->
+                    <RadioButton
+                    android:id="@+id/withoutChildren"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/without_children"
+                    android:textSize="20sp" />
+                    </RadioGroup>
 
 
                 <EditText
                     android:id="@+id/bWitness"
-                    style="@style/EditTextLikeButtonStyle"
+                    style="@style/EditTextLikeButton"
                     android:hint="@string/witness" />
 
                 <EditText
                     android:id="@+id/bView"
-                    style="@style/EditTextLikeButtonStyle"
+                    style="@style/EditTextLikeButton"
                     android:hint="@string/view" />
 
                 <EditText
                     android:id="@+id/bCity"
-                    style="@style/EditTextLikeButtonStyle"
+                    style="@style/EditTextLikeButton"
                     android:hint="@string/city" />
 
 

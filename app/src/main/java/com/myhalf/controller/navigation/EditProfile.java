@@ -218,11 +218,11 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
         if (hasFocus){
             Resources res = getResources();
             if (v == etStatus) {
-                dialogSingleChoice(res.getStringArray(R.array.Status), "My status");
+                dialogSingleChoice(res.getStringArray(R.array.Status), res.getString(R.string.status));
             } else if (v == etWitness) {
-                dialogMultiChoice(res.getStringArray(R.array.Witness), "My Eda");
+                dialogMultiChoice(res.getStringArray(R.array.Witness), res.getString(R.string.witness));
             } else if (v == etView) {
-                dialogMultiChoice(res.getStringArray(R.array.View), "My view");
+                dialogMultiChoice(res.getStringArray(R.array.View), res.getString(R.string.view));
             } else if (v == etCity) {
                 callGooglePlaces();
             }
@@ -276,10 +276,10 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
             }
         }
 
-        final String[] items = new String[]{"מהמצלמה", "מכרטיס זיכרון"};
+        final String[] items = new String[]{getString(R.string.from_camera), getString(R.string.from_mm_card)};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.select_dialog_item, items);//what the?
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());//?
-        builder.setTitle("Select Image");
+        builder.setTitle(R.string.select_image);
         builder.setCancelable(true);
         builder.setAdapter(adapter, new DialogInterface.OnClickListener() {
             @Override
@@ -310,7 +310,7 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         intent.putExtra(Finals.App.BUTTON_KEY, nameOfButton);
-        startActivityForResult(Intent.createChooser(intent, "בחר תמונה"), PICK_FROM_GALLERY);
+        startActivityForResult(Intent.createChooser(intent, getResources().getString(R.string.select_image)), PICK_FROM_GALLERY);
     }
 
     //
@@ -527,12 +527,13 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
 
             }
         });
-        builder.setPositiveButton("אישור", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getResources().getString(R.string.ok), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if (myChoiceFlag) {
                     switch (title) {
-                        case "My status": {
+                        case "Status": //TODO: I cant extract the string. its important
+                        {
                             activityUser.getAboutMe().setStatus(myChoice);
                             markAsSigned(etStatus, myChoice);
 //                            rgChildren.setVisibility(View.VISIBLE);
@@ -545,7 +546,7 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
                 }
             }
         });
-        builder.setNegativeButton("ביטול", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 myChoiceFlag = false;
@@ -606,13 +607,13 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
                 myChoiceFlag = true;
             }
         });
-        builder.setPositiveButton("אישור", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if (myChoiceFlag) {
 
                     switch (title) {
-                        case "My view": {
+                        case "View": {//"View"
                             activityUser.getAboutMe().setView(allChoicesToArray(stringOptions, boolOption));
                             myChoiceFlag = false;
                             markAsSigned(etView,null);
@@ -628,7 +629,7 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
                 }
             }
         });
-        builder.setNegativeButton("ביטול", null);
+        builder.setNegativeButton(getResources().getString(R.string.cancel), null);
         AlertDialog dialog = builder.create();
         dialog.show();
     }

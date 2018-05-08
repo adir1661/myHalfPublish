@@ -40,9 +40,7 @@
                     style="@style/EditTextAgeHeightStyle"
                     android:hint="@string/fromAge"
                     android:layout_marginEnd="10dp"
-
-                    android:elevation="6dp"
-                    />
+                    android:elevation="6dp" />
 
                 <EditText
                     android:id="@+id/toAge"
@@ -89,22 +87,22 @@
 
                 <EditText
                     android:id="@+id/bStatus"
-                    style="@style/EditTextLikeButtonStyle"
+                    style="@style/EditTextLikeButton"
                     android:hint="@string/status"/>
 
                 <EditText
                     android:id="@+id/bWitness"
-                    style="@style/EditTextLikeButtonStyle"
+                    style="@style/EditTextLikeButton"
                     android:hint="@string/witness"/>
 
                 <EditText
                     android:id="@+id/bView"
-                    style="@style/EditTextLikeButtonStyle"
+                    style="@style/EditTextLikeButton"
                     android:hint="@string/view"/>
 
                 <EditText
                     android:id="@+id/bCity"
-                    style="@style/EditTextLikeButtonStyle"
+                    style="@style/EditTextLikeButton"
                     android:hint="@string/city"/>
 
                 <Button

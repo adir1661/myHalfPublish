@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.myhalf.R;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -98,7 +100,7 @@ public class Listeners {
                 } else if (value < sbRealMin) {
                     scheduleEditTextChange(0);
                 } else if (value > sbRealMax) {
-                    scheduleEditTextChange(maxSeekBar());
+                    scheduleEditTextChange(maxSeekBar(value));
                 }
             } catch (NumberFormatException e) {
                 e.printStackTrace();
@@ -116,8 +118,8 @@ public class Listeners {
                             mActivity.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    mEditText.setSelection(mEditText.getText().length());
                                     mSeekBar.setProgress(progressUpdateValue(value));
+                                    mEditText.setSelection(mEditText.getText().length());
                                 }
                             });
                             Log.d(TAG, "set seekbar");
@@ -133,7 +135,6 @@ public class Listeners {
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
             mEditText.setText(String.valueOf(editTextUpdateValue(progress)));
             Log.d(TAG, "set text");
-
         }
 
 
@@ -154,10 +155,10 @@ public class Listeners {
             return 0;
         }
 
-        private int maxSeekBar() {
+        private int maxSeekBar(int value) {
             if (sbAutoMin && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
                 return mSeekBar.getMax();
-            return mSeekBar.getMax();
+            return sbRealMax;
         }
 
         private int progressUpdateValue(int value) {

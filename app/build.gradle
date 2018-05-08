@@ -25,6 +25,9 @@ android {
     }
     productFlavors {
     }
+    dataBinding {
+        enabled = true
+    }
 }
 dependencies {
     implementation 'com.google.firebase:firebase-storage:11.8.0'

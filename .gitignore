@@ -30,3 +30,17 @@ build.gradle
 .idea/modules.xml
 app/google-services.json
 .idea/workspace.xml
+.gradle/4.4/fileHashes/fileHashes.bin
+.gradle/4.4/fileHashes/fileHashes.lock
+.gradle/4.4/fileHashes/resourceHashesCache.bin
+.gradle/4.4/javaCompile/classAnalysis.bin
+.gradle/4.4/javaCompile/javaCompile.lock
+.gradle/4.4/taskHistory/taskHistory.bin
+.gradle/4.4/taskHistory/taskHistory.lock
+.gradle/buildOutputCleanup/buildOutputCleanup.lock
+.gradle/buildOutputCleanup/outputFiles.bin
+.idea/workspace.xml
+app/app.iml
+app/src/main/java/com/myhalf/controller/tools/Listeners.java
+app/src/main/res/layout/fragment_edit_profile.xml
+app/src/main/res/layout/fragment_full_profile.xml

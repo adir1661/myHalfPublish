@@ -1,6 +1,5 @@
 *.iml
 
-/local.properties
 /.idea/workspace.xml
 /.idea/libraries
 .DS_Store
@@ -15,8 +14,6 @@ build.gradle
 .idea/misc.xml
 .idea/misc.xml
 .idea/misc.xml
-build.gradle
-build.gradle
 .idea/modules.xml
 .idea/modules.xml
 .idea/modules.xml
@@ -28,7 +25,6 @@ build.gradle
 .idea/modules.xml
 
 .idea/modules.xml
-app/google-services.json
 .idea/workspace.xml
 .gradle/4.4/fileHashes/fileHashes.bin
 .gradle/4.4/fileHashes/fileHashes.lock
@@ -41,6 +37,5 @@ app/google-services.json
 .gradle/buildOutputCleanup/outputFiles.bin
 .idea/workspace.xml
 app/app.iml
-app/src/main/java/com/myhalf/controller/tools/Listeners.java
-app/src/main/res/layout/fragment_edit_profile.xml
-app/src/main/res/layout/fragment_full_profile.xml
+*.iml
+local.properties

@@ -79,11 +79,12 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".controller.Openning"></activity>
+        <activity android:name=".controller.Openning" />
         <activity
             android:name=".controller.DeleteAccount"
             android:label="@string/title_activity_delete_account"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".controller.navigation.TakanonActivity"></activity>
     </application>
 
 </manifest>

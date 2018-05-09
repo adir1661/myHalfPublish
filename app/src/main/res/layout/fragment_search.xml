@@ -100,12 +100,34 @@
                     style="@style/EditTextLikeButton"
                     android:hint="@string/view"/>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/livingArea"/>
+                <EditText
+                    android:id="@+id/bRange"
+                    style="@style/EditTextLikeButton"
+                    android:hint="@string/range"
+                    android:layout_width="100dp"
+                    android:layout_gravity="start"/>
                 <EditText
                     android:id="@+id/bCity"
                     style="@style/EditTextLikeButton"
                     android:hint="@string/city"/>
 
-                <Button
+            </LinearLayout>
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/just_with_pctr"
+                android:layout_marginTop="10dp"/>
+
+            <Button
                     android:id="@+id/search"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"

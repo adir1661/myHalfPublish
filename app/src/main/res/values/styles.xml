@@ -83,4 +83,22 @@
         <item name="android:textSize">20sp</item>
     </style>
 
+
+    <!--<TextView-->
+        <!--android:id="@+id/tvName"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:gravity="center"-->
+        <!--android:padding="15dp"-->
+        <!--android:text="שם"-->
+        <!--android:textSize="15sp" />-->
+
+    <style name="TextViewOfProfile">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">15dp</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
 </resources>

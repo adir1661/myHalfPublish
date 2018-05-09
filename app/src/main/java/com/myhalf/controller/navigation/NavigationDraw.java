@@ -19,7 +19,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -207,13 +206,12 @@ public class NavigationDraw extends AppCompatActivity implements NavigationView.
 //            // Commit the transaction
 //            transaction.commit();
 //
-        } else if (id == R.id.itSettings) {
+        } else if (id == R.id.itSetting) {
             MyFragmentManager.replaceFragmentInContainer(this,new Settings(),R.id.NavigationDrawContainer);
-//
-//
-//        } else if (id == R.id.nav_share) {
-//
-//        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.itTakanon) {
+            MyFragmentManager.replaceFragmentInContainer(this,new Takanon(),R.id.NavigationDrawContainer);
+
+
 
         }
 

@@ -23,6 +23,7 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.myhalf.R;
 import com.myhalf.controller.navigation.NavigationDraw;
 import com.myhalf.controller.navigation.Takanon;
+import com.myhalf.controller.navigation.TakanonActivity;
 import com.myhalf.controller.tools.Formatter;
 import com.myhalf.model.backend.DBManager;
 import com.myhalf.model.backend.DBManagerFactory;
@@ -105,7 +106,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void takanonOnClick() {
-        Intent takanon = new Intent(RegisterActivity.this, Takanon.class);
+        Intent takanon = new Intent(RegisterActivity.this, TakanonActivity.class);
         RegisterActivity.this.startActivity(takanon);
     }
 

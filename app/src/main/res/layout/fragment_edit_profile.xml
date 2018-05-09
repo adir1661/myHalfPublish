@@ -228,8 +228,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
-
-
                         <SeekBar
                             android:id="@+id/sbHeight"
                             style="@style/SeekBarWithoutSteps"
@@ -239,7 +237,6 @@
                             android:layout_weight="1"
                             android:max="90"
                             android:progress="40" />
-
                         <EditText
                             android:id="@+id/etHieght"
                             android:layout_width="wrap_content"
@@ -250,6 +247,11 @@
                             android:textSize="20sp" />
                     </LinearLayout>
 
+                    <EditText
+                        android:id="@+id/bPhone"
+                        style="@style/EditTextLikeButton"
+                        android:hint="@string/PhoneNum" />
+
                 </LinearLayout>
 
                 <TextView
@@ -257,13 +259,6 @@
                     android:layout_height="wrap_content"
                     android:text="@string/about_me"
                     android:textSize="20sp" />
-
-                <!--<com.github.florent37.materialtextfield.MaterialTextField-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginLeft="@dimen/margin"-->
-                <!--android:layout_marginRight="@dimen/margin"-->
-                <!--app:mtf_labelColor="#666">-->
 
                 <ScrollView
                     android:layout_width="match_parent"
@@ -279,8 +274,6 @@
                         android:inputType="textLongMessage" />
                 </ScrollView>
 
-                <!--</com.github.florent37.materialtextfield.MaterialTextField>-->
-
                 <Button
                     android:id="@+id/bGoToSearch"
                     android:layout_width="match_parent"
@@ -289,7 +282,7 @@
                     android:layout_marginTop="20dp"
                     android:background="@drawable/mybutton"
                     android:elevation="6dp"
-                    android:text="@string/search"
+                    android:text="@string/start_searching"
                     android:textColor="#ffffff" />
 
             </LinearLayout>

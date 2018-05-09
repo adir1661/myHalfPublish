@@ -109,12 +109,12 @@
     <string name="with_children">עם ילדים</string>
     <string name="hebrew">עברית</string>
     <string name="English">אנגלית</string>
-    <string name="all_users">כל המשתמשים</string>
+    <string name="all_users_and_matches">כל המשתמשים והשדכנים</string>
     <string name="save">שמור</string>
     <string name="get_nfn_when">קבל התראות כאשר:</string>
     <string name="send_me_msg">שולחים לי הודעה</string>
     <string name="whtch_my_card">צופים בכרטיס שלי</string>
-    <string name="who_can_see_my_card">מי יוכל לראות את הכרטיס שלי:</string>
+    <string name="who_can_see_my_card">מי יוכל לראות את הכרשךךטיס שלי:</string>
     <string name="by_choice">לפי בחירה</string>
     <string name="deleteFreeze_account">מחיקת / הקפאת חשבון</string>
     <string name="get_takanon">אני מאשר שקראתי ואני מסכים ל</string>
@@ -126,6 +126,13 @@
     <string name="select_image">בחר תמונה</string>
     <string name="from_mm_card">מכרטיס זיכרון</string>
     <string name="from_camera">מהמצלמה</string>
+    <string name="setting">הגדרות</string>
+    <string name="send_msg">שלח הודעה</string>
+    <string name="start_searching">התחל חיפוש</string>
+    <string name="just_with_pctr">רק עם תמונת פרופיל</string>
+    <string name="PhoneNum">מספר נייד</string>
+    <string name="range">טווח</string>
+    <string name="livingArea">איזור מגורים</string>
 
 
 </resources>

@@ -119,10 +119,9 @@
     <string name="ok">OK</string>
     <string name="Language">Language</string>
     <string name="long_text_policy">Your Text</string>
-    <string name="title_activity_delete_account" translatable="false">DeleteAccount</string>
-    <string name="hebrew">Hbrew</string>
+    <string name="hebrew">Hebrew</string>
     <string name="English">English</string>
-    <string name="all_users">All users</string>
+    <string name="all_users_and_matches">All users and matchmakers</string>
     <string name="save">Save</string>
     <string name="get_nfn_when">Get notifications when</string>
     <string name="send_me_msg">Send me a message</string>
@@ -134,6 +133,11 @@
     <string name="takanon">Rules</string>
     <string name="from_mm_card">From memory cad</string>
     <string name="from_camera">From camera</string>
+    <string name="setting">Setting</string>
+    <string name="livingArea">Living area</string>
+    <string name="title_activity_delete_account" translatable="false">Delte Account</string>
+    <string name="PhoneNum">Phone num</string>
+    <string name="range">Range</string>
 
-    R.string.long_text_policy
+
 </resources>

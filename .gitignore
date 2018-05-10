@@ -38,4 +38,3 @@ build.gradle
 .idea/workspace.xml
 app/app.iml
 *.iml
-local.properties

@@ -1,32 +1,30 @@
 package com.myhalf.controller.navigation;
 
-import android.content.Context;
-import android.net.Uri;
+
 import android.os.Bundle;
-import android.app.Fragment;
-import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.myhalf.R;
 
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class Messages extends Fragment {
 
-public class Settings extends Fragment {
-    public Settings() {
+
+    public Messages() {
         // Required empty public constructor
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_settings, container, false);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+        return inflater.inflate(R.layout.fragment_messages, container, false);
     }
 
 }

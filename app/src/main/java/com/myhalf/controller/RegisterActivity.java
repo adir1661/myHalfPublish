@@ -105,7 +105,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void takanonOnClick() {
-        Intent takanon = new Intent(RegisterActivity.this, Takanon.class);
+        Intent takanon = new Intent(RegisterActivity.this, TakanonActivity.class);
         RegisterActivity.this.startActivity(takanon);
     }
 

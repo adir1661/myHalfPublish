@@ -14,10 +14,10 @@ import android.widget.TextView;
 import com.myhalf.R;
 
 public class Takanon extends Fragment {
+
     public Takanon() {
         // Required empty public constructor
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -62,4 +62,5 @@ public class Takanon extends Fragment {
                 "הנהלת החצי שלי מאחלת לך שימוש מהנה, ושתמצא את החצי שלך בקרוב!\n");
         txtDetails.setMovementMethod(new ScrollingMovementMethod());
     }
+
 }

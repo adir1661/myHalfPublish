@@ -515,7 +515,7 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
     //--------------------Dialog of single choice----------------------------------
     private void dialogSingleChoice(final String[] stringsList, final String title) {
         final String[] OptionsStrings = stringsList;
-        final int choiceMarked = -1;//getChoiceMarked(title);
+        final int choiceMarked = -1;
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(title);

@@ -25,18 +25,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a86d983f-727b-4e02-b702-0f2409090be0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/tools/DialogChoice.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/navigation/EditProfile.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/navigation/EditProfile.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/navigation/Search.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/navigation/Search.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_registering.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_registering.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values-iw/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values-iw/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -79,8 +70,8 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="155" column="20" lean-forward="false" selection-start-line="155" selection-start-column="20" selection-end-line="155" selection-end-column="20" />
+            <state relative-caret-position="190">
+              <caret line="199" column="25" lean-forward="true" selection-start-line="199" selection-start-column="25" selection-end-line="199" selection-end-column="25" />
               <folding>
                 <marker date="1525890515585" expanded="true" signature="11186:11204" ph="&quot;About me&quot;" />
                 <marker date="1525890515585" expanded="true" signature="12275:12300" ph="&quot;Search&quot;" />
@@ -89,23 +80,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RegisterActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/RegisterActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="583">
-              <caret line="224" column="1" lean-forward="false" selection-start-line="224" selection-start-column="1" selection-end-line="224" selection-end-column="1" />
-              <folding>
-                <element signature="e#7244#7265#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EditProfile.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="EditProfile.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/navigation/EditProfile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="546" column="29" lean-forward="false" selection-start-line="546" selection-start-column="29" selection-end-line="546" selection-end-column="29" />
+            <state relative-caret-position="60">
+              <caret line="601" column="83" lean-forward="false" selection-start-line="601" selection-start-column="83" selection-end-line="601" selection-end-column="83" />
               <folding>
                 <element signature="method#onActivityCreated#0;class#EditProfile#0" expanded="false" />
                 <element signature="method#onResume#0;class#EditProfile#0" expanded="false" />
@@ -120,52 +99,96 @@
                 <element signature="method#bitmapToUri#0;class#EditProfile#0" expanded="false" />
                 <element signature="method#handleGooglePlacesResult#0;class#EditProfile#0" expanded="false" />
                 <element signature="method#getRealPathFromUri#0;class#EditProfile#0" expanded="false" />
-                <element signature="e#21251#22316#0" expanded="true" />
-                <element signature="e#21451#21492#0" expanded="true" />
-                <element signature="e#21670#21713#0" expanded="true" />
-                <element signature="e#21763#21807#0" expanded="true" />
-                <element signature="e#21856#21896#0" expanded="true" />
-                <element signature="e#21945#21987#0" expanded="true" />
-                <element signature="e#22315#22316#0" expanded="true" />
-                <marker date="1526476780406" expanded="true" signature="8885:8916" ph="&quot;Witness&quot;" />
-                <marker date="1526476780406" expanded="true" signature="9030:9058" ph="&quot;View&quot;" />
-                <marker date="1526476780406" expanded="true" signature="11080:11111" ph="&quot;מהמצלמה&quot;" />
-                <marker date="1526476780406" expanded="true" signature="11113:11145" ph="&quot;מכרטיס זיכרון&quot;" />
-                <marker date="1526476780406" expanded="true" signature="11389:11410" ph="&quot;Select Image&quot;" />
+                <element signature="e#20835#21150#0" expanded="true" />
+                <element signature="e#21149#21150#0" expanded="true" />
+                <element signature="e#21226#22290#0" expanded="true" />
+                <element signature="e#21426#21467#0" expanded="true" />
+                <element signature="e#21645#21688#0" expanded="true" />
+                <element signature="e#21738#21782#0" expanded="true" />
+                <element signature="e#21831#21871#0" expanded="true" />
+                <element signature="e#21920#21962#0" expanded="true" />
+                <element signature="e#22289#22290#0" expanded="true" />
+                <marker date="1526491747757" expanded="true" signature="8885:8916" ph="&quot;Witness&quot;" />
+                <marker date="1526491747757" expanded="true" signature="9030:9058" ph="&quot;View&quot;" />
+                <marker date="1526491747757" expanded="true" signature="11080:11111" ph="&quot;מהמצלמה&quot;" />
+                <marker date="1526491747757" expanded="true" signature="11113:11145" ph="&quot;מכרטיס זיכרון&quot;" />
+                <marker date="1526491747757" expanded="true" signature="11389:11410" ph="&quot;Select Image&quot;" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Resources.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../Sdk/sources/android-27/android/content/res/Resources.java">
+      <file leaf-file-name="DialogChoice.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/tools/DialogChoice.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="89">
-              <caret line="338" column="0" lean-forward="false" selection-start-line="338" selection-start-column="0" selection-end-line="338" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Search.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/navigation/Search.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="166" column="75" lean-forward="false" selection-start-line="166" selection-start-column="75" selection-end-line="166" selection-end-column="75" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AboutMe.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/model/entities/AboutMe.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="22" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+            <state relative-caret-position="100">
+              <caret line="22" column="26" lean-forward="false" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
               <folding>
-                <element signature="e#1412#1413#0" expanded="true" />
-                <element signature="e#1441#1442#0" expanded="true" />
+                <element signature="e#1527#1538#0" expanded="true" />
+                <element signature="e#1748#1761#0" expanded="true" />
+                <element signature="e#2030#2046#0" expanded="true" />
+                <element signature="e#2376#2426#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ChatMessage.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/tools/ChatMessage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Formatter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/tools/Formatter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Listeners.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/tools/Listeners.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MessageAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/tools/MessageAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MyFragmentManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/tools/MyFragmentManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="8" column="109" lean-forward="false" selection-start-line="8" selection-start-column="98" selection-end-line="8" selection-end-column="109" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UpdateAsync.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/tools/UpdateAsync.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -175,33 +198,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="289">
               <caret line="26" column="23" lean-forward="false" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="471">
-              <caret line="137" column="39" lean-forward="false" selection-start-line="137" selection-start-column="39" selection-end-line="137" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Translations Editor" pinned="false" current-in-tab="false">
-        <entry file="android-dummy://C:/Android/project/myHalfPublish/app/Translations Editor">
-          <provider selected="true" editor-type-id="string-resource-editor">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values-iw/strings.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="35" column="39" lean-forward="false" selection-start-line="35" selection-start-column="39" selection-end-line="35" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -229,6 +225,7 @@
       <find>anim</find>
       <find>ran</find>
       <find>Single</find>
+      <find>markas</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -3384,7 +3381,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/test/java/com/myhalf/model/entities/UserSeekerTest.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/myhalf/model/datasource/Tools.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/myhalf/model/entities/AboutMeSeeker.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/myhalf/model/backend/DBManager.java" />
@@ -3435,6 +3431,7 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values-iw/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/navigation/EditProfile.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/tools/DialogChoice.java" />
       </list>
     </option>
   </component>
@@ -3683,6 +3680,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="tools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myHalfPublish" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myhalf" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="navigation" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -3813,7 +3836,7 @@
       <option name="ACTIVITY_CLASS" value="com.myhalf.controller.navigation.NavigationDraw" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1526477013267" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1526493649262" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
@@ -3887,7 +3910,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1526477013267" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1526493649262" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -3935,7 +3958,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1526477013267" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1526493649263" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -4118,7 +4141,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1526477013268" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1526493649265" />
       </method>
     </configuration>
     <list size="2">
@@ -4245,7 +4268,14 @@
       <option name="project" value="LOCAL" />
       <updated>1526472518862</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="design">
+      <created>1526477027528</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1526477027528</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TodoView">
@@ -4414,82 +4444,11 @@
           <option name="timeStamp" value="38" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="39" />
+      <option name="time" value="40" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/dimens.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="18" column="12" lean-forward="false" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/app_bar_main.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-24">
-          <caret line="11" column="22" lean-forward="false" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/final_integer.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/nevigation.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_delete_account.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1258">
-          <caret line="74" column="39" lean-forward="false" selection-start-line="74" selection-start-column="39" selection-end-line="74" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_takanon.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/navigation/TakanonActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="15" column="30" lean-forward="false" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_takanon.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_navigation_draw.xml">
       <provider editor-type-id="android-designer2">
         <state />
@@ -4514,13 +4473,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="206">
           <caret line="63" column="5" lean-forward="false" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/tools/MyFragmentManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="8" column="109" lean-forward="false" selection-start-line="8" selection-start-column="98" selection-end-line="8" selection-end-column="109" />
         </state>
       </provider>
     </entry>
@@ -4739,20 +4691,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_profile.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="155" column="20" lean-forward="false" selection-start-line="155" selection-start-column="20" selection-end-line="155" selection-end-column="20" />
-          <folding>
-            <marker date="1525890515585" expanded="true" signature="11186:11204" ph="&quot;About me&quot;" />
-            <marker date="1525890515585" expanded="true" signature="12275:12300" ph="&quot;Search&quot;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/model/entities/AboutMe.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -4839,10 +4777,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="android-dummy://C:/Android/project/myHalfPublish/app/Translations Editor">
+      <provider selected="true" editor-type-id="string-resource-editor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../Sdk/sources/android-27/android/app/Fragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="738" column="26" lean-forward="false" selection-start-line="738" selection-start-column="26" selection-end-line="738" selection-end-column="26" />
+          <folding>
+            <element signature="e#29621#29622#0" expanded="true" />
+            <element signature="e#29686#29687#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_profile.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="199" column="25" lean-forward="true" selection-start-line="199" selection-start-column="25" selection-end-line="199" selection-end-column="25" />
+          <folding>
+            <marker date="1525890515585" expanded="true" signature="11186:11204" ph="&quot;About me&quot;" />
+            <marker date="1525890515585" expanded="true" signature="12275:12300" ph="&quot;Search&quot;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/navigation/EditProfile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="546" column="29" lean-forward="false" selection-start-line="546" selection-start-column="29" selection-end-line="546" selection-end-column="29" />
+        <state relative-caret-position="60">
+          <caret line="601" column="83" lean-forward="false" selection-start-line="601" selection-start-column="83" selection-end-line="601" selection-end-column="83" />
           <folding>
             <element signature="method#onActivityCreated#0;class#EditProfile#0" expanded="false" />
             <element signature="method#onResume#0;class#EditProfile#0" expanded="false" />
@@ -4857,18 +4825,81 @@
             <element signature="method#bitmapToUri#0;class#EditProfile#0" expanded="false" />
             <element signature="method#handleGooglePlacesResult#0;class#EditProfile#0" expanded="false" />
             <element signature="method#getRealPathFromUri#0;class#EditProfile#0" expanded="false" />
-            <element signature="e#21251#22316#0" expanded="true" />
-            <element signature="e#21451#21492#0" expanded="true" />
-            <element signature="e#21670#21713#0" expanded="true" />
-            <element signature="e#21763#21807#0" expanded="true" />
-            <element signature="e#21856#21896#0" expanded="true" />
-            <element signature="e#21945#21987#0" expanded="true" />
-            <element signature="e#22315#22316#0" expanded="true" />
-            <marker date="1526476780406" expanded="true" signature="8885:8916" ph="&quot;Witness&quot;" />
-            <marker date="1526476780406" expanded="true" signature="9030:9058" ph="&quot;View&quot;" />
-            <marker date="1526476780406" expanded="true" signature="11080:11111" ph="&quot;מהמצלמה&quot;" />
-            <marker date="1526476780406" expanded="true" signature="11113:11145" ph="&quot;מכרטיס זיכרון&quot;" />
-            <marker date="1526476780406" expanded="true" signature="11389:11410" ph="&quot;Select Image&quot;" />
+            <element signature="e#20835#21150#0" expanded="true" />
+            <element signature="e#21149#21150#0" expanded="true" />
+            <element signature="e#21226#22290#0" expanded="true" />
+            <element signature="e#21426#21467#0" expanded="true" />
+            <element signature="e#21645#21688#0" expanded="true" />
+            <element signature="e#21738#21782#0" expanded="true" />
+            <element signature="e#21831#21871#0" expanded="true" />
+            <element signature="e#21920#21962#0" expanded="true" />
+            <element signature="e#22289#22290#0" expanded="true" />
+            <marker date="1526491747757" expanded="true" signature="8885:8916" ph="&quot;Witness&quot;" />
+            <marker date="1526491747757" expanded="true" signature="9030:9058" ph="&quot;View&quot;" />
+            <marker date="1526491747757" expanded="true" signature="11080:11111" ph="&quot;מהמצלמה&quot;" />
+            <marker date="1526491747757" expanded="true" signature="11113:11145" ph="&quot;מכרטיס זיכרון&quot;" />
+            <marker date="1526491747757" expanded="true" signature="11389:11410" ph="&quot;Select Image&quot;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/tools/ChatMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/tools/MessageAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/tools/MyFragmentManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="8" column="109" lean-forward="false" selection-start-line="8" selection-start-column="98" selection-end-line="8" selection-end-column="109" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/tools/UpdateAsync.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/tools/Formatter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/tools/Listeners.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/tools/DialogChoice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="22" column="26" lean-forward="false" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+          <folding>
+            <element signature="e#1527#1538#0" expanded="true" />
+            <element signature="e#1748#1761#0" expanded="true" />
+            <element signature="e#2030#2046#0" expanded="true" />
+            <element signature="e#2376#2426#0" expanded="true" />
           </folding>
         </state>
       </provider>

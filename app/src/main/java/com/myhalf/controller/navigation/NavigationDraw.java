@@ -4,8 +4,10 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -20,49 +22,59 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.myhalf.R;
-import com.myhalf.controller.services.CheckNewsService;
 import com.myhalf.controller.RegisterActivity;
-import com.myhalf.controller.myUser;
+import com.myhalf.controller.asynctasks.getUserAsync;
+import com.myhalf.controller.MyUser;
 import com.myhalf.controller.tools.MyFragmentManager;
+import com.myhalf.controller.tools.OtherTools;
 import com.myhalf.controller.tools.UpdateAsync;
+import com.myhalf.model.backend.DBManager;
+import com.myhalf.model.backend.DBManagerFactory;
 import com.myhalf.model.backend.Finals;
 import com.myhalf.model.entities.UserSeeker;
 import com.yalantis.ucrop.UCrop;
 
 public class NavigationDraw extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    public UserSeeker activityUser = myUser.getUserSeeker();
+    public UserSeeker activityUser = MyUser.getUserSeeker();
+    private DBManager DB_manager = DBManagerFactory.getSeekerManager();
     private final String TAG = "NavigationDraw";
 
+    FirebaseAuth mAuth;
+    FirebaseUser mUser;
 
+    //TODO: execute all actions on their preffered time ... , for example make an animation until we got the user then then execute the fragment EditProfile......
     @Override
     protected void onResume() {
         super.onResume();
-        startService(new Intent(getBaseContext(), CheckNewsService.class));
+//        startService(new Intent(getBaseContext(), CheckNewsService.class));
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_draw);
+        if (getIntent().getExtras() != null && getIntent().getExtras().getBoolean(Finals.App.FROM_REGISTER_ACTIVITY)) {
+            signIn();
+        } else
+            logInDefaultUser();
 
-        signInFirebaseAnonymously();
+
+//        signInFirebaseAnonymously();
 
 
-        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        EditProfile fragment = new EditProfile();
-        fragmentTransaction.add(R.id.NavigationDrawContainer, fragment);
-        fragmentTransaction.commit();
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        Toolbar toolbar = findViewById(R.id.tool_bar);
 //        toolbar.setTitle("My Half");
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,13 +83,13 @@ public class NavigationDraw extends AppCompatActivity implements NavigationView.
             }
         });
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
 //    // Register which actions the Broadcast can receive
@@ -92,10 +104,70 @@ public class NavigationDraw extends AppCompatActivity implements NavigationView.
 ////        startService(new Intent(this,CheckNewsService.class));
 //        this.registerReceiver(br, actionsFilter);
 
+        getFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+            @Override
+            public void onBackStackChanged() {
+                activityUser = MyUser.getUserSeeker();
+            }
+        });
+    }
+
+    private void logInDefaultUser() {
+        mAuth = FirebaseAuth.getInstance();
+        mAuth.signInWithEmailAndPassword(Finals.FireBase.Authentication.DEFAULT_EMAIL, Finals.FireBase.Authentication.DEFAULT_PASSWORD)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "signInWithEmail:success");
+                            mUser = mAuth.getCurrentUser();
+                            if (mUser.isAnonymous())
+                                Toast.makeText(NavigationDraw.this, "testing account online", Toast.LENGTH_LONG).show();
+                            else
+                                Toast.makeText(NavigationDraw.this, "testing account adir is online", Toast.LENGTH_LONG).show();
+
+//                            updateUI(user);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "signInWithEmail:failure", task.getException());
+                            Toast.makeText(NavigationDraw.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+//                            updateUI(null);
+                        }
+                        signIn();
+                    }
+                });
+    }
+
+    private void signIn() {
+        mAuth = FirebaseAuth.getInstance();
+        mUser = mAuth.getCurrentUser();
+        activityUser = MyUser.getUserSeeker();
+
+        if (mUser != null) {
+            getUserAsync getUserAsync = new getUserAsync(this, DB_manager, new getUserAsync.Implementation() {
+                @Override
+                public void onPreExecute() {
+                }
+
+                @Override
+                public void onPostExecute(UserSeeker userSeeker) {
+                    MyUser.setUserSeeker(userSeeker);
+                    FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                    EditProfile fragment = new EditProfile();
+                    fragmentTransaction.add(R.id.NavigationDrawContainer, fragment);
+                    fragmentTransaction.commit();
+                    //TODO end progressanimation
+                }
+            });
+            getUserAsync.execute(mUser.getEmail());
+        } else
+            signOut();
+
     }
 
     private void signInFirebaseAnonymously() {
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
         mAuth.signInAnonymously().addOnSuccessListener(this, new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
@@ -114,10 +186,17 @@ public class NavigationDraw extends AppCompatActivity implements NavigationView.
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && requestCode == UCrop.REQUEST_CROP) {
-            final Uri resultUri = UCrop.getOutput(data);
+            Uri resultUri = UCrop.getOutput(data);
+            Bitmap bitmap;
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), resultUri);
+                resultUri = OtherTools.bitmapToUri(this, bitmap, activityUser);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             EditProfile fragment = (EditProfile) getFragmentManager().findFragmentById(R.id.NavigationDrawContainer);
 //            String buttonId = data.getStringExtra(Finals.App.BUTTON_KEY);
-            fragment.updatePictureFromActivity(resultUri,null/*TODO:here for future update of Ucrop*/);
+            fragment.updatePictureFromActivity(resultUri, null/*TODO:here for future update of Ucrop*/);
         }
     }
 
@@ -137,7 +216,7 @@ public class NavigationDraw extends AppCompatActivity implements NavigationView.
             Fragment fragment = getFragmentManager().findFragmentByTag(tag);
             if (fragment instanceof EditProfile) {
                 EditProfile fragmentEditProfile = (EditProfile) fragment;
-                UpdateAsync updateAsync = fragmentEditProfile.UpdateAsyncCreator();
+                UpdateAsync updateAsync = new UpdateAsync(DB_manager,activityUser,this);
                 updateAsync.execute(fragmentEditProfile.activityUser);
             }
             getFragmentManager().popBackStack();
@@ -160,14 +239,20 @@ public class NavigationDraw extends AppCompatActivity implements NavigationView.
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            ;
         } else if (id == R.id.menu_sign_out) {
-            Intent signOut = new Intent(getApplicationContext(), RegisterActivity.class);
-            myUser.dismissUserSeeker();
-            startActivity(signOut);
+            signOut();
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void signOut() {
+        Intent signOut = new Intent(getApplicationContext(), RegisterActivity.class);
+        mAuth.signOut();
+        MyUser.dismissUserSeeker();
+        signOut.putExtra(Finals.App.SIGN_OUT, true);
+        startActivity(signOut);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -182,6 +267,7 @@ public class NavigationDraw extends AppCompatActivity implements NavigationView.
             ftMoveToFullProfile.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
             FullProfile fragmentProfile = new FullProfile();
             Bundle bundle = new Bundle();
+            activityUser = MyUser.getUserSeeker();
             bundle.putSerializable(Finals.App.USER_SEEKER, activityUser);
             fragmentProfile.setArguments(bundle);
             ftMoveToFullProfile.replace(R.id.NavigationDrawContainer, fragmentProfile);
@@ -190,10 +276,10 @@ public class NavigationDraw extends AppCompatActivity implements NavigationView.
 
             // Handle the camera action
         } else if (id == R.id.itSearchSettings) {
-            MyFragmentManager.replaceFragmentInContainer(this,new Search(),R.id.NavigationDrawContainer);
+            MyFragmentManager.replaceFragmentInContainer(this, new Search(), R.id.NavigationDrawContainer);
 
         } else if (id == R.id.itSearchResults) {
-            MyFragmentManager.replaceFragmentInContainer(this,new SearchResults(),R.id.NavigationDrawContainer);
+            MyFragmentManager.replaceFragmentInContainer(this, new SearchResults(), R.id.NavigationDrawContainer);
 //        }
 //            else if (id == R.id.itConversations) {
 //            // Create new fragment and transaction

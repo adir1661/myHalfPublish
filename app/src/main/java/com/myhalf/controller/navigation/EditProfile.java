@@ -4,15 +4,14 @@ import android.Manifest;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -32,13 +31,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
-import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.AutocompleteFilter;
 import com.google.android.gms.location.places.Place;
@@ -46,8 +44,10 @@ import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.myhalf.R;
-import com.myhalf.controller.myUser;
+import com.myhalf.controller.MyUser;
+import com.myhalf.controller.tools.GoogleApiTools;
 import com.myhalf.controller.tools.Listeners;
+import com.myhalf.controller.tools.OtherTools;
 import com.myhalf.controller.tools.Storage;
 import com.myhalf.controller.tools.UpdateAsync;
 import com.myhalf.model.backend.DBManager;
@@ -57,12 +57,8 @@ import com.myhalf.model.entities.Enums;
 import com.myhalf.model.entities.UserSeeker;
 import com.yalantis.ucrop.UCrop;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Calendar;
+import java.util.ArrayList;
 import java.util.List;
 
 import static android.app.Activity.RESULT_CANCELED;
@@ -74,7 +70,7 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
     private final String NAME_OF_BUTTON = "nameofbutton";
 
     DBManager DB_users = DBManagerFactory.getSeekerManager();
-    public UserSeeker activityUser = myUser.getUserSeeker();
+    public UserSeeker activityUser = MyUser.getUserSeeker();
 
     LinearLayout dummyLayout;
     private SeekBar sbHeight;
@@ -118,20 +114,19 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         findViews();
-        if (activityUser.getAboutMe().getGender()== Enums.Gender.FEMALE)
+        if (activityUser.getAboutMe().getGender() == Enums.Gender.FEMALE)
             ibMainPicture.setImageResource(R.drawable.student_female);
 
         storageReference = FirebaseStorage.getInstance().getReference();
         if (activityUser != null)
             tvName.setText(activityUser.getAboutMe().getName());
         activityUser.getAboutMe().setHeight(sbHeight.getProgress());
-        Storage.getFromStorage(this,Finals.FireBase.storage.MAIN_PICTURE,ibMainPicture,activityUser);
-        Storage.getFromStorage(this,Finals.FireBase.storage.SMALL_PICTURE_1,imageButton1,activityUser);
-        Storage.getFromStorage(this,Finals.FireBase.storage.SMALL_PICTURE_2,imageButton2,activityUser);
-        Storage.getFromStorage(this,Finals.FireBase.storage.SMALL_PICTURE_3,imageButton3,activityUser);
-        Storage.getFromStorage(this,Finals.FireBase.storage.SMALL_PICTURE_4,imageButton4,activityUser);
-        Storage.getFromStorage(this,Finals.FireBase.storage.SMALL_PICTURE_5,imageButton5,activityUser);
-
+        Storage.getFromStorage(this, Finals.FireBase.storage.MAIN_PICTURE, ibMainPicture, activityUser);
+        Storage.getFromStorage(this, Finals.FireBase.storage.SMALL_PICTURE_1, imageButton1, activityUser);
+        Storage.getFromStorage(this, Finals.FireBase.storage.SMALL_PICTURE_2, imageButton2, activityUser);
+        Storage.getFromStorage(this, Finals.FireBase.storage.SMALL_PICTURE_3, imageButton3, activityUser);
+        Storage.getFromStorage(this, Finals.FireBase.storage.SMALL_PICTURE_4, imageButton4, activityUser);
+        Storage.getFromStorage(this, Finals.FireBase.storage.SMALL_PICTURE_5, imageButton5, activityUser);
 
 
     }
@@ -141,7 +136,7 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
         super.onResume();
         if (!uploadedJustNow) {
 //            Storage.getFromStorage(this,Finals.FireBase.storage.MAIN_PICTURE,ibMainPicture,activityUser);
-        }else
+        } else
             uploadedJustNow = false;
     }
 
@@ -151,7 +146,6 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
         updateUserDetails();
 //        new UpdateAsync().execute(activityUser);
     }
-
 
 
     private void findViews() {
@@ -189,7 +183,7 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
         etView.setOnFocusChangeListener(this);
         bGoToSearch.setOnClickListener(this);
 
-        Listeners.attachEditTextToSeekBar(getActivity(),sbHeight, tvHeight,130);
+        Listeners.attachEditTextToSeekBar(getActivity(), sbHeight, tvHeight, 130);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -207,13 +201,13 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
             onClickImage(Finals.App.SMALL_PICRTURE_4);
         } else if (v == imageButton5) {
             onClickImage(Finals.App.SMALL_PICRTURE_5);
-        }  else if (v == bGoToSearch) {
+        } else if (v == bGoToSearch) {
             bGoToSearch();
         }
     }
     @Override
     public void onFocusChange(View v, boolean hasFocus) {
-        if (hasFocus){
+        if (hasFocus) {
             Resources res = getResources();
             if (v == etStatus) {
                 if (activityUser.getAboutMe().getGender() == Enums.Gender.MALE)
@@ -225,7 +219,7 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
             } else if (v == etView) {
                 dialogMultiChoice(res.getStringArray(R.array.ViewArray), res.getString(R.string.view));
             } else if (v == etCity) {
-                callGooglePlaces();
+                GoogleApiTools.callGooglePlaces(this,PLACE_AUTOCOMPLETE_REQUEST_CODE);
             }
             dummyLayout.requestFocus();
         }
@@ -236,24 +230,6 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
     private void onClickImage(String buttonId) {
         myUCropChoiceButton = buttonId;
         dialogChoosePicture(buttonId);
-    }
-
-    private void callGooglePlaces() {
-        try {
-            AutocompleteFilter typeFilter = new AutocompleteFilter.Builder()
-                    .setTypeFilter(AutocompleteFilter.TYPE_FILTER_CITIES)
-                    .setCountry("IL")
-                    .build();
-            Intent intent =
-                    new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_OVERLAY)
-                            .setFilter(typeFilter)
-                            .build(getActivity());
-            startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE);
-        } catch (GooglePlayServicesRepairableException e) {
-            // TODO: Handle the error.
-        } catch (GooglePlayServicesNotAvailableException e) {
-            // TODO: Handle the error.
-        }
     }
 
 
@@ -272,7 +248,7 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
                     MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
 
             if (getActivity().checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
-                    != PackageManager.PERMISSION_GRANTED){
+                    != PackageManager.PERMISSION_GRANTED) {
                 return;
             }
         }
@@ -302,7 +278,7 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
 
     private void takePicFromCamera(String nameOfButton) {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        intent.putExtra(Finals.App.BUTTON_KEY,nameOfButton);
+        intent.putExtra(Finals.App.BUTTON_KEY, nameOfButton);
         startActivityForResult(intent, PICK_FROM_CAMERA);
     }
 
@@ -325,21 +301,21 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
                 pictureUri = data.getData();
                 try {
                     bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), pictureUri);
-                    pictureUri = bitmapToUri(bitmap);
+                    pictureUri = OtherTools.bitmapToUri(getActivity(), bitmap, activityUser);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                cropImageUCrop(data,pictureUri);
+                cropImageUCrop(data, pictureUri);
 
             }
             // pick from Camera
             if (requestCode == PICK_FROM_CAMERA && data != null) {
                 bitmap = (Bitmap) data.getExtras().get("data");
                 try {
-                    Uri uri = bitmapToUri(bitmap);
+                    Uri uri = OtherTools.bitmapToUri(getActivity(), bitmap, activityUser);
 //                    UCrop.Options options = new UCrop.Options();
 //                    UCrop.of(uri, uri).withAspectRatio(1, 1).withOptions(options).start(getActivity(), this);
-                    cropImageUCrop(data,uri);
+                    cropImageUCrop(data, uri);
                 } catch (Exception e) {
                     e.printStackTrace();
                     return;
@@ -354,44 +330,8 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                uploadPicture(resultUri,Finals.FireBase.storage.MAIN_PICTURE);
+                uploadPicture(resultUri, Finals.FireBase.storage.MAIN_PICTURE);
             }
-//            Uri bitmapUri = getImageUri(getActivity().getApplicationContext(),bitmap);
-//            UCrop.of(bitmapUri, bitmapUri)
-//                    .withAspectRatio(16, 9)
-//                    .withMaxResultSize(200, 200)
-//                    .start(getActivity());
-
-//            String nameOfButton = data.getCharSequenceExtra(NAME_OF_BUTTON);
-//
-//            switch (nameOfButton) {
-//                case "ibMainPicture": {
-//                    ibMainPicture.setImageBitmap(bitmap);
-//                    break;
-//                }
-//                case "imageButton1": {
-//                    imageButton1.setImageBitmap(bitmap);
-//                    break;
-//                }
-//                case "imageButton2": {
-//                    imageButton2.setImageBitmap(bitmap);
-//                    break;
-//                }
-//                case "imageButton3": {
-//                    imageButton3.setImageBitmap(bitmap);
-//                    break;
-//                }
-//                case "imageButton4": {
-//                    imageButton4.setImageBitmap(bitmap);
-//                    break;
-//                }
-//                case "imageButton5": {
-//                    imageButton5.setImageBitmap(bitmap);
-//                    break;
-//                }
-//                default:
-//                    break;
-//            }
             if (requestCode == PLACE_AUTOCOMPLETE_REQUEST_CODE) {
                 handleGooglePlacesResult(resultCode, data);
             }
@@ -401,15 +341,15 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
 
     private void cropImageUCrop(Intent data, Uri picture) {
         UCrop.Options options = new UCrop.Options();
-        options.setToolbarColor(fetchColor( R.attr.colorPrimary ));
-        options.setStatusBarColor(fetchColor( R.attr.colorPrimaryDark ));
+        options.setToolbarColor(fetchColor(R.attr.colorPrimary));
+        options.setStatusBarColor(fetchColor(R.attr.colorPrimaryDark));
         options.setImageToCropBoundsAnimDuration(1000);
-        options.setActiveWidgetColor(fetchColor( R.attr.colorAccent ));
+        options.setActiveWidgetColor(fetchColor(R.attr.colorAccent));
         // add the bundle to get on activity result (of father activity)
-        String buttonString =  data.getStringExtra(Finals.App.BUTTON_KEY);
+        String buttonString = data.getStringExtra(Finals.App.BUTTON_KEY);
 //                Bundle bundle = new Bundle();// see T-o-d-o here
 //                bundle.putString(Finals.App.BUTTON_KEY,buttonString);
-        UCrop  uCrop =UCrop.of(picture, picture);
+        UCrop uCrop = UCrop.of(picture, picture);
         //____________________^source^^_^^dest^_________________________
         uCrop.withAspectRatio(1, 1).withOptions(options);
         //uCrop.withTag(bundle);//TODO:future update of Ucrop , not yet supported
@@ -420,7 +360,7 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
     private int fetchColor(int resourseAttrId) {
         TypedValue typedValue = new TypedValue();
 
-        TypedArray a = getActivity().obtainStyledAttributes(typedValue.data, new int[] { resourseAttrId });
+        TypedArray a = getActivity().obtainStyledAttributes(typedValue.data, new int[]{resourseAttrId});
         int color = a.getColor(0, 0);
 
         a.recycle();
@@ -432,7 +372,7 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
     private int fetchDarkPrimaryColor() {
         TypedValue typedValue = new TypedValue();
 
-        TypedArray a = getActivity().obtainStyledAttributes(typedValue.data, new int[] { R.attr.colorPrimaryDark });
+        TypedArray a = getActivity().obtainStyledAttributes(typedValue.data, new int[]{R.attr.colorPrimaryDark});
         int color = a.getColor(0, 0);
 
         a.recycle();
@@ -443,41 +383,12 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
     private int fetchPrimaryColor() {
         TypedValue typedValue = new TypedValue();
 
-        TypedArray a = getActivity().obtainStyledAttributes(typedValue.data, new int[] { R.attr.colorPrimary });
+        TypedArray a = getActivity().obtainStyledAttributes(typedValue.data, new int[]{R.attr.colorPrimary});
         int color = a.getColor(0, 0);
 
         a.recycle();
 
         return color;
-    }
-
-    public Uri bitmapToUri(Bitmap bitmap) throws Exception {//here we alsoo define the path of the cropped image
-        String username = activityUser.getAboutMe().getName();
-        String imageFileName = username + "_" + Calendar.getInstance().getTimeInMillis();
-        File file = null;
-        String root = getActivity().getDir("Images", Context.MODE_PRIVATE).getAbsolutePath();
-        File myDir = new File(root + "/Img");
-        if (!myDir.exists()) {
-            myDir.mkdirs();
-        }
-        try {
-            file = File.createTempFile(imageFileName, ".jpg", myDir.getAbsoluteFile());
-        } catch (IOException e1) {
-            e1.printStackTrace();
-        }
-        if (file != null) {
-            FileOutputStream fout;
-            try {
-                fout = new FileOutputStream(file);
-                bitmap.compress(Bitmap.CompressFormat.PNG, 70, fout);
-                fout.flush();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            Uri uri = Uri.fromFile(file);
-            return uri;
-        } else
-            throw new Exception(">>Bitmap hasn't parsed into Uri!<<");
     }
 
     private void handleGooglePlacesResult(int resultCode, Intent data) {
@@ -486,31 +397,14 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
             String city = (String) place.getName();
             activityUser.getAboutMe().setCity(city);
             Log.i(getTag(), "Place: " + place.getName());
-            markAsSigned(etCity,city);
+            markAsSigned(etCity, city);
         } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
             Status status = PlaceAutocomplete.getStatus(getActivity(), data);
             Log.i(getTag(), status.getStatusMessage());
-
         } else if (resultCode == RESULT_CANCELED) {
             // The user canceled the operation.
         }
     }
-
-
-    private String getRealPathFromUri(Uri contentUri) {
-        String res = null;
-        String[] proj = {MediaStore.Images.Media.DATA};
-        Cursor cursor = getActivity().getContentResolver().query(contentUri, proj, null, null, null);
-        if (cursor.moveToFirst()) {
-            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-            res = cursor.getString(column_index);
-        }
-
-
-        cursor.close();
-        return res;
-    }
-
 
     //--------------------Dialog of single choice----------------------------------
     private void dialogSingleChoice(final String[] stringsList, final String title) {
@@ -533,23 +427,27 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if (myChoiceFlag) {
-                    if (title == getResources().getString(R.string.status)) {
-
+                    Resources res = getResources();
+                    if (title == res.getString(R.string.status)) {
                         activityUser.getAboutMe().setStatus(myChoice);
                         markAsSigned(etStatus, myChoice);
-                        if (myChoice.equals(getResources().getString(R.string.divorcee))  ||
-                            myChoice.equals(getResources().getString(R.string.wDivorcee)) ||
-                            myChoice.equals(getResources().getString(R.string.widow)) ||
-                            myChoice.equals(getResources().getString(R.string.widower)) )
-                                {
-                            rgChildren.setVisibility(View.VISIBLE);
-                        }
-                        else
-                            rgChildren.setVisibility(View.GONE);
+//                            rgChildren.setVisibility(View.VISIBLE);
+                        if (title == getResources().getString(R.string.status)) {
 
+                            activityUser.getAboutMe().setStatus(myChoice);
+                            markAsSigned(etStatus, myChoice);
+                            if (myChoice.equals(getResources().getString(R.string.divorcee)) ||
+                                    myChoice.equals(getResources().getString(R.string.wDivorcee)) ||
+                                    myChoice.equals(getResources().getString(R.string.widow)) ||
+                                    myChoice.equals(getResources().getString(R.string.widower))) {
+                                rgChildren.setVisibility(View.VISIBLE);
+                            } else
+                                rgChildren.setVisibility(View.GONE);
+
+                        }
                     }
+                    myChoiceFlag = false;
                 }
-                myChoiceFlag = false;
             }
         });
         builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
@@ -570,12 +468,10 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
     }
 
     private void markAsSigned(EditText editText, @Nullable String myChoice) {
-
         Drawable img = getResources().getDrawable(R.drawable.ic_done_all_white_24dp);
         int h = img.getIntrinsicHeight();
         int w = img.getIntrinsicWidth();
         img.setBounds(0, 0, w, h);
-
         if (myChoice != "" && myChoice != null)
             editText.setText(myChoice);
         else
@@ -585,14 +481,14 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
 //            ObjectAnimator animator2 =ObjectAnimator.ofInt(img, "alpha",0,255);
 //            animator2.setDuration(1000);
 //            animator2.start();
-            ObjectAnimator animator = ObjectAnimator.ofArgb(editText,"textColor" ,ContextCompat.getColor(getActivity().getApplicationContext(), R.color.black)
-                    ,ContextCompat.getColor(getActivity().getApplicationContext(), R.color.marked_blue));
+            ObjectAnimator animator = ObjectAnimator.ofArgb(editText, "textColor", ContextCompat.getColor(getActivity().getApplicationContext(), R.color.black)
+                    , ContextCompat.getColor(getActivity().getApplicationContext(), R.color.marked_blue));
             animator.setDuration(1000);
             animator.setStartDelay(300);
             animator.setRepeatMode(ValueAnimator.REVERSE);
             animator.setEvaluator(new ArgbEvaluator());
             animator.start();
-        }else {
+        } else {
             editText.setTextColor(ContextCompat.getColor(getActivity().getApplicationContext(), R.color.marked_blue));
         }
     }
@@ -617,20 +513,15 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if (myChoiceFlag) {
-
-                    switch (title) {
-                        case "View": {//"View"
-                            activityUser.getAboutMe().setView(allChoicesToArray(stringOptions, boolOption));
-                            myChoiceFlag = false;
-                            markAsSigned(etView,null);
-                            break;
-                        }
-                        case "My Eda": {
-                            activityUser.getAboutMe().setWitness(allChoicesToArray(stringOptions, boolOption));
-                            myChoiceFlag = false;
-                            markAsSigned(etWitness,null);
-                            break;
-                        }
+                    Resources res = getResources();
+                    if (title == res.getString(R.string.view)) {//"View"
+                        activityUser.getAboutMe().setView(allChoicesToArray(stringOptions, boolOption));
+                        myChoiceFlag = false;
+                        markAsSigned(etView, null);
+                    } else if (title == res.getString(R.string.witness)) {
+                        activityUser.getAboutMe().setWitness(allChoicesToArray(stringOptions, boolOption));
+                        myChoiceFlag = false;
+                        markAsSigned(etWitness, null);
                     }
                 }
             }
@@ -642,73 +533,60 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
 
     // ----------------- help function -----------------
     public List<String> allChoicesToArray(String[] str, boolean[] bool) {
-        int arraySize = countTrues(bool);
-        String[] array = new String[arraySize];
-        int j = 0;
+        List<String> array = new ArrayList<>();
         for (int i = 0; i < str.length; i++)
             if (bool[i]) {
-                array[j] = str[i];
-                j++;
+                array.add(str[i]);
             }
-        return Arrays.asList(array);
+        return array;
     }
 
-    private int countTrues(boolean[] bool) {
-        int count = 0;
-        for (int i = 0; i < bool.length; i++) {
-            if (bool[i]) {
-                count++;
-            }
 
-        }
-        return count;
-    }
 
     //should stay on EDITPROFLE
-    public void updatePictureFromActivity(Uri resultUri, String button_reqCode) {
-        switch (myUCropChoiceButton){//TODO: future ucrop update: switch (button_reqCode)
-            case Finals.App.PROFILE_PICTURE:{
-                ibMainPicture.setImageURI(resultUri);
-                uploadedJustNow = true;
-                uploadPicture(resultUri,Finals.FireBase.storage.MAIN_PICTURE);
+    public void updatePictureFromActivity(final Uri resultUri, String button_reqCode) {
+        switch (myUCropChoiceButton) {//TODO: future ucrop update: switch (button_reqCode)
+            case Finals.App.PROFILE_PICTURE: {
+                updatePicture(getActivity(), ibMainPicture, resultUri, Finals.FireBase.storage.MAIN_PICTURE);
                 break;
             }
-            case Finals.App.SMALL_PICRTURE_1:{
-                imageButton1.setImageURI(resultUri);
-                uploadPicture(resultUri,Finals.FireBase.storage.SMALL_PICTURE_1);
+            case Finals.App.SMALL_PICRTURE_1: {
+                updatePicture(getActivity(), imageButton1, resultUri, Finals.FireBase.storage.SMALL_PICTURE_1);
                 break;
             }
-            case Finals.App.SMALL_PICRTURE_2:{
-                imageButton2.setImageURI(resultUri);
-                uploadPicture(resultUri,Finals.FireBase.storage.SMALL_PICTURE_2);
+            case Finals.App.SMALL_PICRTURE_2: {
+                updatePicture(getActivity(), imageButton2, resultUri, Finals.FireBase.storage.SMALL_PICTURE_2);
                 break;
             }
-            case Finals.App.SMALL_PICRTURE_3:{
-                imageButton3.setImageURI(resultUri);
-                uploadPicture(resultUri,Finals.FireBase.storage.SMALL_PICTURE_3);
+            case Finals.App.SMALL_PICRTURE_3: {
+                updatePicture(getActivity(), imageButton3, resultUri, Finals.FireBase.storage.SMALL_PICTURE_3);
                 break;
             }
-            case Finals.App.SMALL_PICRTURE_4:{
-                imageButton4.setImageURI(resultUri);
-                uploadPicture(resultUri,Finals.FireBase.storage.SMALL_PICTURE_4);
+            case Finals.App.SMALL_PICRTURE_4: {
+                updatePicture(getActivity(), imageButton4, resultUri, Finals.FireBase.storage.SMALL_PICTURE_4);
                 break;
             }
-            case Finals.App.SMALL_PICRTURE_5:{
-                imageButton5.setImageURI(resultUri);
-                uploadPicture(resultUri,Finals.FireBase.storage.SMALL_PICTURE_5);
+            case Finals.App.SMALL_PICRTURE_5: {
+                updatePicture(getActivity(), imageButton5, resultUri, Finals.FireBase.storage.SMALL_PICTURE_5);
                 break;
             }
             case "": {
-                Log.i("Tag", "exceptionwhile setting myUCropChoiceButton <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+                Log.i("Tag", "exception while setting myUCropChoiceButton <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
                 break;
             }
         }
 
     }
 
-    private void uploadPicture(Uri imageUri,String imageName) {
+    private void updatePicture(Activity activity, final ImageView imageView, final Uri resultUri, String id) {
+        imageView.setImageURI(null);
+        imageView.setImageURI(resultUri);
+        uploadPicture(resultUri, id);
+    }
+
+    private void uploadPicture(Uri imageUri, String imageName) {
         uploadedJustNow = true;
-        Storage.sendToStorage(getActivity(),imageName,activityUser,imageUri);
+        Storage.sendToStorage(getActivity(), imageName, activityUser, imageUri);
     }
 
 
@@ -721,26 +599,16 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
         transaction.commit();
     }
 
-    public Uri getImageUri(Context inContext, Bitmap inImage) {
-        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
-        return Uri.parse(path);
-    }
-
-    public UpdateAsync UpdateAsyncCreator() {
-        return new UpdateAsync(DB_users,activityUser,getActivity());
-    }
 
     private void updateUserDetails() {
         String sDescription = etDescription.getText().toString();
         if (!sDescription.isEmpty())
             activityUser.getAboutMe().setFreeDescription(sDescription);
         Integer height = Integer.valueOf(tvHeight.getText().toString());
-        if (height!=null) {
+        if (height != null) {
             activityUser.getAboutMe().setHeight(height);
         }
-        UpdateAsync updateAsync = new UpdateAsync(DB_users,activityUser,getActivity());
+        UpdateAsync updateAsync = new UpdateAsync(DB_users, activityUser, getActivity());
         updateAsync.execute(activityUser);
     }
 

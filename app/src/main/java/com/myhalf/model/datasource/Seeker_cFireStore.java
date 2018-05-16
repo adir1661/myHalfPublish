@@ -31,16 +31,44 @@ public class Seeker_cFireStore implements DBManager {
     }
 
     @Override
-    public User getUser(String id) {
+    public User getUser(String email) {
+        final UserSeeker[] userSeeker = new UserSeeker[1];
+        Task<QuerySnapshot> is = db.collection(Finals.FireBase.FirestoreCloud.MAIN_COLLECTION).
+                whereEqualTo(Finals.FireBase.FirestoreCloud.EMAIL,email).
+                get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot documentSnapshots) {
+                userSeeker[0] = documentSnapshots.toObjects(UserSeeker.class).toArray(new UserSeeker[0])[0];
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                e.printStackTrace();
+            }
+        });
+        int counter = 0;
+        while (counter <= 60) {
+            if (is.isComplete())
+                return userSeeker[0];
+            else
+                try {
+                    Thread.sleep(250);
+                    counter++;
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+        }
         return null;
     }
 
     @Override
     public String addUser(ContentValues contentValues) {
         final UserSeeker userSeeker = Tools.ContentValuesToUserSeeker(contentValues);
-        final DocumentReference docRef = db.collection(Finals.FireBase.FirestoreCloud.MAIN_COLLECTION).document();
+        final DocumentReference docRef = db.collection(Finals.FireBase.FirestoreCloud.MAIN_COLLECTION).document(userSeeker.getEmailAdress());
         String id = docRef.getId();
         contentValues.put(Finals.DB.User.ID,id);
+
         docRef.set(userSeeker)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -104,12 +132,12 @@ public class Seeker_cFireStore implements DBManager {
                     }
                 });
         int counter = 0;
-        while (counter <= 15) {
+        while (counter <= 60) {
             if (is.isComplete())
                 return userSeekerList;
             else
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(250);
                     counter++;
                 } catch (InterruptedException e) {
                     e.printStackTrace();

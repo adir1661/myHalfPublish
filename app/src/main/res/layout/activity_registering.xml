@@ -18,6 +18,15 @@
             android:orientation="vertical"
             android:layout_marginTop="80dp">
 
+            <com.nipunbirla.boxloader.BoxLoaderView
+                android:id="@+id/progress"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:strokeColor="#995876"
+                app:loaderColor="#C67890"
+                app:strokeWidth="20"
+                app:speed="10"/>
+
             <com.github.florent37.materialtextfield.MaterialTextField
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

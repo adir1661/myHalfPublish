@@ -2,11 +2,11 @@
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/light_pink_button</item>
-        <item name="colorPrimaryDark">@color/pink_primary_dark</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:navigationBarColor" tools:ignore="NewApi">@color/pink_primary_dark
-        </item>
+        <item name="android:navigationBarColor" tools:ignore="NewApi">@color/colorPrimaryDark</item>
         <item name="cardViewStyle">@style/CardView</item>
+        <item name="android:windowBackground">@color/windowBackground_male</item>
 
 
     </style>
@@ -31,8 +31,6 @@
 
     <style name="AppTheme.NoActionBar">
         <item name="windowNoTitle">true</item>
-        <item name="colorPrimaryDark">@color/pink_primary_dark</item>
-
     </style>
 
     <style name="AppTheme.Male">

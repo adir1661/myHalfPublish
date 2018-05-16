@@ -15,7 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.SearchView;
 
 import com.myhalf.R;
-import com.myhalf.controller.myUser;
+import com.myhalf.controller.MyUser;
 import com.myhalf.model.backend.DBManager;
 import com.myhalf.model.backend.DBManagerFactory;
 import com.myhalf.model.backend.Finals;
@@ -30,7 +30,7 @@ import java.util.Set;
 public class SearchResults extends Fragment {
 
     DBManager DB_users = DBManagerFactory.getSeekerManager();
-    UserSeeker activityUser = myUser.getUserSeeker();
+    UserSeeker activityUser = MyUser.getUserSeeker();
     List<UserSeeker> allUsers = new ArrayList<>();
 
 

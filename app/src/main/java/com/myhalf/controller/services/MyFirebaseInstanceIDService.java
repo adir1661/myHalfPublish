@@ -24,7 +24,7 @@ import com.firebase.jobdispatcher.GooglePlayDriver;
 import com.firebase.jobdispatcher.Job;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
-import com.myhalf.controller.myUser;
+import com.myhalf.controller.MyUser;
 import com.myhalf.model.backend.Finals;
 import com.myhalf.model.entities.UserSeeker;
 
@@ -32,7 +32,7 @@ import com.myhalf.model.entities.UserSeeker;
 public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
 
     private static final String TAG = "MyFirebaseIIDService";
-    UserSeeker applicationUser= myUser.getUserSeeker();
+    UserSeeker applicationUser= MyUser.getUserSeeker();
 
 
     /**

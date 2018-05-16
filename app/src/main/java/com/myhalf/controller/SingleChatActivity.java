@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -23,7 +22,6 @@ import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.firebase.iid.FirebaseInstanceId;
 import com.myhalf.R;
 import com.myhalf.controller.tools.MessageAdapter;
 import com.myhalf.controller.tools.Storage;
@@ -48,7 +46,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 //TODO: make it fragment inside nevigation drawer
 
 public class SingleChatActivity extends AppCompatActivity {
-    UserSeeker activityUser = myUser.getUserSeeker();
+    UserSeeker activityUser = MyUser.getUserSeeker();
     UserSeeker otherUser;
     String token="";
     private static final String TAG = "SingleChatActivity" ;

@@ -8,7 +8,7 @@ import com.firebase.jobdispatcher.GooglePlayDriver;
 import com.firebase.jobdispatcher.Job;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
-import com.myhalf.controller.myUser;
+import com.myhalf.controller.MyUser;
 import com.myhalf.model.entities.UserSeeker;
 
 
@@ -18,7 +18,7 @@ import com.myhalf.model.entities.UserSeeker;
 
 public class ChatFirebaseMessagingService extends FirebaseMessagingService {
     private static final String TAG = "ChatFirebaseMessaging";
-    UserSeeker applicationUser= myUser.getUserSeeker();
+    UserSeeker applicationUser= MyUser.getUserSeeker();
 
     /**
      * Called when message is received.

@@ -24,7 +24,7 @@ import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlacePicker;
 import com.myhalf.R;
-import com.myhalf.controller.myUser;
+import com.myhalf.controller.MyUser;
 import com.myhalf.model.backend.DBManager;
 import com.myhalf.model.backend.DBManagerFactory;
 import com.myhalf.model.backend.Finals;
@@ -39,7 +39,7 @@ public class Search extends Fragment implements View.OnFocusChangeListener,View.
     private final String TAG = "search";
     private static int id = 0;
     DBManager DB_users = DBManagerFactory.getSeekerManager();
-    UserSeeker activityUser = myUser.getUserSeeker();
+    UserSeeker activityUser = MyUser.getUserSeeker();
 
     private LinearLayout dummyLayout;
     private EditText fromAge;

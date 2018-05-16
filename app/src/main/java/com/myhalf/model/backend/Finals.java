@@ -46,13 +46,15 @@ public static class App {
     public static final String SMALL_PICRTURE_4 = "smallButton4";
     public static final String SMALL_PICRTURE_5 = "smallButton5";
     public static final String OTHER_USER_CHAT = "chatWith";
+    public static final String SIGN_OUT = "sign_out";
+    public static final String FROM_REGISTER_ACTIVITY = "fromRegisterActivity";
 }
 public static class FireBase{
     public static final String LEGACY_SERVER_KEY ="AIzaSyAditM6-eNeeM7oSLW-YxUWHHFhkWGMZpA";
     public static final String FCM_PUSH_URL = "https://fcm.googleapis.com/fcm/send";
     public static class FirestoreCloud{
         public static final String MAIN_COLLECTION ="UsersSeekers";
-        public static final String SEEKERS_DOC = "";
+        public static final String EMAIL = "emailAdress";
     }
     public static class storage{
         public static final String MAIN_PICTURE ="MainPicture";
@@ -66,6 +68,11 @@ public static class FireBase{
     }
 
 
+    public static class Authentication {
+        public static final String DEFAULT_EMAIL = "adir1551@gmail.com";
+        public static final String DEFAULT_PASSWORD = "123456";
+
     }
+}
 
 }

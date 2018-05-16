@@ -13,14 +13,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.signature.StringSignature;
-import com.firebase.ui.storage.images.FirebaseImageLoader;
-import com.google.firebase.storage.FirebaseStorage;
 import com.myhalf.R;
 import com.myhalf.controller.SingleChatActivity;
-import com.myhalf.controller.myUser;
+import com.myhalf.controller.MyUser;
 import com.myhalf.controller.tools.OtherTools;
 import com.myhalf.controller.tools.Storage;
 import com.myhalf.model.backend.DBManager;
@@ -32,7 +27,7 @@ import com.myhalf.model.entities.UserSeeker;
 public class FullProfile extends Fragment implements View.OnClickListener {
 
     DBManager DB_users = DBManagerFactory.getSeekerManager();
-    UserSeeker activityUser = myUser.getUserSeeker();
+    UserSeeker activityUser = MyUser.getUserSeeker();
     UserSeeker userProfile;
 
     private ImageView vbMainPicture;
@@ -80,12 +75,13 @@ public class FullProfile extends Fragment implements View.OnClickListener {
             bToChat.setVisibility(View.GONE);
 
         }
-        Storage.getFromStorage(this, Finals.FireBase.storage.MAIN_PICTURE, vbMainPicture, userProfile);
-        Storage.getFromStorage(this, Finals.FireBase.storage.SMALL_PICTURE_1, ImageView1, userProfile);
-        Storage.getFromStorage(this, Finals.FireBase.storage.SMALL_PICTURE_2, ImageView2, userProfile);
-        Storage.getFromStorage(this, Finals.FireBase.storage.SMALL_PICTURE_3, ImageView3, userProfile);
-        Storage.getFromStorage(this, Finals.FireBase.storage.SMALL_PICTURE_4, ImageView4, userProfile);
-        Storage.getFromStorage(this, Finals.FireBase.storage.SMALL_PICTURE_5, ImageView5, userProfile);
+        String[] imageNames = {Finals.FireBase.storage.MAIN_PICTURE,Finals.FireBase.storage.SMALL_PICTURE_1,
+                Finals.FireBase.storage.SMALL_PICTURE_2,Finals.FireBase.storage.SMALL_PICTURE_3,
+                Finals.FireBase.storage.SMALL_PICTURE_4,Finals.FireBase.storage.SMALL_PICTURE_5};
+        ImageView[] imageViews = {vbMainPicture,ImageView1,ImageView2,ImageView3,ImageView4,ImageView5};
+        for (int num = 0; num <5 ;num++){
+            Storage.getFromStorage(this, imageNames[num], imageViews[num], userProfile);
+        }
     }
 
     private void changeDetailsOnClick() {
@@ -162,7 +158,7 @@ public class FullProfile extends Fragment implements View.OnClickListener {
             tvFreeDescriptionTitle.setVisibility(View.GONE);
         }
         if (userProfile.getAboutMe().getWitness() != null)
-            tvEda.setText(tvEda.getText() + "  " + fixLinesAndSize(userProfile.getAboutMe().getWitness().toString()));
+            tvEda.setText(tvEda.getText() + "  " + OtherTools.saperateStringList(userProfile.getAboutMe().getWitness()));
         else {
             tvEda.setVisibility(View.GONE);
         }
@@ -171,8 +167,10 @@ public class FullProfile extends Fragment implements View.OnClickListener {
     }
 
     private String fixLinesAndSize(@NonNull String string) {
-        return AdapterRecycleView.fixLinesAndSize(string);
+        return OtherTools.fixLinesAndSize(string);
     }
+
+
 
 
 }

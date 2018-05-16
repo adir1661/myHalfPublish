@@ -11,7 +11,7 @@ public interface DBManager {
 
     public boolean isExist(String email, String password);
 
-    User getUser(String id);
+    User getUser(String Email);
 
     String addUser(ContentValues contentValues);
 

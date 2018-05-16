@@ -1,27 +1,35 @@
 package com.myhalf.controller;
 
 import android.app.DatePickerDialog;
+import android.app.FragmentManager;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.Toast;
 
+import com.firebase.ui.auth.AuthUI;
+import com.firebase.ui.auth.IdpResponse;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.myhalf.R;
+import com.myhalf.controller.asynctasks.RegisterAsync;
 import com.myhalf.controller.navigation.NavigationDraw;
 import com.myhalf.controller.navigation.Takanon;
 import com.myhalf.controller.navigation.TakanonActivity;
@@ -33,16 +41,24 @@ import com.myhalf.model.datasource.Tools;
 import com.myhalf.model.entities.DateBuilt;
 import com.myhalf.model.entities.Enums;
 import com.myhalf.model.entities.UserSeeker;
+import com.nipunbirla.boxloader.BoxLoaderView;
 
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
     private final String TAG = RegisterActivity.class.getSimpleName();
     DBManager DB_users = DBManagerFactory.getSeekerManager();
-    UserSeeker activityUser = myUser.getUserSeeker();
+    UserSeeker activityUser = MyUser.getUserSeeker();
+    private static final int RC_SIGN_IN = 123;
+    private FirebaseAuth mFBAuth;
+    private FirebaseUser mFBUSer;
+
+
 
     private EditText etUserName;
     private EditText etEmail;
@@ -64,7 +80,55 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registering);
+//        callFireBaseAuthUi();
         findViews();
+        mFBAuth = FirebaseAuth.getInstance();
+        Bundle bundle = getIntent().getExtras();
+        if (bundle!=null&&bundle.containsKey(Finals.App.SIGN_OUT)&& bundle.getBoolean(Finals.App.SIGN_OUT)){
+            FragmentManager fm = getFragmentManager();
+            for(int i = 0; i < fm.getBackStackEntryCount(); ++i) {
+                fm.popBackStack();
+            }
+        }
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        mFBUSer = mFBAuth.getCurrentUser();
+        updateUI(mFBUSer,false);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RC_SIGN_IN) {
+            IdpResponse response = IdpResponse.fromResultIntent(data);
+
+            if (resultCode == RESULT_OK) {
+                // Successfully signed in
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                // ...
+            } else {
+                // Sign in failed, check response for error code
+                // ...
+            }
+        }
+    }
+
+    private void callFireBaseAuthUi() {
+        List<AuthUI.IdpConfig> providers = Arrays.asList(
+                new AuthUI.IdpConfig.Builder(AuthUI.EMAIL_PROVIDER).build(),
+                new AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build(),
+                new AuthUI.IdpConfig.Builder(AuthUI.FACEBOOK_PROVIDER).build());
+
+// Create and launch sign-in intent
+        startActivityForResult(
+                AuthUI.getInstance()
+                        .createSignInIntentBuilder()
+                        .setAvailableProviders(providers)
+                        .build(),
+                RC_SIGN_IN);
     }
 
 
@@ -115,31 +179,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private void toLoginOnClick() {
         Intent toLoginIntent = new Intent(RegisterActivity.this, LoginActivity.class);
         RegisterActivity.this.startActivity(toLoginIntent);
-    }
-
-    //----------------- AsyncTask -------------------------
-    private class RegisterAsync extends AsyncTask<UserSeeker, ProgressBar, Void> {
-        @Override
-        protected Void doInBackground(UserSeeker... userSeeker) {
-
-            // ----------------- Send to data base -----------------------
-            String id = DB_users.addUser(Tools.userSeekerToContentValues(userSeeker[0]));
-            userSeeker[0].setId(id);
-            //-------------- Shared Preferences  - save in the app ---------------
-            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString(Finals.DB.User.ID, userSeeker[0].getId());
-            editor.putString(Finals.DB.User.NAME, userSeeker[0].getAboutMe().getName());
-            editor.commit();
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            Toast.makeText(getApplicationContext(),
-                    R.string.registrationDone, Toast.LENGTH_LONG).show();
-        }
     }
 
     private void birthDayOnClick() {
@@ -205,8 +244,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 gender = Enums.Gender.MALE;
             else
                 gender = Enums.Gender.FEMALE;
-            myUser.dismissUserSeeker();
-            activityUser = myUser.getUserSeeker();
+            MyUser.dismissUserSeeker();
+            activityUser = MyUser.getUserSeeker();
             activityUser.getAboutMe().setName(username);
             activityUser.setEmailAdress(email);
             activityUser.setPassword(password);
@@ -215,13 +254,60 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             activityUser.getAboutMe().setGender(gender);
             activityUser.setId("0");
 
-            //----------------Async---------------
-            RegisterAsync async = new RegisterAsync();
-            async.execute(activityUser);
-            Intent intent = new Intent(RegisterActivity.this, NavigationDraw.class);
-            startActivity(intent);
+            mFBAuth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        // Sign in success, update UI with the signed-in user's information
+                                        Log.d(TAG, "createUserWithEmail:success");
+                                        FirebaseUser user = mFBAuth.getCurrentUser();
+                                        updateUI(user, true);
+                                    } else {
+                                        // If sign in fails, display a message to the user.
+                                        Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                                        Toast.makeText(RegisterActivity.this, "Authentication failed.",
+                                                Toast.LENGTH_SHORT).show();
+                                        updateUI(null, true);
+                                    }
+
+                                    // ...
+                                }
+                            }
+                    );
+            BoxLoaderView boxLoader = findViewById(R.id.progress);
+
         }
     }
+
+    private void updateUI(@Nullable FirebaseUser user, boolean firstSigned) {
+        if (user!=null){//user already signed in
+            if (firstSigned) {
+                registerUser();
+            }
+            goToNavDraw();
+        }else {
+            if (firstSigned){
+                //inform user that he cannot use specific email
+                Toast.makeText(this,"User email already used!",Toast.LENGTH_SHORT).show();
+            }else {
+                // he is first logged in. or signed out, and then in.
+            }
+
+        }
+
+    }
+
+    private void registerUser() {
+        RegisterAsync async = new RegisterAsync(this,DB_users);
+        async.execute(activityUser);
+    }
+
+    private void goToNavDraw() {
+        Intent intent = new Intent(RegisterActivity.this, NavigationDraw.class);
+        intent.putExtra(Finals.App.FROM_REGISTER_ACTIVITY,true);
+        startActivity(intent);
+    }
 }
-//TODO: when I press on register button without filling the fields - there is exception
+
 

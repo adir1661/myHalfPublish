@@ -142,4 +142,9 @@
     <string name="wDivorcee">Divorcee</string>
 
 
+    <!-- Facebook application ID and custom URL scheme (app ID prefixed by 'fb'). -->
+    <string name="facebook_application_id" translatable="false">com.myhalf</string>
+    <string name="facebook_login_protocol_scheme" translatable="false">fbcom.myhalf</string>
+    <string name="default_web_client_id_auth" translatable="false">702829829190-vh6doa6cntd4qer6v7dlaekmvfdva960.apps.googleusercontent.com</string>
+    R.string.long_text_policy
 </resources>

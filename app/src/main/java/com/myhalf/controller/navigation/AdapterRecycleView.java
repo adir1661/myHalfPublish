@@ -25,6 +25,7 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import com.myhalf.R;
+import com.myhalf.controller.tools.OtherTools;
 import com.myhalf.controller.tools.Storage;
 import com.myhalf.model.backend.Finals;
 import com.myhalf.model.entities.Enums;
@@ -72,22 +73,22 @@ public class AdapterRecycleView extends RecyclerView.Adapter<AdapterRecycleView.
         else
             holder.ivMainPicture.setImageResource(R.drawable.student);
         Storage.getFromStorage(mContext,Finals.FireBase.storage.MAIN_PICTURE,holder.ivMainPicture,userSeeker);
-        holder.tvName.setText(bigLetterFirst(userSeeker.getAboutMe().getName()));
+        holder.tvName.setText(OtherTools.bigLetterFirst(userSeeker.getAboutMe().getName()));
         holder.tvAge.setText(userSeeker.getAboutMe().getBirthday().findAge() + "");
         if (userSeeker.getAboutMe().getStatus() != null)
-            holder.tvStatus.setText(fixLinesAndSize(userSeeker.getAboutMe().getStatus().toString()));
+            holder.tvStatus.setText(OtherTools.fixLinesAndSize(userSeeker.getAboutMe().getStatus().toString()));
         else{
             holder.tvStatus.setVisibility(View.INVISIBLE);
         }
         if (!userSeeker.getAboutMe().getView().isEmpty()) {
-            String string = fixLinesAndSize(userSeeker.getAboutMe().getView().get(0));
+            String string = OtherTools.fixLinesAndSize(userSeeker.getAboutMe().getView().get(0));
             holder.tvView.setText(string);
         } else {
             holder.tvView.setVisibility(View.INVISIBLE);
         }
         holder.tvCity.setText(userSeeker.getAboutMe().getCity());
         if (userSeeker.getAboutMe().getFreeDescription() != null && userSeeker.getAboutMe().getFreeDescription()!= "Null" )
-            holder.tvFreeDescription.setText(fixLinesAndSize(userSeeker.getAboutMe().getFreeDescription()));
+            holder.tvFreeDescription.setText(OtherTools.fixLinesAndSize(userSeeker.getAboutMe().getFreeDescription()));
         else {
             holder.tvFreeDescription.setVisibility(View.INVISIBLE);
         }
@@ -238,14 +239,6 @@ public class AdapterRecycleView extends RecyclerView.Adapter<AdapterRecycleView.
         );
     }
 
-    public static String fixLinesAndSize(@NonNull String string) {
-        if (string!= null) {
-            string = bigLetterFirst(string);
-            string = string.replaceAll("_", " ");
-        }
-        return string;
-    }
-
     private void on_forward() {
     }
 
@@ -299,13 +292,6 @@ public class AdapterRecycleView extends RecyclerView.Adapter<AdapterRecycleView.
 
     }
     private void on_popular() {
-    }
-
-    private static String bigLetterFirst(String userName) {
-
-        if (userName!= null&&userName.length() >= 1)
-            return userName.substring(0, 1).toUpperCase() + userName.substring(1).toLowerCase();
-        else return userName;
     }
 
 

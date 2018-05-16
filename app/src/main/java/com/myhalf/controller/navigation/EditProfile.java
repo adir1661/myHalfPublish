@@ -47,9 +47,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.myhalf.R;
 import com.myhalf.controller.myUser;
-import com.myhalf.controller.tools.Listeners;
-import com.myhalf.controller.tools.Storage;
-import com.myhalf.controller.tools.UpdateAsync;
+import com.myhalf.controller.tools.*;
+
 import com.myhalf.model.backend.DBManager;
 import com.myhalf.model.backend.DBManagerFactory;
 import com.myhalf.model.backend.Finals;
@@ -221,9 +220,10 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
                 if (activityUser.getAboutMe().getGender() == Enums.Gender.FEMALE)
                     dialogSingleChoice(res.getStringArray(R.array.StatusArrayForWoman), res.getString(R.string.status));
             } else if (v == etWitness) {
-                dialogMultiChoice(res.getStringArray(R.array.Witness), res.getString(R.string.witness));
+                DialogChoice.dialogMultiChoice(res.getStringArray(R.array.WitnessArray), res.getString(R.string.witness), etWitness);
             } else if (v == etView) {
-                dialogMultiChoice(res.getStringArray(R.array.ViewArray), res.getString(R.string.view));
+                DialogChoice.dialogMultiChoice(res.getStringArray(R.array.ViewArray), res.getString(R.string.view), etView);
+//                dialogMultiChoice(res.getStringArray(R.array.ViewArray), res.getString(R.string.view));
             } else if (v == etCity) {
                 callGooglePlaces();
             }
@@ -599,46 +599,51 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
 
 
     //--------------------Dialog of multi choice---------------------
-    private void dialogMultiChoice(final String[] stringOptions, final String title) {
-        final boolean[] boolOption = new boolean[stringOptions.length];
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle(title);
-        final boolean[] flag = {false};
-        builder.setMultiChoiceItems(stringOptions, boolOption, new DialogInterface.OnMultiChoiceClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-                boolOption[which] = isChecked;
-                String currentItem = stringOptions[which];
-                myChoiceFlag = true;
-            }
-        });
-        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if (myChoiceFlag) {
 
-                    switch (title) {
-                        case "View": {//"View"
-                            activityUser.getAboutMe().setView(allChoicesToArray(stringOptions, boolOption));
-                            myChoiceFlag = false;
-                            markAsSigned(etView,null);
-                            break;
-                        }
-                        case "My Eda": {
-                            activityUser.getAboutMe().setWitness(allChoicesToArray(stringOptions, boolOption));
-                            myChoiceFlag = false;
-                            markAsSigned(etWitness,null);
-                            break;
-                        }
-                    }
-                }
-            }
-        });
-        builder.setNegativeButton(getResources().getString(R.string.cancel), null);
-        AlertDialog dialog = builder.create();
-        dialog.show();
-    }
+
+
+
+//    private void dialogMultiChoice(final String[] stringOptions, final String title) {
+//        final boolean[] boolOption = new boolean[stringOptions.length];
+//
+//        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+//        builder.setTitle(title);
+//        final boolean[] flag = {false};
+//        builder.setMultiChoiceItems(stringOptions, boolOption, new DialogInterface.OnMultiChoiceClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+//                boolOption[which] = isChecked;
+//                String currentItem = stringOptions[which];
+//                myChoiceFlag = true;
+//            }
+//        });
+//        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                if (myChoiceFlag) {
+//
+//                    switch (title) {
+//                        case "View": {//"View"
+//                            activityUser.getAboutMe().setView(allChoicesToArray(stringOptions, boolOption));
+//                            myChoiceFlag = false;
+//                            markAsSigned(etView,null);
+//                            break;
+//                        }
+//                        case "My Eda": {
+//                            activityUser.getAboutMe().setWitness(allChoicesToArray(stringOptions, boolOption));
+//                            myChoiceFlag = false;
+//                            markAsSigned(etWitness,null);
+//                            break;
+//                        }
+//                    }
+//                }
+//            }
+//        });
+//        builder.setNegativeButton(getResources().getString(R.string.cancel), null);
+//        AlertDialog dialog = builder.create();
+//        dialog.show();
+//    }
 
     // ----------------- help function -----------------
     public List<String> allChoicesToArray(String[] str, boolean[] bool) {

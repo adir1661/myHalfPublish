@@ -153,19 +153,19 @@
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/bRegisterAsMatch"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginTop="10dp"
-                android:background="#ffb8b8"
-                android:text="@string/RegisterAsMatch"
-                android:textColor="#ffffff"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+            <!--<Button-->
+                <!--android:id="@+id/bRegisterAsMatch"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="60dp"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_marginLeft="30dp"-->
+                <!--android:layout_marginRight="30dp"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:background="#ffb8b8"-->
+                <!--android:text="@string/RegisterAsMatch"-->
+                <!--android:textColor="#ffffff"-->
+                <!--android:textSize="24sp"-->
+                <!--android:textStyle="bold" />-->
 
 
             <TextView

@@ -132,7 +132,7 @@ public class Search extends Fragment implements View.OnFocusChangeListener,View.
             @Override
             public void onFocusChange(View view, boolean b) {
                 if (b) {
-                    String[] array = res.getStringArray(R.array.StatusOfMan);
+                    String[] array = res.getStringArray(R.array.StatusArrayForMan);
                     dialogSingleChoice(array, "status");
                     view.clearFocus();
                 }
@@ -148,7 +148,7 @@ public class Search extends Fragment implements View.OnFocusChangeListener,View.
     public void onFocusChange(View v, boolean hasFocus) {
         if (hasFocus) {
             if (v == bStatus) {
-                dialogSingleChoice(res.getStringArray(R.array.StatusOfMan), "status");
+                dialogSingleChoice(res.getStringArray(R.array.StatusArrayForMan), "status");
             } else if (v == bEda) {
                 dialogSingleChoice(res.getStringArray(R.array.Witness), "My Eda");
             } else if (v == bArea) {
@@ -164,7 +164,7 @@ public class Search extends Fragment implements View.OnFocusChangeListener,View.
     @Override
     public void onClick(View v) {
         if (v == bStatus) {
-            dialogSingleChoice(res.getStringArray(R.array.StatusOfMan), "status");
+            dialogSingleChoice(res.getStringArray(R.array.StatusArrayForMan), "status");
         } else if (v == bEda) {
             dialogSingleChoice(res.getStringArray(R.array.Witness), "My Eda");
         } else if (v == bArea) {

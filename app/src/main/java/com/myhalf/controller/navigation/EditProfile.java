@@ -4,7 +4,6 @@ import android.Manifest;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
-import android.annotation.TargetApi;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Context;
@@ -49,7 +48,6 @@ import com.google.firebase.storage.StorageReference;
 import com.myhalf.R;
 import com.myhalf.controller.myUser;
 import com.myhalf.controller.tools.Listeners;
-import com.myhalf.controller.tools.OtherTools;
 import com.myhalf.controller.tools.Storage;
 import com.myhalf.controller.tools.UpdateAsync;
 import com.myhalf.model.backend.DBManager;
@@ -218,11 +216,14 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
         if (hasFocus){
             Resources res = getResources();
             if (v == etStatus) {
-                dialogSingleChoice(res.getStringArray(R.array.Status), res.getString(R.string.status));
+                if (activityUser.getAboutMe().getGender() == Enums.Gender.MALE)
+                dialogSingleChoice(res.getStringArray(R.array.StatusArrayForMan), res.getString(R.string.status));
+                if (activityUser.getAboutMe().getGender() == Enums.Gender.FEMALE)
+                    dialogSingleChoice(res.getStringArray(R.array.StatusArrayForWoman), res.getString(R.string.status));
             } else if (v == etWitness) {
                 dialogMultiChoice(res.getStringArray(R.array.Witness), res.getString(R.string.witness));
             } else if (v == etView) {
-                dialogMultiChoice(res.getStringArray(R.array.View), res.getString(R.string.view));
+                dialogMultiChoice(res.getStringArray(R.array.ViewArray), res.getString(R.string.view));
             } else if (v == etCity) {
                 callGooglePlaces();
             }
@@ -510,6 +511,7 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
         return res;
     }
 
+
     //--------------------Dialog of single choice----------------------------------
     private void dialogSingleChoice(final String[] stringsList, final String title) {
         final String[] OptionsStrings = stringsList;
@@ -535,10 +537,15 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
 
                         activityUser.getAboutMe().setStatus(myChoice);
                         markAsSigned(etStatus, myChoice);
-                        if (myChoice.equals("Widow") ||
-                                myChoice == getResources().getString(R.string.divorced)) {
+                        if (myChoice.equals(getResources().getString(R.string.divorcee))  ||
+                            myChoice.equals(getResources().getString(R.string.wDivorcee)) ||
+                            myChoice.equals(getResources().getString(R.string.widow)) ||
+                            myChoice.equals(getResources().getString(R.string.widower)) )
+                                {
                             rgChildren.setVisibility(View.VISIBLE);
                         }
+                        else
+                            rgChildren.setVisibility(View.GONE);
 
                     }
                 }

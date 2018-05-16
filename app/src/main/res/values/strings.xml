@@ -54,15 +54,14 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="AllOptions">All options</string>
-    <string name="Single">Single</string>
-    <string name="divorced">Divorced</string>
+    <string name="single">Single</string>
     <string name="widow">Widow</string>
     <string name="DivorcedWithChildren">Divorced with children</string>
     <string name="WidowWithChildren">Widow with children</string>
     <string name="fromAge">From age</string>
 
 
-    <string-array name="View">
+    <string-array name="ViewArray">
         <item>Traditional</item>
         <item>Religious</item>
         <item>National Religious</item>
@@ -76,21 +75,20 @@
         <item>Secular</item>
     </string-array>
 
-    <string-array name="Status">
-        <item>Single</item>
-        <item>Divorced</item>
-        <item>Widow</item>
-        <item>Divorced with children</item>
-        <item>Widow with children</item>
+    <string-array name="StatusArrayForMan">
+        <item>@string/single</item>
+        <item>@string/divorcee</item>
+        <item>@string/widower</item>
     </string-array>
 
-    <string-array name="StatusOfMan">
-        <item>Single</item>
-        <item>Divorsed</item>
-        <item>Widow</item>
+
+    <string-array name="StatusArrayForWoman">
+        <item>@string/single</item>
+        <item>@string/divorcee</item>
+        <item>@string/widower</item>
     </string-array>
 
-    <string-array name="Witness">
+    <string-array name="WitnessArray">
         <item>Ashkenazic</item>
         <item>Testimony of the east</item>
         <item>Yemenite</item>
@@ -103,7 +101,7 @@
     </string-array>
 
 
-    <string name="toAge">To age</string>
+    <string name="toAge" translatable="false">To age</string>
     <string name="go_to_search">Strat search</string>
     <string name="search">Search</string>
     <string name="toHeight">To height</string>
@@ -138,6 +136,10 @@
     <string name="title_activity_delete_account" translatable="false">Delte Account</string>
     <string name="PhoneNum">Phone num</string>
     <string name="range">Range</string>
+    <string name="divorcee">Divorcee</string>
+    <string name="widower">Widower</string>
+    <string name="wSingle">Widow</string>
+    <string name="wDivorcee">Divorcee</string>
 
 
 </resources>

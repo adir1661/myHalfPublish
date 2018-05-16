@@ -33,11 +33,16 @@
     <string name="MALE">Male</string>
     <string name="FEMALE">Female</string>
 
+    <string name="single">רווק</string>
+    <string name="divorcee">גרוש</string>
+    <string name="widower">אלמן</string>
+
+    <string name="wSingle">רווקה</string>
+    <string name="wDivorcee">גרושה</string>
+    <string name="widow">אלמנה</string>
+
+
     <string name="AllOptions">All options</string>
-    <string name="Single">Single</string>
-    <string name="divorced">Divorced</string>
-    <string name="DivorcedWithChildren">Divorced with children</string>
-    <string name="WidowWithChildren">Widow with children</string>
     <string name="fromAge">מגיל</string>
     <string name="toAge">עד גיל</string>
 
@@ -70,16 +75,19 @@
     </string-array>
 
 
-    <string-array name="StatusOfMan">
-        <item>רווק</item>
-        <item>גרוש</item>
-        <item>אלמן</item>
+
+
+    <string-array name="StatusArrayForMan">
+
+       <item>@string/single</item>
+        <item>@string/divorcee</item>
+        <item>@string/widower</item>
     </string-array>
 
-    <string-array name="StatusOfWoman">
-        <item>רווקה</item>
-        <item>גרושה</item>
-        <item>אלמנה</item>
+    <string-array name="StatusArrayForWoman">
+        <item>@string/wSingle</item>
+        <item>@string/wDivorcee</item>
+        <item>@string/widow</item>
     </string-array>
 
 
@@ -94,7 +102,8 @@
         <item>מעורב</item>
         <item>לא רלוונטי</item>
     </string-array>
-    <string name="widow">אלמנה</string>
+
+
     <string name="fromHeight">מגובה</string>
     <string name="toHeight">עד גובה</string>
     <string name="search">חפש</string>
@@ -133,6 +142,7 @@
     <string name="PhoneNum">מספר נייד</string>
     <string name="range">טווח</string>
     <string name="livingArea">איזור מגורים</string>
+
 
 
 </resources>

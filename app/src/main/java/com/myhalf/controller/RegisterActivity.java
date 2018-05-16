@@ -9,6 +9,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -39,7 +40,7 @@ import java.util.Date;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private final String TAG= RegisterActivity.class.getSimpleName();
+    private final String TAG = RegisterActivity.class.getSimpleName();
     DBManager DB_users = DBManagerFactory.getSeekerManager();
     UserSeeker activityUser = myUser.getUserSeeker();
 
@@ -54,6 +55,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private TextView tvToLogin;
     private String birthday = "";
     private boolean flag_dateClicked = false;
+    private CheckBox cbTakanon;
 
     private TextView tvTakanon;
 
@@ -67,24 +69,24 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
 
     private void findViews() {
-        etUserName = (EditText)findViewById( R.id.etUserName );
-        etEmail = (EditText)findViewById( R.id.etEmail );
-        etPassword = (EditText)findViewById( R.id.etPassword );
-        radioWoman = (RadioButton)findViewById( R.id.radio_woman );
-        radioMan = (RadioButton)findViewById( R.id.radio_man );
-        bBirthday = (Button) findViewById(R.id.bBirthday);
-        bRegister = (Button)findViewById( R.id.bRegister );
-        tvToLogin = (TextView)findViewById( R.id.tvToLogin );
-        radioGroupGender= (RadioGroup) findViewById(R.id.radioGroupGender);
-
-        tvTakanon = (TextView) findViewById(R.id.tvTakanon);
+        etUserName = findViewById(R.id.etUserName);
+        etEmail = findViewById(R.id.etEmail);
+        etPassword = findViewById(R.id.etPassword);
+        radioWoman = findViewById(R.id.radio_woman);
+        radioMan = findViewById(R.id.radio_man);
+        bBirthday = findViewById(R.id.bBirthday);
+        bRegister = findViewById(R.id.bRegister);
+        tvToLogin = findViewById(R.id.tvToLogin);
+        radioGroupGender = findViewById(R.id.radioGroupGender);
+        cbTakanon = findViewById(R.id.cbTakanon);
+        tvTakanon = findViewById(R.id.tvTakanon);
 
         radioWoman.setOnClickListener(this);
         radioMan.setOnClickListener(this);
-        bRegister.setOnClickListener( this );
-        bBirthday.setOnClickListener( this );
-        tvToLogin.setOnClickListener( this );
-        tvTakanon.setOnClickListener( this );
+        bRegister.setOnClickListener(this);
+        bBirthday.setOnClickListener(this);
+        tvToLogin.setOnClickListener(this);
+        tvTakanon.setOnClickListener(this);
     }
 
     @Override
@@ -120,17 +122,18 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         @Override
         protected Void doInBackground(UserSeeker... userSeeker) {
 
-        // ----------------- Send to data base -----------------------
-            String id =DB_users.addUser(Tools.userSeekerToContentValues(userSeeker[0]));
+            // ----------------- Send to data base -----------------------
+            String id = DB_users.addUser(Tools.userSeekerToContentValues(userSeeker[0]));
             userSeeker[0].setId(id);
             //-------------- Shared Preferences  - save in the app ---------------
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-            SharedPreferences.Editor editor =  sharedPreferences.edit();
-            editor.putString(Finals.DB.User.ID , userSeeker[0].getId());
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString(Finals.DB.User.ID, userSeeker[0].getId());
             editor.putString(Finals.DB.User.NAME, userSeeker[0].getAboutMe().getName());
             editor.commit();
             return null;
         }
+
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
@@ -148,11 +151,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         DatePickerDialog.OnDateSetListener onDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                String date = dayOfMonth + "/" + (month+1) + "/" + year;
+                String date = dayOfMonth + "/" + (month + 1) + "/" + year;
                 date = DateBuilt.Tools.clarifyDateString(date);// i made a func to make sure tht all the date is orginized as "dd/nn/yyyy"
                 if (date == null) {
                     Toast.makeText(getApplicationContext(),
-                        "exeption occured in Datebuilt Class", Toast.LENGTH_LONG).show();
+                            "exeption occured in Datebuilt Class", Toast.LENGTH_LONG).show();
                 }
                 bBirthday.setText(date);
                 birthday = date;
@@ -161,10 +164,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         };
 
         DatePickerDialog dialog = new DatePickerDialog(
-                            RegisterActivity.this,
-                            android.R.style.Theme_Holo_Light_Dialog_MinWidth,
-                            onDateSetListener,
-                            year,month,day);
+                RegisterActivity.this,
+                android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                onDateSetListener,
+                year, month, day);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.YEAR, -18);
@@ -175,20 +178,23 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void bRegisterOnClick() {
-//        if (
-////                etUserName.getText().toString().isEmpty()
-////                        || etPassword.getText().toString().isEmpty()
-////                        || etEmail.getText().toString().isEmpty()
-////                        || !(radioMan.isChecked() || radioWoman.isChecked())
-////                        || !flag_dateClicked
-//            )
-//        {   Toast.makeText(getApplicationContext(),
-//                    R.string.fillVariable, Toast.LENGTH_LONG).show();
-//
-//        }else if (!Formatter.isEmailValid(etEmail.getText().toString())) {
-//            Toast.makeText(getApplicationContext(),
-//                    "כתובת המייל אינה תקינה", Toast.LENGTH_LONG).show();
-//        }else {
+        if (
+                etUserName.getText().toString().isEmpty()
+                        || etPassword.getText().toString().isEmpty()
+                        || etEmail.getText().toString().isEmpty()
+                        || !(radioMan.isChecked() || radioWoman.isChecked())
+                        || !flag_dateClicked
+                ) {
+            Toast.makeText(getApplicationContext(),
+                    R.string.fillVariable, Toast.LENGTH_LONG).show();
+
+        } else if (!Formatter.isEmailValid(etEmail.getText().toString())) {
+            Toast.makeText(getApplicationContext(),
+                    "כתובת המייל אינה תקינה", Toast.LENGTH_LONG).show();
+        } else if (!cbTakanon.isChecked()) {
+            Toast.makeText(getApplicationContext(),
+                    "Please accept the rules", Toast.LENGTH_LONG).show();
+        } else {
             String username = etUserName.getText().toString();
             String password = etPassword.getText().toString();
             String email = etEmail.getText().toString();
@@ -214,7 +220,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             async.execute(activityUser);
             Intent intent = new Intent(RegisterActivity.this, NavigationDraw.class);
             startActivity(intent);
+        }
     }
-    }
-
+}
+//TODO: when I press on register button without filling the fields - there is exception
 

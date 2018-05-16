@@ -173,7 +173,7 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
         etView = v.findViewById(R.id.bView);
         etDescription = v.findViewById(R.id.etDescription);
         tvName = v.findViewById(R.id.tvName);
-//        rgChildren =  v.findViewById(R.id.radioGroupChildren);
+        rgChildren =  v.findViewById(R.id.radioGroupChildren);
 
         sbHeight = v.findViewById(R.id.sbHeight);
         tvHeight = v.findViewById(R.id.etHieght);
@@ -531,26 +531,25 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if (myChoiceFlag) {
-                    switch (title) {
-                        case "Status": //TODO: I cant extract the string. its important
-                        {
-                            activityUser.getAboutMe().setStatus(myChoice);
-                            markAsSigned(etStatus, myChoice);
-//                            rgChildren.setVisibility(View.VISIBLE);
-                            break;
+                    if (title == getResources().getString(R.string.status)) {
+
+                        activityUser.getAboutMe().setStatus(myChoice);
+                        markAsSigned(etStatus, myChoice);
+                        if (myChoice.equals("Widow") ||
+                                myChoice == getResources().getString(R.string.divorced)) {
+                            rgChildren.setVisibility(View.VISIBLE);
                         }
 
-
                     }
-                    myChoiceFlag = false;
                 }
+                myChoiceFlag = false;
             }
         });
         builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 myChoiceFlag = false;
-//                rgChildren.setVisibility(View.INVISIBLE);
+               rgChildren.setVisibility(View.INVISIBLE);
             }
         });
         builder.setOnDismissListener(new AlertDialog.OnDismissListener() {

@@ -5,11 +5,13 @@ import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
+import android.view.View;
 import android.widget.EditText;
 
 import com.myhalf.R;
@@ -21,12 +23,104 @@ import java.util.List;
 
 public class DialogChoice {
 
+    private static String myChoice;
+    private static Boolean myChoiceFlag;
     private static UserSeeker activityUser = MyUser.getUserSeeker();
 
-//    private boolean myChoiceFlag;
+
+    // ---------Dialog Single-Choice----------
+    public static void dialogSingleChoice(final Activity activity, final String[] stringOptions, final String title, final EditText editText)
+    {
+        final String[] OptionsStrings = stringOptions;
+        final int choiceMarked = -1;
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        builder.setTitle(title);
+
+        builder.setSingleChoiceItems(OptionsStrings, -1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int whichButton) {
+                //enter the choice to the field in the class
+                myChoice = OptionsStrings[whichButton];
+//                myChoiceFlag = true;
+
+            }
+        });
+        builder.setPositiveButton(activity.getString(R.string.ok), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                    Resources res = activity.getResources();
+                    if (title.equals(res.getString(R.string.status)) ) {
+                        activityUser.getAboutMe().setStatus(myChoice);
+                        markAsSigned(activity, editText, myChoice);
+                         if (myChoice.equals(res.getString(R.string.divorcee)) ||
+                            myChoice.equals(res.getString(R.string.wDivorcee)) ||
+                            myChoice.equals(res.getString(R.string.widow)) ||
+                            myChoice.equals(res.getString(R.string.widower))) {
+                            rgChildren.setVisibility(View.VISIBLE);
+                        } else
+                            rgChildren.setVisibility(View.GONE);
+                        }
+                    }
+//                    myChoiceFlag = false;
 
 
-    // ---------Dialog Multi-Choice----------
+        });
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                myChoiceFlag = false;
+            }
+        });
+        builder.setOnDismissListener(new AlertDialog.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                myChoiceFlag = false;
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+
+    public static void dialogSingleChoice(final Activity activity, final String[] stringOptions, final String title, final EditText editText)
+    {
+        final String[] OptionsStrings = stringOptions;
+        final int choiceMarked = -1;
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        builder.setTitle(title);
+
+        builder.setSingleChoiceItems(OptionsStrings, -1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int whichButton) {
+                //enter the choice to the field in the class
+                myChoice = OptionsStrings[whichButton];
+//                myChoiceFlag = true;
+
+            }
+        });
+        builder.setPositiveButton(activity.getString(R.string.ok), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Resources res = activity.getResources();
+                if (title.equals(res.getString(R.string.status)) ) {
+                    activityUser.getAboutMe().setStatus(myChoice);
+                    markAsSigned(activity, editText, myChoice);
+                    if (myChoice.equals(res.getString(R.string.divorcee)) ||
+                            myChoice.equals(res.getString(R.string.wDivorcee)) ||
+                            myChoice.equals(res.getString(R.string.widow)) ||
+                            myChoice.equals(res.getString(R.string.widower))) {
+                        rgChildren.setVisibility(View.VISIBLE);
+                    } else
+                        rgChildren.setVisibility(View.GONE);
+                }
+            }
+//                    myChoiceFlag = false;
+
+
+
+            // ---------Dialog Multi-Choice----------
     public static void dialogMultiChoice(final Activity activity, final String[] stringOptions, final String title, final EditText editText) {
         final boolean[] boolOption = new boolean[stringOptions.length];
 

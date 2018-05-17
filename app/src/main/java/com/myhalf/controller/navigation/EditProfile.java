@@ -411,65 +411,65 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
     }
 
     //--------------------Dialog of single choice----------------------------------
-    private void dialogSingleChoice(final String[] stringsList, final String title) {
-        final String[] OptionsStrings = stringsList;
-        final int choiceMarked = -1;
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle(title);
-
-        builder.setSingleChoiceItems(OptionsStrings, -1, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int whichButton) {
-                //enter the choice to the field in the class
-                myChoice = OptionsStrings[whichButton];
-                myChoiceFlag = true;
-
-            }
-        });
-        builder.setPositiveButton(getResources().getString(R.string.ok), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if (myChoiceFlag) {
-                    Resources res = getResources();
-                    if (title == res.getString(R.string.status)) {
-                        activityUser.getAboutMe().setStatus(myChoice);
-                        markAsSigned(etStatus, myChoice);
-//                            rgChildren.setVisibility(View.VISIBLE);
-                        if (title == getResources().getString(R.string.status)) {
-
-                            activityUser.getAboutMe().setStatus(myChoice);
-                            markAsSigned(etStatus, myChoice);
-                            if (myChoice.equals(getResources().getString(R.string.divorcee)) ||
-                                    myChoice.equals(getResources().getString(R.string.wDivorcee)) ||
-                                    myChoice.equals(getResources().getString(R.string.widow)) ||
-                                    myChoice.equals(getResources().getString(R.string.widower))) {
-                                rgChildren.setVisibility(View.VISIBLE);
-                            } else
-                                rgChildren.setVisibility(View.GONE);
-
-                        }
-                    }
-                    myChoiceFlag = false;
-                }
-            }
-        });
-        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                myChoiceFlag = false;
-               rgChildren.setVisibility(View.INVISIBLE);
-            }
-        });
-        builder.setOnDismissListener(new AlertDialog.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialog) {
-                myChoiceFlag = false;
-            }
-        });
-        AlertDialog dialog = builder.create();
-        dialog.show();
-    }
+//    private void dialogSingleChoice(final String[] stringsList, final String title) {
+//        final String[] OptionsStrings = stringsList;
+//        final int choiceMarked = -1;
+//
+//        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+//        builder.setTitle(title);
+//
+//        builder.setSingleChoiceItems(OptionsStrings, -1, new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int whichButton) {
+//                //enter the choice to the field in the class
+//                myChoice = OptionsStrings[whichButton];
+//                myChoiceFlag = true;
+//
+//            }
+//        });
+//        builder.setPositiveButton(getResources().getString(R.string.ok), new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                if (myChoiceFlag) {
+//                    Resources res = getResources();
+//                    if (title == res.getString(R.string.status)) {
+//                        activityUser.getAboutMe().setStatus(myChoice);
+//                        markAsSigned(etStatus, myChoice);
+////                            rgChildren.setVisibility(View.VISIBLE);
+//                        if (title == getResources().getString(R.string.status)) {
+//
+//                            activityUser.getAboutMe().setStatus(myChoice);
+//                            markAsSigned(etStatus, myChoice);
+//                            if (myChoice.equals(getResources().getString(R.string.divorcee)) ||
+//                                    myChoice.equals(getResources().getString(R.string.wDivorcee)) ||
+//                                    myChoice.equals(getResources().getString(R.string.widow)) ||
+//                                    myChoice.equals(getResources().getString(R.string.widower))) {
+//                                rgChildren.setVisibility(View.VISIBLE);
+//                            } else
+//                                rgChildren.setVisibility(View.GONE);
+//
+//                        }
+//                    }
+//                    myChoiceFlag = false;
+//                }
+//            }
+//        });
+//        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                myChoiceFlag = false;
+//               rgChildren.setVisibility(View.INVISIBLE);
+//            }
+//        });
+//        builder.setOnDismissListener(new AlertDialog.OnDismissListener() {
+//            @Override
+//            public void onDismiss(DialogInterface dialog) {
+//                myChoiceFlag = false;
+//            }
+//        });
+//        AlertDialog dialog = builder.create();
+//        dialog.show();
+//    }
 
     private void markAsSigned(EditText editText, @Nullable String myChoice) {
         Drawable img = getResources().getDrawable(R.drawable.ic_done_all_white_24dp);

@@ -21,11 +21,14 @@ import java.util.List;
 
 
 public class DialogChoice {
-    public UserSeeker activityUser = myUser.getUserSeeker();
-    Context mContext;
-    private boolean myChoiceFlag;
 
-    public void dialogMultiChoice(final String[] stringOptions, final String title, final EditText editText) {
+    private static UserSeeker activityUser = myUser.getUserSeeker();
+    static Context mContext;
+//    private boolean myChoiceFlag;
+
+
+    // ---------Dialog Multi-Choice----------
+    public static void dialogMultiChoice(final String[] stringOptions, final String title, final EditText editText) {
         final boolean[] boolOption = new boolean[stringOptions.length];
 
         AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
@@ -42,7 +45,7 @@ public class DialogChoice {
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                if (myChoiceFlag) {
+//                if (myChoiceFlag) {
                         if (title.equals(R.string.view)){
                             activityUser.getAboutMe().setView(allChoicesToArray(stringOptions, boolOption));
 //                            myChoiceFlag = false;
@@ -53,7 +56,6 @@ public class DialogChoice {
                             markAsSigned(editText,null);
                         }
                 }
-            }
         });
         builder.setNegativeButton(mContext.getResources().getString(R.string.cancel), null);
         AlertDialog dialog = builder.create();
@@ -62,7 +64,7 @@ public class DialogChoice {
 
     // ----------------- help function -----------------
 
-    public List<String> allChoicesToArray(String[] str, boolean[] bool) {
+    public static List<String> allChoicesToArray(String[] str, boolean[] bool) {
         int arraySize = countTrues(bool);
         String[] array = new String[arraySize];
         int j = 0;
@@ -74,7 +76,7 @@ public class DialogChoice {
         return Arrays.asList(array);
     }
 
-    private int countTrues(boolean[] bool) {
+    private static int countTrues(boolean[] bool) {
         int count = 0;
         for (int i = 0; i < bool.length; i++) {
             if (bool[i]) {
@@ -85,7 +87,7 @@ public class DialogChoice {
         return count;
     }
 
-    private void markAsSigned(EditText editText, @Nullable String myChoice) {
+    private static void markAsSigned(EditText editText, @Nullable String myChoice) {
 
         Drawable img = mContext.getResources().getDrawable(R.drawable.ic_done_all_white_24dp);
         int h = img.getIntrinsicHeight();

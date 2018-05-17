@@ -3,7 +3,7 @@ package com.myhalf.controller.tools;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
-import android.content.Context;
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -13,25 +13,24 @@ import android.support.v7.app.AlertDialog;
 import android.widget.EditText;
 
 import com.myhalf.R;
-import com.myhalf.controller.myUser;
+import com.myhalf.controller.MyUser;
 import com.myhalf.model.entities.UserSeeker;
 
 import java.util.Arrays;
 import java.util.List;
 
-
 public class DialogChoice {
 
-    private static UserSeeker activityUser = myUser.getUserSeeker();
-    static Context mContext;
+    private static UserSeeker activityUser = MyUser.getUserSeeker();
+
 //    private boolean myChoiceFlag;
 
 
     // ---------Dialog Multi-Choice----------
-    public static void dialogMultiChoice(final String[] stringOptions, final String title, final EditText editText) {
+    public static void dialogMultiChoice(final Activity activity, final String[] stringOptions, final String title, final EditText editText) {
         final boolean[] boolOption = new boolean[stringOptions.length];
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle(title);
         final boolean[] flag = {false};
         builder.setMultiChoiceItems(stringOptions, boolOption, new DialogInterface.OnMultiChoiceClickListener() {
@@ -49,15 +48,15 @@ public class DialogChoice {
                         if (title.equals(R.string.view)){
                             activityUser.getAboutMe().setView(allChoicesToArray(stringOptions, boolOption));
 //                            myChoiceFlag = false;
-                            markAsSigned(editText,null);
+                            markAsSigned(activity, editText,null);
                         }else if (title.equals(R.string.witness)) {
                             activityUser.getAboutMe().setWitness(allChoicesToArray(stringOptions, boolOption));
 //                            myChoiceFlag = false;
-                            markAsSigned(editText,null);
+                            markAsSigned(activity, editText,null);
                         }
                 }
         });
-        builder.setNegativeButton(mContext.getResources().getString(R.string.cancel), null);
+        builder.setNegativeButton(activity.getResources().getString(R.string.cancel), null);
         AlertDialog dialog = builder.create();
         dialog.show();
     }
@@ -87,9 +86,9 @@ public class DialogChoice {
         return count;
     }
 
-    private static void markAsSigned(EditText editText, @Nullable String myChoice) {
+    private static void markAsSigned(Activity activity, EditText editText, @Nullable String myChoice) {
 
-        Drawable img = mContext.getResources().getDrawable(R.drawable.ic_done_all_white_24dp);
+        Drawable img = activity.getResources().getDrawable(R.drawable.ic_done_all_white_24dp);
         int h = img.getIntrinsicHeight();
         int w = img.getIntrinsicWidth();
         img.setBounds(0, 0, w, h);
@@ -101,15 +100,15 @@ public class DialogChoice {
 //        editText.setCompoundDrawables(null, null, img, null);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 
-            ObjectAnimator animator = ObjectAnimator.ofArgb(editText,"textColor" , ContextCompat.getColor(mContext.getApplicationContext(), R.color.black)
-                    ,ContextCompat.getColor(mContext.getApplicationContext(), R.color.marked_blue));
+            ObjectAnimator animator = ObjectAnimator.ofArgb(editText,"textColor" , ContextCompat.getColor(activity.getApplicationContext(), R.color.black)
+                    ,ContextCompat.getColor(activity.getApplicationContext(), R.color.marked_blue));
             animator.setDuration(1000);
             animator.setStartDelay(300);
             animator.setRepeatMode(ValueAnimator.REVERSE);
             animator.setEvaluator(new ArgbEvaluator());
             animator.start();
         }else {
-            editText.setTextColor(ContextCompat.getColor(mContext.getApplicationContext(), R.color.marked_blue));
+            editText.setTextColor(ContextCompat.getColor(activity.getApplicationContext(), R.color.marked_blue));
         }
     }
 

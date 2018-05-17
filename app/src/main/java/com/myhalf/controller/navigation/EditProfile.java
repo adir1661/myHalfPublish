@@ -48,6 +48,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.myhalf.R;
 import com.myhalf.controller.MyUser;
+import com.myhalf.controller.tools.DialogChoice;
 import com.myhalf.controller.tools.GoogleApiTools;
 import com.myhalf.controller.tools.Listeners;
 import com.myhalf.controller.tools.OtherTools;
@@ -218,7 +219,7 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
                 if (activityUser.getAboutMe().getGender() == Enums.Gender.FEMALE)
                     dialogSingleChoice(res.getStringArray(R.array.StatusArrayForWoman), res.getString(R.string.status));
             } else if (v == etWitness) {
-                dialogMultiChoice(res.getStringArray(R.array.Witness), res.getString(R.string.witness));
+                DialogChoice.dialogMultiChoice(getActivity(), res.getStringArray(R.array.WitnessArray), res.getString(R.string.witness), etWitness);
             } else if (v == etView) {
                 dialogMultiChoice(res.getStringArray(R.array.ViewArray), res.getString(R.string.view));
             } else if (v == etCity) {

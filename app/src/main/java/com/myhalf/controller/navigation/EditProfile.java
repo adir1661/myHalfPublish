@@ -216,13 +216,13 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
             Resources res = getResources();
             if (v == etStatus) {
                 if (activityUser.getAboutMe().getGender() == Enums.Gender.MALE)
-                    DialogChoice.dialogSingleChoice(activity, res.getStringArray(R.array.StatusArrayForMan), res.getString(R.string.status), etStatus, null);
+                    DialogChoice.dialogSingleChoice(activity, res.getStringArray(R.array.StatusArrayForMan), res.getString(R.string.status), etStatus, rgChildren);
                 if (activityUser.getAboutMe().getGender() == Enums.Gender.FEMALE)
-                    DialogChoice.dialogSingleChoice(activity, res.getStringArray(R.array.StatusArrayForWoman), res.getString(R.string.status), etStatus, null);
+                    DialogChoice.dialogSingleChoice(activity, res.getStringArray(R.array.StatusArrayForWoman), res.getString(R.string.status), etStatus, rgChildren);
             } else if (v == etWitness) {
-                DialogChoice.dialogMultiChoice(getActivity(), res.getStringArray(R.array.WitnessArray), res.getString(R.string.witness), etWitness);
+                DialogChoice.dialogMultiChoiceLimited(activity, res.getStringArray(R.array.WitnessArray), res.getString(R.string.witness), etWitness, 2);
             } else if (v == etView) {
-                dialogMultiChoice(res.getStringArray(R.array.ViewArray), res.getString(R.string.view));
+                DialogChoice.dialogMultiChoiceLimited(activity, res.getStringArray(R.array.ViewArray), res.getString(R.string.view), etView, 2);
             } else if (v == etCity) {
                 GoogleApiTools.callGooglePlaces(this,PLACE_AUTOCOMPLETE_REQUEST_CODE);
             }

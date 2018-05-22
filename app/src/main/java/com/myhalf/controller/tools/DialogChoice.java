@@ -54,7 +54,7 @@ public class DialogChoice {
                     if (title.equals(res.getString(R.string.status)) ) {
                         activityUser.getAboutMe().setStatus(myChoice);
                         markAsSigned(activity, editText, myChoice);
-                    // case of view is etStatus:
+                    // case of view is etStatus - open radio button:
                     if (view != null) {
                         if (myChoice.equals(res.getString(R.string.divorcee)) ||
                                 myChoice.equals(res.getString(R.string.wDivorcee)) ||
@@ -121,21 +121,21 @@ public class DialogChoice {
     // ---------Dialog Multi-Choice With Limited Choices----------
     public static void dialogMultiChoiceLimited(final Activity activity, final String[] stringOptions, final String title, final EditText editText, final int maxChoices) {
 
+
         final boolean[] itemsChecked = new boolean[stringOptions.length];
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle(title);
         builder.setMultiChoiceItems(stringOptions, itemsChecked, new DialogInterface.OnMultiChoiceClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-                if(isChecked) {
-                    if(count < maxChoices) {
-                        itemsChecked[which] = isChecked;
-                        count++;
-                    }else{
-                        Toast.makeText(activity, "Impossible to choose more than two choices", Toast.LENGTH_LONG).show();
-                    }
-                }else{
+                count += isChecked ? 1 : -1;
+                itemsChecked[which] = isChecked;
+
+                if (count > maxChoices) {
+                    Toast.makeText(activity, "You selected too many.", Toast.LENGTH_SHORT).show();
+                    itemsChecked[which] = false;
                     count--;
+                    ((AlertDialog) dialog).getListView().setItemChecked(which, false);
                 }
             }
         });

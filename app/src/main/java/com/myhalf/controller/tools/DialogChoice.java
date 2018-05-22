@@ -13,6 +13,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.myhalf.R;
 import com.myhalf.controller.MyUser;
@@ -26,10 +27,11 @@ public class DialogChoice {
     private static String myChoice;
     private static Boolean myChoiceFlag;
     private static UserSeeker activityUser = MyUser.getUserSeeker();
-
+    static int count = 0;
 
     // ---------Dialog Single-Choice----------
-    public static void dialogSingleChoice(final Activity activity, final String[] stringOptions, final String title, final EditText editText)
+    public static void dialogSingleChoice(final Activity activity, final String[] stringOptions,
+                                          final String title, final EditText editText, final View view)
     {
         final String[] OptionsStrings = stringOptions;
         final int choiceMarked = -1;
@@ -42,10 +44,9 @@ public class DialogChoice {
             public void onClick(DialogInterface dialog, int whichButton) {
                 //enter the choice to the field in the class
                 myChoice = OptionsStrings[whichButton];
-//                myChoiceFlag = true;
-
             }
         });
+
         builder.setPositiveButton(activity.getString(R.string.ok), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -53,14 +54,17 @@ public class DialogChoice {
                     if (title.equals(res.getString(R.string.status)) ) {
                         activityUser.getAboutMe().setStatus(myChoice);
                         markAsSigned(activity, editText, myChoice);
-                         if (myChoice.equals(res.getString(R.string.divorcee)) ||
-                            myChoice.equals(res.getString(R.string.wDivorcee)) ||
-                            myChoice.equals(res.getString(R.string.widow)) ||
-                            myChoice.equals(res.getString(R.string.widower))) {
-                            rgChildren.setVisibility(View.VISIBLE);
+                    // case of view is etStatus:
+                    if (view != null) {
+                        if (myChoice.equals(res.getString(R.string.divorcee)) ||
+                                myChoice.equals(res.getString(R.string.wDivorcee)) ||
+                                myChoice.equals(res.getString(R.string.widow)) ||
+                                myChoice.equals(res.getString(R.string.widower))) {
+                            view.setVisibility(View.VISIBLE);
                         } else
-                            rgChildren.setVisibility(View.GONE);
+                            view.setVisibility(View.GONE);
                         }
+                    }
                     }
 //                    myChoiceFlag = false;
 
@@ -83,43 +87,6 @@ public class DialogChoice {
     }
 
 
-    public static void dialogSingleChoice(final Activity activity, final String[] stringOptions, final String title, final EditText editText)
-    {
-        final String[] OptionsStrings = stringOptions;
-        final int choiceMarked = -1;
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-        builder.setTitle(title);
-
-        builder.setSingleChoiceItems(OptionsStrings, -1, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int whichButton) {
-                //enter the choice to the field in the class
-                myChoice = OptionsStrings[whichButton];
-//                myChoiceFlag = true;
-
-            }
-        });
-        builder.setPositiveButton(activity.getString(R.string.ok), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Resources res = activity.getResources();
-                if (title.equals(res.getString(R.string.status)) ) {
-                    activityUser.getAboutMe().setStatus(myChoice);
-                    markAsSigned(activity, editText, myChoice);
-                    if (myChoice.equals(res.getString(R.string.divorcee)) ||
-                            myChoice.equals(res.getString(R.string.wDivorcee)) ||
-                            myChoice.equals(res.getString(R.string.widow)) ||
-                            myChoice.equals(res.getString(R.string.widower))) {
-                        rgChildren.setVisibility(View.VISIBLE);
-                    } else
-                        rgChildren.setVisibility(View.GONE);
-                }
-            }
-//                    myChoiceFlag = false;
-
-
-
             // ---------Dialog Multi-Choice----------
     public static void dialogMultiChoice(final Activity activity, final String[] stringOptions, final String title, final EditText editText) {
         final boolean[] boolOption = new boolean[stringOptions.length];
@@ -131,24 +98,58 @@ public class DialogChoice {
             @Override
             public void onClick(DialogInterface dialog, int which, boolean isChecked) {
                 boolOption[which] = isChecked;
-                String currentItem = stringOptions[which];
-//                myChoiceFlag = true;
             }
         });
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-//                if (myChoiceFlag) {
-                        if (title.equals(R.string.view)){
-                            activityUser.getAboutMe().setView(allChoicesToArray(stringOptions, boolOption));
-//                            myChoiceFlag = false;
-                            markAsSigned(activity, editText,null);
-                        }else if (title.equals(R.string.witness)) {
-                            activityUser.getAboutMe().setWitness(allChoicesToArray(stringOptions, boolOption));
-//                            myChoiceFlag = false;
-                            markAsSigned(activity, editText,null);
-                        }
+            if (title.equals(R.string.view)){
+                activityUser.getAboutMe().setView(allChoicesToArray(stringOptions, boolOption));
+                markAsSigned(activity, editText,null);
+            }else if (title.equals(R.string.witness)) {
+                activityUser.getAboutMe().setWitness(allChoicesToArray(stringOptions, boolOption));
+                markAsSigned(activity, editText,null);
+            }
                 }
+        });
+        builder.setNegativeButton(activity.getResources().getString(R.string.cancel), null);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+
+    // ---------Dialog Multi-Choice With Limited Choices----------
+    public static void dialogMultiChoiceLimited(final Activity activity, final String[] stringOptions, final String title, final EditText editText, final int maxChoices) {
+
+        final boolean[] itemsChecked = new boolean[stringOptions.length];
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        builder.setTitle(title);
+        builder.setMultiChoiceItems(stringOptions, itemsChecked, new DialogInterface.OnMultiChoiceClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+                if(isChecked) {
+                    if(count < maxChoices) {
+                        itemsChecked[which] = isChecked;
+                        count++;
+                    }else{
+                        Toast.makeText(activity, "Impossible to choose more than two choices", Toast.LENGTH_LONG).show();
+                    }
+                }else{
+                    count--;
+                }
+            }
+        });
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            if (title.equals(R.string.view)){
+                activityUser.getAboutMe().setView(allChoicesToArray(stringOptions, itemsChecked));
+                markAsSigned(activity, editText,null);
+            }else if (title.equals(R.string.witness)) {
+                activityUser.getAboutMe().setWitness(allChoicesToArray(stringOptions, itemsChecked));
+                markAsSigned(activity, editText,null);
+            }
+            }
         });
         builder.setNegativeButton(activity.getResources().getString(R.string.cancel), null);
         AlertDialog dialog = builder.create();

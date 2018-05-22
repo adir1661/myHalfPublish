@@ -95,7 +95,6 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
     private RadioGroup rgChildren;
 
     private String myUCropChoiceButton = "";
-    private String myChoice;
     private boolean myChoiceFlag = false;
 
     private Uri pictureUri;
@@ -105,7 +104,7 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
     private static final int PICK_FROM_CAMERA = 1;
     private static final int PICK_FROM_GALLERY = 2;
     private static final int PLACE_AUTOCOMPLETE_REQUEST_CODE = 3;
-
+    private Activity activity;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -174,6 +173,8 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
         sbHeight = v.findViewById(R.id.sbHeight);
         tvHeight = v.findViewById(R.id.etHieght);
 
+        activity = getActivity();
+
         //----------------OnClick---------------------
         ibMainPicture.setOnClickListener(this);
         imageButton1.setOnClickListener(this);
@@ -215,9 +216,9 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
             Resources res = getResources();
             if (v == etStatus) {
                 if (activityUser.getAboutMe().getGender() == Enums.Gender.MALE)
-                dialogSingleChoice(res.getStringArray(R.array.StatusArrayForMan), res.getString(R.string.status));
+                    DialogChoice.dialogSingleChoice(activity, res.getStringArray(R.array.StatusArrayForMan), res.getString(R.string.status), etStatus, null);
                 if (activityUser.getAboutMe().getGender() == Enums.Gender.FEMALE)
-                    dialogSingleChoice(res.getStringArray(R.array.StatusArrayForWoman), res.getString(R.string.status));
+                    DialogChoice.dialogSingleChoice(activity, res.getStringArray(R.array.StatusArrayForWoman), res.getString(R.string.status), etStatus, null);
             } else if (v == etWitness) {
                 DialogChoice.dialogMultiChoice(getActivity(), res.getStringArray(R.array.WitnessArray), res.getString(R.string.witness), etWitness);
             } else if (v == etView) {

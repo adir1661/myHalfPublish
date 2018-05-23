@@ -7,7 +7,6 @@ import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -38,10 +37,7 @@ import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
-import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.api.Status;
-import com.google.android.gms.location.places.AutocompleteFilter;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.google.firebase.storage.FirebaseStorage;
@@ -93,6 +89,7 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
     private TextView tvName;
     private Button bGoToSearch;
     private RadioGroup rgChildren;
+    private EditText etLivingArea;
 
     private String myUCropChoiceButton = "";
     private boolean myChoiceFlag = false;
@@ -169,6 +166,7 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
         etDescription = v.findViewById(R.id.etDescription);
         tvName = v.findViewById(R.id.tvName);
         rgChildren =  v.findViewById(R.id.radioGroupChildren);
+        etLivingArea = v.findViewById(R.id.bLivingArea);
 
         sbHeight = v.findViewById(R.id.sbHeight);
         tvHeight = v.findViewById(R.id.etHieght);
@@ -187,7 +185,7 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
         etWitness.setOnFocusChangeListener(this);
         etView.setOnFocusChangeListener(this);
         bGoToSearch.setOnClickListener(this);
-
+        etLivingArea.setOnClickListener(this);
         Listeners.attachEditTextToSeekBar(getActivity(), sbHeight, tvHeight, 130);
     }
 
@@ -223,7 +221,10 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
                 DialogChoice.dialogMultiChoiceLimited(activity, res.getStringArray(R.array.WitnessArray), res.getString(R.string.witness), etWitness, 2);
             } else if (v == etView) {
                 DialogChoice.dialogMultiChoiceLimited(activity, res.getStringArray(R.array.ViewArray), res.getString(R.string.view), etView, 2);
-            } else if (v == etCity) {
+            } else if (v == etLivingArea) {
+                DialogChoice.dialogSingleChoice(activity, res.getStringArray(R.array.livingAreaArray), res.getString(R.string.livingArea), etLivingArea, null);
+
+                } else if (v == etCity) {
                 GoogleApiTools.callGooglePlaces(this,PLACE_AUTOCOMPLETE_REQUEST_CODE);
             }
             dummyLayout.requestFocus();

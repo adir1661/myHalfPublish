@@ -143,6 +143,12 @@
     <string name="range">טווח</string>
     <string name="livingArea">איזור מגורים</string>
 
-
-
+    <string-array name="livingAreaArray">
+        <item>ירושלים והסביבה</item>
+        <item>מרכז וגוש דן</item>
+        <item>שרון</item>
+        <item>צפון</item>
+        <item>דרום</item>
+        <item>יהודה ושומרון</item>
+    </string-array>
 </resources>

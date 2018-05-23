@@ -203,6 +203,11 @@
                     android:hint="@string/view" />
 
                 <EditText
+                    android:id="@+id/bLivingArea"
+                    style="@style/EditTextLikeButton"
+                    android:hint="@string/livingArea" />
+
+                <EditText
                     android:id="@+id/bCity"
                     style="@style/EditTextLikeButton"
                     android:hint="@string/city" />

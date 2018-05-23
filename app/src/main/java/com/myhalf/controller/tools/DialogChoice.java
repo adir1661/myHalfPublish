@@ -119,9 +119,9 @@ public class DialogChoice {
 
 
     // ---------Dialog Multi-Choice With Limited Choices----------
-    public static void dialogMultiChoiceLimited(final Activity activity, final String[] stringOptions, final String title, final EditText editText, final int maxChoices) {
-
-
+    public static void dialogMultiChoiceLimited(final Activity activity, final String[] stringOptions,
+                                                final String title, final EditText editText, final int maxChoices) {
+        count = 0;
         final boolean[] itemsChecked = new boolean[stringOptions.length];
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle(title);

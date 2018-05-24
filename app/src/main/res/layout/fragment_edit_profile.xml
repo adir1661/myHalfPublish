@@ -266,19 +266,19 @@
                     android:text="@string/about_me"
                     android:textSize="20sp" />
 
-                <ScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp">
 
-                    <EditText
-                        android:id="@+id/etDescription"
-                        style="@style/Widget.AppCompat.EditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:hint="תיאור קצר"
-                        android:inputType="textLongMessage" />
-                </ScrollView>
+                <EditText
+                    android:id="@+id/etDescription"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:inputType="textMultiLine"
+                    android:lines="8"
+                    android:minLines="6"
+                    android:gravity="top|start"
+                    android:maxLines="10"
+                    android:hint="זה המקום להרחיב על עצמך, מה אתה עושה, מהו הסגנון שלך, מה אתה מחפש.."
+                    android:scrollbars="vertical"
+                    style="@style/EditTextLikeButton"/>
 
                 <Button
                     android:id="@+id/bGoToSearch"

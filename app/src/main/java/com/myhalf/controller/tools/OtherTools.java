@@ -65,13 +65,14 @@ public class OtherTools {
 
     }
 
-    public static String saperateStringList(List<String> stringList){
+    public static String ListToString(List<String> stringList){
         String string = new String();
-        for (String item:stringList){
-            string += bigLetterFirst(item)+", ";
+        if (!stringList.isEmpty()) {
+            for (String item : stringList) {
+                string += bigLetterFirst(item) + ", ";
+            }
+            string = string.substring(0, string.length() - 2);
         }
-        string = string.substring(0,string.length()-2);
-
         return string;
     }
 
@@ -85,7 +86,7 @@ public class OtherTools {
 
     public static String bigLetterFirst(String userName) {
 
-        if (userName!= null&&userName.length() >= 1)
+        if (userName!= null && userName.length() >= 1)
             return userName.substring(0, 1).toUpperCase() + userName.substring(1).toLowerCase();
         else return userName;
     }

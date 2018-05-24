@@ -46,7 +46,7 @@
     <string name="fromAge">מגיל</string>
     <string name="toAge">עד גיל</string>
 
-    <string-array name="ViewOfMan">
+    <string-array name="ViewArray">
         <item>מסורתי</item>
         <item>דתי</item>
         <item>דתי לאומי</item>
@@ -59,22 +59,6 @@
         <item>דתי לייט</item>
         <item>חילוני</item>
     </string-array>
-
-    <string-array name="ViewOfWoman">
-        <item>מסורתית</item>
-        <item>דתיה</item>
-        <item>דתית לאומי</item>
-        <item>דתיה לאומי תורני</item>
-        <item>חרדית</item>
-        <item>חרדית מודרנית</item>
-        <item>ברסלבית</item>
-        <item>חב"דית</item>
-        <item>חוזרת בתשובה</item>
-        <item>דתיה לייט</item>
-        <item>חילונית</item>
-    </string-array>
-
-
 
 
     <string-array name="StatusArrayForMan">
@@ -99,8 +83,6 @@
         <item>צרפתי</item>
         <item>אתיופי</item>
         <item>אמריקאי</item>
-        <item>מעורב</item>
-        <item>לא רלוונטי</item>
     </string-array>
 
 

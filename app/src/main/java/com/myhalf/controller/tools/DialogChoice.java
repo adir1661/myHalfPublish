@@ -25,17 +25,16 @@ import java.util.List;
 public class DialogChoice {
 
     private static String myChoice;
-    private static Boolean myChoiceFlag;
     private static UserSeeker activityUser = MyUser.getUserSeeker();
     static int count = 0;
+
 
     // ---------Dialog Single-Choice----------
     public static void dialogSingleChoice(final Activity activity, final String[] stringOptions,
                                           final String title, final EditText editText, final View view)
     {
         final String[] OptionsStrings = stringOptions;
-        final int choiceMarked = -1;
-
+        myChoice = null;
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle(title);
 
@@ -51,44 +50,35 @@ public class DialogChoice {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                     Resources res = activity.getResources();
+
                     if (title.equals(res.getString(R.string.status)) ) {
                         activityUser.getAboutMe().setStatus(myChoice);
                         markAsSigned(activity, editText, myChoice);
-                    // case of view is etStatus - open radio button:
-                    if (view != null) {
-                        if (myChoice.equals(res.getString(R.string.divorcee)) ||
-                                myChoice.equals(res.getString(R.string.wDivorcee)) ||
-                                myChoice.equals(res.getString(R.string.widow)) ||
-                                myChoice.equals(res.getString(R.string.widower))) {
-                            view.setVisibility(View.VISIBLE);
-                        } else
-                            view.setVisibility(View.GONE);
+                        // case of view is etStatus - open radio button:
+                        if (view != null) {
+                            if (!myChoice.equals(res.getString(R.string.single)) &&
+                                !myChoice.equals(res.getString(R.string.wSingle)) )
+
+                                    view.setVisibility(View.VISIBLE);
+                             else
+                                view.setVisibility(View.GONE);
                         }
+                    } else if (title.equals(res.getString(R.string.livingArea)) ) {
+                        activityUser.getAboutMe().setLivingArea(myChoice);
+                        markAsSigned(activity, editText, myChoice);
                     }
                     }
 //                    myChoiceFlag = false;
 
 
         });
-        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                myChoiceFlag = false;
-            }
-        });
-        builder.setOnDismissListener(new AlertDialog.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialog) {
-                myChoiceFlag = false;
-            }
-        });
         AlertDialog dialog = builder.create();
         dialog.show();
     }
 
-
-            // ---------Dialog Multi-Choice----------
-    public static void dialogMultiChoice(final Activity activity, final String[] stringOptions, final String title, final EditText editText) {
+    // ---------Dialog Multi-Choice----------
+    public static void dialogMultiChoice(final Activity activity, final String[] stringOptions,
+                                         final String title, final EditText editText ) {
         final boolean[] boolOption = new boolean[stringOptions.length];
 
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
@@ -100,18 +90,18 @@ public class DialogChoice {
                 boolOption[which] = isChecked;
             }
         });
-        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-            if (title.equals(R.string.view)){
-                activityUser.getAboutMe().setView(allChoicesToArray(stringOptions, boolOption));
-                markAsSigned(activity, editText,null);
-            }else if (title.equals(R.string.witness)) {
-                activityUser.getAboutMe().setWitness(allChoicesToArray(stringOptions, boolOption));
-                markAsSigned(activity, editText,null);
-            }
-                }
-        });
+//        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//            if (title.equals(R.string.view)){
+//                activityUser.getAboutMe().setView(allChoicesToArray(stringOptions, boolOption));
+//                markAsSigned(activity, editText,null);
+//            }else if (title.equals(R.string.witness)) {
+//                activityUser.getAboutMe().setWitness(allChoicesToArray(stringOptions, boolOption));
+//                markAsSigned(activity, editText,null);
+//            }
+//                }
+//        });
         builder.setNegativeButton(activity.getResources().getString(R.string.cancel), null);
         AlertDialog dialog = builder.create();
         dialog.show();
@@ -139,16 +129,23 @@ public class DialogChoice {
                 }
             }
         });
+
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-            if (title.equals(R.string.view)){
-                activityUser.getAboutMe().setView(allChoicesToArray(stringOptions, itemsChecked));
-                markAsSigned(activity, editText,null);
-            }else if (title.equals(R.string.witness)) {
-                activityUser.getAboutMe().setWitness(allChoicesToArray(stringOptions, itemsChecked));
-                markAsSigned(activity, editText,null);
-            }
+                Resources res =  activity.getResources();
+
+                if (title.equals(res.getString(R.string.view))){
+                    List<String> listOfChoices = allChoicesToArray(stringOptions, itemsChecked);
+                    activityUser.getAboutMe().setView(listOfChoices);
+                    String myChoices = OtherTools.ListToString(listOfChoices);
+                    markAsSigned(activity, editText, myChoices);
+                }else if (title.equals(res.getString(R.string.witness))) { //
+                    List<String> listOfChoices = allChoicesToArray(stringOptions, itemsChecked);
+                    activityUser.getAboutMe().setWitness(listOfChoices);
+                    String myChoices = OtherTools.ListToString(listOfChoices);
+                    markAsSigned(activity, editText, myChoices);
+                }
             }
         });
         builder.setNegativeButton(activity.getResources().getString(R.string.cancel), null);
@@ -158,12 +155,12 @@ public class DialogChoice {
 
     // ----------------- help function -----------------
 
-    public static List<String> allChoicesToArray(String[] str, boolean[] bool) {
-        int arraySize = countTrues(bool);
+    public static List<String> allChoicesToArray(String[] str, boolean[] boolArray) {
+        int arraySize = countTrues(boolArray);
         String[] array = new String[arraySize];
         int j = 0;
         for (int i = 0; i < str.length; i++)
-            if (bool[i]) {
+            if (boolArray[i]) {
                 array[j] = str[i];
                 j++;
             }
@@ -181,20 +178,20 @@ public class DialogChoice {
         return count;
     }
 
-    private static void markAsSigned(Activity activity, EditText editText, @Nullable String myChoice) {
+    private static void markAsSigned(Activity activity, EditText editText, @Nullable String myChoices) {
 
         Drawable img = activity.getResources().getDrawable(R.drawable.ic_done_all_white_24dp);
         int h = img.getIntrinsicHeight();
         int w = img.getIntrinsicWidth();
         img.setBounds(0, 0, w, h);
 
-        if (myChoice != "" && myChoice != null)
-            editText.setText(myChoice);
+        if (myChoices != null)
+            editText.setText(myChoices);
         else
             editText.setText(editText.getHint());
-//        editText.setCompoundDrawables(null, null, img, null);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        editText.setCompoundDrawables(null, null, img, null);
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             ObjectAnimator animator = ObjectAnimator.ofArgb(editText,"textColor" , ContextCompat.getColor(activity.getApplicationContext(), R.color.black)
                     ,ContextCompat.getColor(activity.getApplicationContext(), R.color.marked_blue));
             animator.setDuration(1000);

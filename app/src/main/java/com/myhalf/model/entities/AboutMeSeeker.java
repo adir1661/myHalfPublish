@@ -10,16 +10,14 @@ public class AboutMeSeeker extends AboutMe {
     protected List<String> view;
     protected List<String> languages;// seeker only -
     protected List<String> witness;// seeker only - enum
+
     protected String status;// seeker only
     protected String shortSentence;
+    protected String livingArea = null;
     protected String city = null;
 
 
-
-//-----------------------------------------methods-----------------------------------------------------
-
-
-//-----------------c-tors--------------------------------
+//-----------------C-tors--------------------------------
 
     public AboutMeSeeker() {
         super();
@@ -30,9 +28,7 @@ public class AboutMeSeeker extends AboutMe {
         witness =  new ArrayList<>();
     }
 
-
-
-//-----------------getters&setters----------------------
+//-----------------Getters & Setters----------------------
 
 
     public int getHeight() {return height;}
@@ -74,7 +70,11 @@ public class AboutMeSeeker extends AboutMe {
     public List<String> getView() {return view;}
     public void setView(List<String> view) {this.view = view;}
 
+    public String getLivingArea() {
+        return livingArea;
+    }
 
-
-
+    public void setLivingArea(String livingArea) {
+        this.livingArea = livingArea;
+    }
 }

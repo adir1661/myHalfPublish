@@ -158,7 +158,7 @@ public class FullProfile extends Fragment implements View.OnClickListener {
             tvFreeDescriptionTitle.setVisibility(View.GONE);
         }
         if (userProfile.getAboutMe().getWitness() != null)
-            tvEda.setText(tvEda.getText() + "  " + OtherTools.saperateStringList(userProfile.getAboutMe().getWitness()));
+            tvEda.setText(tvEda.getText() + "  " + OtherTools.ListToString(userProfile.getAboutMe().getWitness()));
         else {
             tvEda.setVisibility(View.GONE);
         }

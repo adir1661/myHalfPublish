@@ -80,6 +80,7 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
     private ImageButton imageButton3;
     private ImageButton imageButton4;
     private ImageButton imageButton5;
+
     private EditText etStatus;
     private EditText etCity;
     private EditText etWitness;
@@ -127,8 +128,6 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
         Storage.getFromStorage(this, Finals.FireBase.storage.SMALL_PICTURE_3, imageButton3, activityUser);
         Storage.getFromStorage(this, Finals.FireBase.storage.SMALL_PICTURE_4, imageButton4, activityUser);
         Storage.getFromStorage(this, Finals.FireBase.storage.SMALL_PICTURE_5, imageButton5, activityUser);
-
-
     }
 
     @Override
@@ -146,7 +145,6 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
         updateUserDetails();
 //        new UpdateAsync().execute(activityUser);
     }
-
 
     private void findViews() {
         View v = getView();
@@ -166,7 +164,7 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
         etDescription = v.findViewById(R.id.etDescription);
         tvName = v.findViewById(R.id.tvName);
         rgChildren =  v.findViewById(R.id.radioGroupChildren);
-        etLivingArea = v.findViewById(R.id.bLivingArea);
+        etLivingArea = v.findViewById(R.id.etLivingArea);
 
         sbHeight = v.findViewById(R.id.sbHeight);
         tvHeight = v.findViewById(R.id.etHieght);
@@ -180,18 +178,27 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
         imageButton3.setOnClickListener(this);
         imageButton4.setOnClickListener(this);
         imageButton5.setOnClickListener(this);
+
+        bGoToSearch.setOnClickListener(this);
+        etLivingArea.setOnClickListener(this);
+        Listeners.attachEditTextToSeekBar(getActivity(), sbHeight, tvHeight, 130);
+
         etStatus.setOnFocusChangeListener(this);
         etCity.setOnFocusChangeListener(this);
         etWitness.setOnFocusChangeListener(this);
         etView.setOnFocusChangeListener(this);
-        bGoToSearch.setOnClickListener(this);
-        etLivingArea.setOnClickListener(this);
-        Listeners.attachEditTextToSeekBar(getActivity(), sbHeight, tvHeight, 130);
+        etLivingArea.setOnFocusChangeListener(this);
+
+//        etStatus.setOnClickListener(this);
+//        etCity.setOnClickListener(this);
+//        etWitness.setOnClickListener(this);
+//        etView.setOnClickListener(this);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onClick(View v) {
+        Resources res = getResources();
         if (v == ibMainPicture) {
             onClickImage(Finals.App.PROFILE_PICTURE);
         } else if (v == imageButton1) {
@@ -208,6 +215,7 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
             bGoToSearch();
         }
     }
+
     @Override
     public void onFocusChange(View v, boolean hasFocus) {
         if (hasFocus) {
@@ -223,13 +231,11 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
                 DialogChoice.dialogMultiChoiceLimited(activity, res.getStringArray(R.array.ViewArray), res.getString(R.string.view), etView, 2);
             } else if (v == etLivingArea) {
                 DialogChoice.dialogSingleChoice(activity, res.getStringArray(R.array.livingAreaArray), res.getString(R.string.livingArea), etLivingArea, null);
-
-                } else if (v == etCity) {
+            } else if (v == etCity) {
                 GoogleApiTools.callGooglePlaces(this,PLACE_AUTOCOMPLETE_REQUEST_CODE);
             }
             dummyLayout.requestFocus();
         }
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)

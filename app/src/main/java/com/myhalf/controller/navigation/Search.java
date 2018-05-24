@@ -154,7 +154,7 @@ public class Search extends Fragment implements View.OnFocusChangeListener,View.
             } else if (v == bArea) {
                 placePicker();
             } else if (v == bView) {
-                dialogMultiChoice(res.getStringArray(R.array.ViewOfMan), "My view");
+                dialogMultiChoice(res.getStringArray(R.array.ViewArray), "My view");
             }
             dummyLayout.requestFocus();
         }
@@ -170,7 +170,7 @@ public class Search extends Fragment implements View.OnFocusChangeListener,View.
         } else if (v == bArea) {
             placePicker();
         } else if (v == bView) {
-            dialogMultiChoice(res.getStringArray(R.array.ViewOfMan), "My view");
+            dialogMultiChoice(res.getStringArray(R.array.ViewArray), "My view");
         } else if (v == bSearch) {
             bSearchOnClick();
         }

@@ -16,6 +16,8 @@ public class AboutMeSeeker extends AboutMe {
     protected String livingArea = null;
     protected String city = null;
 
+    protected boolean isChildren = false;
+
 
 //-----------------C-tors--------------------------------
 
@@ -76,5 +78,13 @@ public class AboutMeSeeker extends AboutMe {
 
     public void setLivingArea(String livingArea) {
         this.livingArea = livingArea;
+    }
+
+    public boolean getIsChildren() {
+        return isChildren;
+    }
+
+    public void setIsChildren(boolean children) {
+        isChildren = children;
     }
 }

@@ -255,7 +255,8 @@
                     <EditText
                         android:id="@+id/bPhone"
                         style="@style/EditTextLikeButton"
-                        android:hint="@string/PhoneNum" />
+                        android:hint="@string/PhoneNum"
+                        android:inputType="number"/>
 
                 </LinearLayout>
 

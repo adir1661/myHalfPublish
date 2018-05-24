@@ -221,9 +221,9 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
         if (hasFocus) {
             Resources res = getResources();
             if (v == etStatus) {
-                if (activityUser.getAboutMe().getGender() == Enums.Gender.MALE)
+                if (activityUser.getAboutMe().getGender() == Enums.Gender.MALE || activityUser.getAboutMe().getGender() == Enums.Gender.NULL)
                     DialogChoice.dialogSingleChoice(activity, res.getStringArray(R.array.StatusArrayForMan), res.getString(R.string.status), etStatus, rgChildren);
-                if (activityUser.getAboutMe().getGender() == Enums.Gender.FEMALE)
+                else if (activityUser.getAboutMe().getGender() == Enums.Gender.FEMALE)
                     DialogChoice.dialogSingleChoice(activity, res.getStringArray(R.array.StatusArrayForWoman), res.getString(R.string.status), etStatus, rgChildren);
             } else if (v == etWitness) {
                 DialogChoice.dialogMultiChoiceLimited(activity, res.getStringArray(R.array.WitnessArray), res.getString(R.string.witness), etWitness, 2);
@@ -620,6 +620,11 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
         if (height != null) {
             activityUser.getAboutMe().setHeight(height);
         }
+        int isChildren = rgChildren.getCheckedRadioButtonId();
+        if (isChildren == R.id.withChildren)
+            activityUser.getAboutMe().setIsChildren(true);
+        else
+            activityUser.getAboutMe().setIsChildren(false);
         UpdateAsync updateAsync = new UpdateAsync(DB_users, activityUser, getActivity());
         updateAsync.execute(activityUser);
     }

@@ -1,9 +1,6 @@
 package com.myhalf.controller.navigation;
 
 import android.Manifest;
-import android.animation.ArgbEvaluator;
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
@@ -13,13 +10,11 @@ import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
 import android.util.Log;
@@ -43,7 +38,7 @@ import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.myhalf.R;
-import com.myhalf.controller.MyUser;
+import com.myhalf.controller.activities.MyUser;
 import com.myhalf.controller.tools.DialogChoice;
 import com.myhalf.controller.tools.GoogleApiTools;
 import com.myhalf.controller.tools.Listeners;
@@ -58,8 +53,6 @@ import com.myhalf.model.entities.UserSeeker;
 import com.yalantis.ucrop.UCrop;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
@@ -155,12 +148,12 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
         imageButton3 = v.findViewById(R.id.imageButton3);
         imageButton4 = v.findViewById(R.id.imageButton4);
         imageButton5 = v.findViewById(R.id.imageButton5);
-        etStatus = v.findViewById(R.id.bStatus);
-        etCity = v.findViewById(R.id.bCity);
-        etWitness = v.findViewById(R.id.bWitness);
-        etView = v.findViewById(R.id.bView);
+        etStatus = v.findViewById(R.id.etStatus);
+        etCity = v.findViewById(R.id.etLivingArea);
+        etWitness = v.findViewById(R.id.etWitness);
+        etView = v.findViewById(R.id.etView);
         bGoToSearch = v.findViewById(R.id.bGoToSearch);
-        etView = v.findViewById(R.id.bView);
+        etView = v.findViewById(R.id.etView);
         etDescription = v.findViewById(R.id.etDescription);
         tvName = v.findViewById(R.id.tvName);
         rgChildren =  v.findViewById(R.id.radioGroupChildren);
@@ -238,12 +231,13 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
         }
     }
 
+
+
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void onClickImage(String buttonId) {
         myUCropChoiceButton = buttonId;
         dialogChoosePicture(buttonId);
     }
-
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void dialogChoosePicture(final String buttonID) {
@@ -302,7 +296,6 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
         startActivityForResult(Intent.createChooser(intent, getResources().getString(R.string.select_image)), PICK_FROM_GALLERY);
     }
 
-    //
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -409,7 +402,7 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
             String city = (String) place.getName();
             activityUser.getAboutMe().setCity(city);
             Log.i(getTag(), "Place: " + place.getName());
-            markAsSigned(etCity, city);
+//            DialogChoice.markAsSigned(etCity, city, null);
         } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
             Status status = PlaceAutocomplete.getStatus(getActivity(), data);
             Log.i(getTag(), status.getStatusMessage());
@@ -418,144 +411,7 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
         }
     }
 
-    //--------------------Dialog of single choice----------------------------------
-//    private void dialogSingleChoice(final String[] stringsList, final String title) {
-//        final String[] OptionsStrings = stringsList;
-//        final int choiceMarked = -1;
-//
-//        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-//        builder.setTitle(title);
-//
-//        builder.setSingleChoiceItems(OptionsStrings, -1, new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int whichButton) {
-//                //enter the choice to the field in the class
-//                myChoice = OptionsStrings[whichButton];
-//                myChoiceFlag = true;
-//
-//            }
-//        });
-//        builder.setPositiveButton(getResources().getString(R.string.ok), new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                if (myChoiceFlag) {
-//                    Resources res = getResources();
-//                    if (title == res.getString(R.string.status)) {
-//                        activityUser.getAboutMe().setStatus(myChoice);
-//                        markAsSigned(etStatus, myChoice);
-////                            rgChildren.setVisibility(View.VISIBLE);
-//                        if (title == getResources().getString(R.string.status)) {
-//
-//                            activityUser.getAboutMe().setStatus(myChoice);
-//                            markAsSigned(etStatus, myChoice);
-//                            if (myChoice.equals(getResources().getString(R.string.divorcee)) ||
-//                                    myChoice.equals(getResources().getString(R.string.wDivorcee)) ||
-//                                    myChoice.equals(getResources().getString(R.string.widow)) ||
-//                                    myChoice.equals(getResources().getString(R.string.widower))) {
-//                                rgChildren.setVisibility(View.VISIBLE);
-//                            } else
-//                                rgChildren.setVisibility(View.GONE);
-//
-//                        }
-//                    }
-//                    myChoiceFlag = false;
-//                }
-//            }
-//        });
-//        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                myChoiceFlag = false;
-//               rgChildren.setVisibility(View.INVISIBLE);
-//            }
-//        });
-//        builder.setOnDismissListener(new AlertDialog.OnDismissListener() {
-//            @Override
-//            public void onDismiss(DialogInterface dialog) {
-//                myChoiceFlag = false;
-//            }
-//        });
-//        AlertDialog dialog = builder.create();
-//        dialog.show();
-//    }
-
-    private void markAsSigned(EditText editText, @Nullable String myChoice) {
-        Drawable img = getResources().getDrawable(R.drawable.ic_done_all_white_24dp);
-        int h = img.getIntrinsicHeight();
-        int w = img.getIntrinsicWidth();
-        img.setBounds(0, 0, w, h);
-        if (myChoice != "" && myChoice != null)
-            editText.setText(myChoice);
-        else
-            editText.setText(editText.getHint());
-//        editText.setCompoundDrawables(null, null, img, null);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            ObjectAnimator animator2 =ObjectAnimator.ofInt(img, "alpha",0,255);
-//            animator2.setDuration(1000);
-//            animator2.start();
-            ObjectAnimator animator = ObjectAnimator.ofArgb(editText, "textColor", ContextCompat.getColor(getActivity().getApplicationContext(), R.color.black)
-                    , ContextCompat.getColor(getActivity().getApplicationContext(), R.color.marked_blue));
-            animator.setDuration(1000);
-            animator.setStartDelay(300);
-            animator.setRepeatMode(ValueAnimator.REVERSE);
-            animator.setEvaluator(new ArgbEvaluator());
-            animator.start();
-        } else {
-            editText.setTextColor(ContextCompat.getColor(getActivity().getApplicationContext(), R.color.marked_blue));
-        }
-    }
-
-
-    //--------------------Dialog of multi choice---------------------
-    private void dialogMultiChoice(final String[] stringOptions, final String title) {
-        final boolean[] boolOption = new boolean[stringOptions.length];
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle(title);
-        final boolean[] flag = {false};
-        builder.setMultiChoiceItems(stringOptions, boolOption, new DialogInterface.OnMultiChoiceClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-                boolOption[which] = isChecked;
-                String currentItem = stringOptions[which];
-                myChoiceFlag = true;
-            }
-        });
-        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if (myChoiceFlag) {
-                    Resources res = getResources();
-                    if (title == res.getString(R.string.view)) {//"View"
-                        activityUser.getAboutMe().setView(allChoicesToArray(stringOptions, boolOption));
-                        myChoiceFlag = false;
-                        markAsSigned(etView, null);
-                    } else if (title == res.getString(R.string.witness)) {
-                        activityUser.getAboutMe().setWitness(allChoicesToArray(stringOptions, boolOption));
-                        myChoiceFlag = false;
-                        markAsSigned(etWitness, null);
-                    }
-                }
-            }
-        });
-        builder.setNegativeButton(getResources().getString(R.string.cancel), null);
-        AlertDialog dialog = builder.create();
-        dialog.show();
-    }
-
-    // ----------------- help function -----------------
-    public List<String> allChoicesToArray(String[] str, boolean[] bool) {
-        List<String> array = new ArrayList<>();
-        for (int i = 0; i < str.length; i++)
-            if (bool[i]) {
-                array.add(str[i]);
-            }
-        return array;
-    }
-
-
-
-    //should stay on EDITPROFLE
+    //should stay on EDIT.PROFILE
     public void updatePictureFromActivity(final Uri resultUri, String button_reqCode) {
         switch (myUCropChoiceButton) {//TODO: future ucrop update: switch (button_reqCode)
             case Finals.App.PROFILE_PICTURE: {

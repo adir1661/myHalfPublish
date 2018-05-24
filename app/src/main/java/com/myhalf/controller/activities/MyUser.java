@@ -1,4 +1,4 @@
-package com.myhalf.controller;
+package com.myhalf.controller.activities;
 
 
 import com.myhalf.model.entities.UserMatch;

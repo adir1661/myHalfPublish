@@ -25,14 +25,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a86d983f-727b-4e02-b702-0f2409090be0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/ChatBubble.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/activities/ChatBubble.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/DeleteAccount.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/activities/DeleteAccount.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/LoginActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/activities/LoginActivity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/MatchMakerRegistering.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/activities/MatchMakerRegistering.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/MyUser.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/activities/MyUser.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/Openning.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/activities/Openning.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/RegisterActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/activities/RegisterActivity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/SingleChatActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/activities/SingleChatActivity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/TakanonActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/activities/TakanonActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/myhalf/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/myhalf/R.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/navigation/EditProfile.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/navigation/EditProfile.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/navigation/FullProfile.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/navigation/FullProfile.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/navigation/NavigationDraw.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/navigation/NavigationDraw.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/navigation/Search.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/navigation/Search.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/navigation/SearchResults.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/navigation/SearchResults.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/navigation/Settings.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/navigation/Settings.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/navigation/Takanon.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/navigation/Takanon.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/services/ChatFirebaseMessagingService.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/services/ChatFirebaseMessagingService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/services/MyFirebaseInstanceIDService.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/services/MyFirebaseInstanceIDService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/tools/DialogChoice.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/tools/DialogChoice.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/tools/MessageAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/tools/MessageAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/tools/OtherTools.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/tools/OtherTools.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_delete_account.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_delete_account.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_openning.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_openning.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_takanon.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_takanon.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/app_bar_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/app_bar_main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_delete_account.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_delete_account.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_main.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_profile.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_profile.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_messages.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_messages.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_search.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_search.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_search_results.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_search_results.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_settings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_settings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_takanon.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_takanon.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -67,63 +95,63 @@
       <file leaf-file-name="EditProfile.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/navigation/EditProfile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="624" column="19" lean-forward="false" selection-start-line="624" selection-start-column="19" selection-end-line="624" selection-end-column="19" />
+            <state relative-caret-position="484">
+              <caret line="230" column="9" lean-forward="true" selection-start-line="213" selection-start-column="7" selection-end-line="230" selection-end-column="9" />
               <folding>
                 <element signature="method#onCreateView#0;class#EditProfile#0" expanded="false" />
                 <element signature="method#onActivityCreated#0;class#EditProfile#0" expanded="false" />
                 <element signature="method#onResume#0;class#EditProfile#0" expanded="false" />
                 <element signature="method#onStop#0;class#EditProfile#0" expanded="false" />
-                <element signature="e#9357#9388#0" expanded="true" />
-                <element signature="e#9735#9769#0" expanded="true" />
+                <element signature="method#onClickImage#0;class#EditProfile#0" expanded="false" />
+                <element signature="method#dialogChoosePicture#0;class#EditProfile#0" expanded="false" />
+                <element signature="method#takePicFromCamera#0;class#EditProfile#0" expanded="false" />
+                <element signature="method#takePicFromGallery#0;class#EditProfile#0" expanded="false" />
+                <element signature="method#onActivityResult#0;class#EditProfile#0" expanded="false" />
+                <element signature="method#cropImageUCrop#0;class#EditProfile#0" expanded="false" />
+                <element signature="method#fetchColor#0;class#EditProfile#0" expanded="false" />
+                <element signature="method#fetchDarkPrimaryColor#0;class#EditProfile#0" expanded="false" />
+                <element signature="method#fetchPrimaryColor#0;class#EditProfile#0" expanded="false" />
+                <element signature="method#handleGooglePlacesResult#0;class#EditProfile#0" expanded="false" />
+                <element signature="method#updatePictureFromActivity#0;class#EditProfile#0" expanded="false" />
+                <element signature="method#updatePicture#0;class#EditProfile#0" expanded="false" />
+                <element signature="method#uploadPicture#0;class#EditProfile#0" expanded="false" />
+                <element signature="method#bGoToSearch#0;class#EditProfile#0" expanded="false" />
+                <element signature="method#updateUserDetails#0;class#EditProfile#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MyUser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/MyUser.java">
+      <file leaf-file-name="Search.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/navigation/Search.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DialogChoice.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/tools/DialogChoice.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="66" column="49" lean-forward="false" selection-start-line="66" selection-start-column="23" selection-end-line="66" selection-end-column="49" />
+            <state relative-caret-position="161">
+              <caret line="169" column="150" lean-forward="false" selection-start-line="169" selection-start-column="150" selection-end-line="169" selection-end-column="150" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1949#1979#0" expanded="true" />
-                <element signature="e#2290#2320#0" expanded="true" />
-                <element signature="e#2374#2405#0" expanded="true" />
-                <element signature="e#2647#2681#0" expanded="true" />
-                <element signature="method#dialogMultiChoice#0;class#DialogChoice#0" expanded="false" />
-                <element signature="e#5774#5785#0" expanded="true" />
-                <element signature="e#5787#6786#0" expanded="true" />
-                <element signature="e#6010#6038#0" expanded="true" />
-                <element signature="e#6392#6423#0" expanded="true" />
-                <element signature="e#6785#6786#0" expanded="true" />
-                <element signature="method#allChoicesToArray#0;class#DialogChoice#0" expanded="false" />
-                <element signature="method#countTrues#0;class#DialogChoice#0" expanded="false" />
-                <marker date="1527166096434" expanded="false" signature="3792:3803" ph="&quot;OK&quot;" />
-                <marker date="1527166096434" expanded="false" signature="3971:3984" ph="&quot;View&quot;" />
-                <marker date="1527166096434" expanded="false" signature="4181:4197" ph="&quot;Witness&quot;" />
+                <element signature="method#onCreateView#0;class#Search#0" expanded="false" />
+                <element signature="method#onActivityCreated#0;class#Search#0" expanded="false" />
+                <element signature="e#2897#2926#0" expanded="false" />
+                <element signature="e#3639#3680#0" expanded="false" />
+                <element signature="e#6237#6267#0" expanded="true" />
+                <element signature="e#6475#6505#0" expanded="true" />
+                <element signature="e#6665#6696#0" expanded="true" />
+                <element signature="e#6854#6882#0" expanded="true" />
+                <element signature="e#7042#7076#0" expanded="true" />
+                <element signature="e#11417#11425#0" expanded="true" />
+                <element signature="method#allChoicesToArray#0;class#Search#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fragment_edit_profile.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_profile.xml">
+      <file leaf-file-name="fragment_search.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_search.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="543">
-              <caret line="278" column="102" lean-forward="false" selection-start-line="278" selection-start-column="102" selection-end-line="278" selection-end-column="102" />
-              <folding />
+            <state relative-caret-position="329">
+              <caret line="97" column="43" lean-forward="true" selection-start-line="97" selection-start-column="43" selection-end-line="97" selection-end-column="43" />
+              <folding>
+                <element signature="e#4291#4311#0" expanded="true" />
+              </folding>
             </state>
           </provider>
           <provider editor-type-id="android-designer2">
@@ -131,13 +159,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Search.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/navigation/Search.java">
+      <file leaf-file-name="DialogChoice.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/tools/DialogChoice.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="122">
-              <caret line="317" column="0" lean-forward="false" selection-start-line="317" selection-start-column="0" selection-end-line="317" selection-end-column="0" />
+            <state relative-caret-position="365">
+              <caret line="147" column="56" lean-forward="true" selection-start-line="147" selection-start-column="56" selection-end-line="147" selection-end-column="56" />
               <folding>
-                <element signature="e#10236#10244#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="method#dialogMultiChoice#0;class#DialogChoice#0" expanded="false" />
+                <marker date="1527173911677" expanded="false" signature="3518:3529" ph="&quot;OK&quot;" />
+                <marker date="1527173911677" expanded="false" signature="3697:3710" ph="&quot;View&quot;" />
+                <marker date="1527173911677" expanded="false" signature="3907:3923" ph="&quot;Witness&quot;" />
               </folding>
             </state>
           </provider>
@@ -171,6 +203,7 @@
       <find>toast</find>
       <find>pho</find>
       <find>chil</find>
+      <find>cit</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -3218,22 +3251,22 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_full_profile.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_settings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/full_profile1.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_search.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_registering.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/RegisterActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/navigation/NavigationDraw.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/myhalflib/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/tools/OtherTools.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/tools/DialogChoice.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-iw/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/navigation/Search.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/myhalf/model/entities/AboutMeSeeker.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/navigation/EditProfile.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_profile.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/tools/DialogChoice.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/tools/OtherTools.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/navigation/EditProfile.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_search.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/navigation/Search.java" />
       </list>
     </option>
   </component>
@@ -3330,16 +3363,6 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Gradle Scripts" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidBuildScriptsGroupNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myHalfPublish" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
             </PATH_ELEMENT>
@@ -3374,6 +3397,32 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="myhalf" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myHalfPublish" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myhalf" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -3437,10 +3486,12 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveMembersDialog.RECENTS_KEY">
+      <recent name="com.myhalf.controller.tools.OtherTools" />
       <recent name="com.myhalf.controller.tools.Storage" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.myhalf.controller" />
+      <recent name="com.myhalf.controller.activities" />
       <recent name="com.myhalf.controller.services" />
       <recent name="com.myhalf.controller.navigation" />
     </key>
@@ -3514,7 +3565,7 @@
       <option name="ACTIVITY_CLASS" value="com.myhalf.controller.navigation.NavigationDraw" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1527172472925" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1527174981412" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
@@ -3588,7 +3639,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1527172472925" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1527174981413" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -3636,7 +3687,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1527172472925" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1527174981413" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -3819,7 +3870,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1527172472926" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1527174981415" />
       </method>
     </configuration>
     <list size="2">
@@ -4002,7 +4053,14 @@
       <option name="project" value="LOCAL" />
       <updated>1527167713028</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="design">
+      <created>1527172479224</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1527172479224</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TodoView">
@@ -4019,29 +4077,30 @@
     <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13993949" sideWeight="0.50913244" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32588235" sideWeight="0.5064447" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.49488056" sideWeight="0.49784714" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24810892" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32992464" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935154" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32764506" sideWeight="0.6052632" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29522184" sideWeight="0.47314715" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13993949" sideWeight="0.50913244" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32588235" sideWeight="0.5064447" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27382752" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27382752" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32764506" sideWeight="0.49810913" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32423207" sideWeight="0.4935553" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942554" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.49488056" sideWeight="0.49784714" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32588235" sideWeight="0.5064447" order="14" side_tool="true" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13993949" sideWeight="0.49086758" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.32855436" sideWeight="0.4956943" order="7" side_tool="false" content_ui="tabs" x="202" y="69" width="909" height="604" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290469" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24810892" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32992464" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935154" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -4051,7 +4110,6 @@
       <window_info id="StringPreview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" x="92" y="102" width="1734" height="836" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.32855436" sideWeight="0.4956943" order="7" side_tool="false" content_ui="tabs" x="194" y="493" width="909" height="604" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -4129,25 +4187,13 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/navigation/Search.java</url>
-          <line>223</line>
-          <properties />
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/myhalf/model/datasource/Seeker_MySql.java</url>
           <line>137</line>
           <properties />
           <option name="timeStamp" value="15" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/navigation/EditProfile.java</url>
-          <line>548</line>
-          <properties />
-          <option name="timeStamp" value="38" />
-        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="65" />
+      <option name="time" value="66" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -4340,8 +4386,8 @@
           <caret line="116" column="0" lean-forward="false" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="false" />
-            <element signature="e#4672#4673#0" expanded="false" />
-            <element signature="e#4741#4742#0" expanded="false" />
+            <element signature="e#4694#4695#0" expanded="false" />
+            <element signature="e#4763#4764#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -4378,14 +4424,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/tools/OtherTools.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="74" column="9" lean-forward="false" selection-start-line="74" selection-start-column="9" selection-end-line="74" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/model/entities/UserSeeker.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="444">
@@ -4405,17 +4443,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_search.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="702">
-          <caret line="109" column="48" lean-forward="false" selection-start-line="109" selection-start-column="48" selection-end-line="109" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -4432,43 +4459,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/RegisterActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/activities/RegisterActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="245" column="45" lean-forward="true" selection-start-line="240" selection-start-column="9" selection-end-line="245" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/tools/DialogChoice.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="66" column="49" lean-forward="false" selection-start-line="66" selection-start-column="23" selection-end-line="66" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1949#1979#0" expanded="true" />
-            <element signature="e#2290#2320#0" expanded="true" />
-            <element signature="e#2374#2405#0" expanded="true" />
-            <element signature="e#2647#2681#0" expanded="true" />
-            <element signature="method#dialogMultiChoice#0;class#DialogChoice#0" expanded="false" />
-            <element signature="e#5774#5785#0" expanded="true" />
-            <element signature="e#5787#6786#0" expanded="true" />
-            <element signature="e#6010#6038#0" expanded="true" />
-            <element signature="e#6392#6423#0" expanded="true" />
-            <element signature="e#6785#6786#0" expanded="true" />
-            <element signature="method#allChoicesToArray#0;class#DialogChoice#0" expanded="false" />
-            <element signature="method#countTrues#0;class#DialogChoice#0" expanded="false" />
-            <marker date="1527166096434" expanded="false" signature="3792:3803" ph="&quot;OK&quot;" />
-            <marker date="1527166096434" expanded="false" signature="3971:3984" ph="&quot;View&quot;" />
-            <marker date="1527166096434" expanded="false" signature="4181:4197" ph="&quot;Witness&quot;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/MyUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -4492,36 +4486,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/navigation/EditProfile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="624" column="19" lean-forward="false" selection-start-line="624" selection-start-column="19" selection-end-line="624" selection-end-column="19" />
-          <folding>
-            <element signature="method#onCreateView#0;class#EditProfile#0" expanded="false" />
-            <element signature="method#onActivityCreated#0;class#EditProfile#0" expanded="false" />
-            <element signature="method#onResume#0;class#EditProfile#0" expanded="false" />
-            <element signature="method#onStop#0;class#EditProfile#0" expanded="false" />
-            <element signature="e#9357#9388#0" expanded="true" />
-            <element signature="e#9735#9769#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/model/datasource/Seeker_cFireStore.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="23" column="22" lean-forward="false" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/navigation/Search.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="317" column="0" lean-forward="false" selection-start-line="317" selection-start-column="0" selection-end-line="317" selection-end-column="0" />
-          <folding>
-            <element signature="e#10236#10244#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -4534,6 +4503,97 @@
       </provider>
       <provider editor-type-id="android-designer2">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/activities/MyUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/tools/OtherTools.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="952">
+          <caret line="141" column="22" lean-forward="false" selection-start-line="141" selection-start-column="22" selection-end-line="141" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/tools/DialogChoice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="365">
+          <caret line="147" column="56" lean-forward="true" selection-start-line="147" selection-start-column="56" selection-end-line="147" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#dialogMultiChoice#0;class#DialogChoice#0" expanded="false" />
+            <marker date="1527173911677" expanded="false" signature="3518:3529" ph="&quot;OK&quot;" />
+            <marker date="1527173911677" expanded="false" signature="3697:3710" ph="&quot;View&quot;" />
+            <marker date="1527173911677" expanded="false" signature="3907:3923" ph="&quot;Witness&quot;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/navigation/EditProfile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="230" column="9" lean-forward="true" selection-start-line="213" selection-start-column="7" selection-end-line="230" selection-end-column="9" />
+          <folding>
+            <element signature="method#onCreateView#0;class#EditProfile#0" expanded="false" />
+            <element signature="method#onActivityCreated#0;class#EditProfile#0" expanded="false" />
+            <element signature="method#onResume#0;class#EditProfile#0" expanded="false" />
+            <element signature="method#onStop#0;class#EditProfile#0" expanded="false" />
+            <element signature="method#onClickImage#0;class#EditProfile#0" expanded="false" />
+            <element signature="method#dialogChoosePicture#0;class#EditProfile#0" expanded="false" />
+            <element signature="method#takePicFromCamera#0;class#EditProfile#0" expanded="false" />
+            <element signature="method#takePicFromGallery#0;class#EditProfile#0" expanded="false" />
+            <element signature="method#onActivityResult#0;class#EditProfile#0" expanded="false" />
+            <element signature="method#cropImageUCrop#0;class#EditProfile#0" expanded="false" />
+            <element signature="method#fetchColor#0;class#EditProfile#0" expanded="false" />
+            <element signature="method#fetchDarkPrimaryColor#0;class#EditProfile#0" expanded="false" />
+            <element signature="method#fetchPrimaryColor#0;class#EditProfile#0" expanded="false" />
+            <element signature="method#handleGooglePlacesResult#0;class#EditProfile#0" expanded="false" />
+            <element signature="method#updatePictureFromActivity#0;class#EditProfile#0" expanded="false" />
+            <element signature="method#updatePicture#0;class#EditProfile#0" expanded="false" />
+            <element signature="method#uploadPicture#0;class#EditProfile#0" expanded="false" />
+            <element signature="method#bGoToSearch#0;class#EditProfile#0" expanded="false" />
+            <element signature="method#updateUserDetails#0;class#EditProfile#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_search.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="97" column="43" lean-forward="true" selection-start-line="97" selection-start-column="43" selection-end-line="97" selection-end-column="43" />
+          <folding>
+            <element signature="e#4291#4311#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/myhalf/controller/navigation/Search.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="169" column="150" lean-forward="false" selection-start-line="169" selection-start-column="150" selection-end-line="169" selection-end-column="150" />
+          <folding>
+            <element signature="method#onCreateView#0;class#Search#0" expanded="false" />
+            <element signature="method#onActivityCreated#0;class#Search#0" expanded="false" />
+            <element signature="e#2897#2926#0" expanded="false" />
+            <element signature="e#3639#3680#0" expanded="false" />
+            <element signature="e#6237#6267#0" expanded="true" />
+            <element signature="e#6475#6505#0" expanded="true" />
+            <element signature="e#6665#6696#0" expanded="true" />
+            <element signature="e#6854#6882#0" expanded="true" />
+            <element signature="e#7042#7076#0" expanded="true" />
+            <element signature="e#11417#11425#0" expanded="true" />
+            <element signature="method#allChoicesToArray#0;class#Search#0" expanded="false" />
+          </folding>
+        </state>
       </provider>
     </entry>
   </component>

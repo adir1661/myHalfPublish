@@ -14,8 +14,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.myhalf.R;
-import com.myhalf.controller.SingleChatActivity;
-import com.myhalf.controller.MyUser;
+import com.myhalf.controller.activities.SingleChatActivity;
+import com.myhalf.controller.activities.MyUser;
 import com.myhalf.controller.tools.OtherTools;
 import com.myhalf.controller.tools.Storage;
 import com.myhalf.model.backend.DBManager;

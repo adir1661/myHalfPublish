@@ -1,4 +1,4 @@
-package com.myhalf.controller;
+package com.myhalf.controller.activities;
 
 import android.widget.ImageView;
 

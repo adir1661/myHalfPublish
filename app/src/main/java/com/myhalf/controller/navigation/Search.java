@@ -1,5 +1,6 @@
 package com.myhalf.controller.navigation;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.DialogInterface;
@@ -15,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
@@ -24,10 +26,13 @@ import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlacePicker;
 import com.myhalf.R;
-import com.myhalf.controller.MyUser;
+import com.myhalf.controller.activities.MyUser;
+import com.myhalf.controller.tools.DialogChoice;
+import com.myhalf.controller.tools.GoogleApiTools;
 import com.myhalf.model.backend.DBManager;
 import com.myhalf.model.backend.DBManagerFactory;
 import com.myhalf.model.backend.Finals;
+import com.myhalf.model.entities.Enums;
 import com.myhalf.model.entities.UserSeeker;
 
 import java.util.Arrays;
@@ -41,15 +46,18 @@ public class Search extends Fragment implements View.OnFocusChangeListener,View.
     DBManager DB_users = DBManagerFactory.getSeekerManager();
     UserSeeker activityUser = MyUser.getUserSeeker();
 
+    Activity activity = getActivity();
+
     private LinearLayout dummyLayout;
     private EditText fromAge;
     private EditText toAge;
     private EditText fromHeight;
     private EditText toHeight;
-    private EditText bStatus;
-    private EditText bEda;
-    private EditText bArea;
-    private EditText bView;
+    private EditText etStatus;
+    private EditText etWitness;
+    private EditText etLivingArea;
+    private EditText etView;
+    private CheckBox cbWithChildren;
     private Button bSearch;
 
     private final static int MY_PERMISSION_FINE_LOCATOIN = 101;
@@ -122,13 +130,14 @@ public class Search extends Fragment implements View.OnFocusChangeListener,View.
         toAge = v.findViewById(R.id.toAge);
         fromHeight = v.findViewById(R.id.fromHeight);
         toHeight = v.findViewById(R.id.toHeight);
-        bStatus = v.findViewById(R.id.bStatus);
-        bEda = v.findViewById(R.id.bWitness);
-        bArea = v.findViewById(R.id.bCity);
-        bView = v.findViewById(R.id.bView);
+        etStatus = v.findViewById(R.id.etStatus);
+        etWitness = v.findViewById(R.id.etWitness);
+        etLivingArea = v.findViewById(R.id.etLivingArea);
+        etView = v.findViewById(R.id.etView);
+        cbWithChildren = v.findViewById(R.id.cbWithChildren);
         bSearch = v.findViewById(R.id.search);
 
-        bStatus.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        etStatus.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
                 if (b) {
@@ -138,23 +147,27 @@ public class Search extends Fragment implements View.OnFocusChangeListener,View.
                 }
             }
         });
-//        bStatus.setOnClickListener(this);
-        bEda.setOnFocusChangeListener(this);
-        bArea.setOnFocusChangeListener(this);
-        bView.setOnFocusChangeListener(this);
+//        etStatus.setOnClickListener(this);
+        etWitness.setOnFocusChangeListener(this);
+        etLivingArea.setOnFocusChangeListener(this);
+        etView.setOnFocusChangeListener(this);
         bSearch.setOnClickListener(this);
     }
     @Override
     public void onFocusChange(View v, boolean hasFocus) {
         if (hasFocus) {
-            if (v == bStatus) {
-                dialogSingleChoice(res.getStringArray(R.array.StatusArrayForMan), "status");
-            } else if (v == bEda) {
-                dialogSingleChoice(res.getStringArray(R.array.WitnessArray), "My Eda");
-            } else if (v == bArea) {
-                placePicker();
-            } else if (v == bView) {
-                dialogMultiChoice(res.getStringArray(R.array.ViewArray), "My view");
+            Resources res = getResources();
+            if (v == etStatus) {
+                if (activityUser.getAboutMe().getGender() == Enums.Gender.MALE || activityUser.getAboutMe().getGender() == Enums.Gender.NULL)
+                    DialogChoice.dialogMultiChoice(activity, res.getStringArray(R.array.StatusArrayForWoman), res.getString(R.string.status), etStatus);
+                else if (activityUser.getAboutMe().getGender() == Enums.Gender.FEMALE)
+                    DialogChoice.dialogMultiChoice(activity, res.getStringArray(R.array.StatusArrayForMan), res.getString(R.string.status), etStatus);
+            } else if (v == etWitness) {
+                DialogChoice.dialogMultiChoiceLimited(activity, res.getStringArray(R.array.WitnessArray), res.getString(R.string.witness), etWitness, 2);
+            } else if (v == etView) {
+                DialogChoice.dialogMultiChoiceLimited(activity, res.getStringArray(R.array.ViewArray), res.getString(R.string.view), etView, 2);
+            } else if (v == etLivingArea) {
+                DialogChoice.dialogMultiChoice(activity, res.getStringArray(R.array.livingAreaArray), res.getString(R.string.livingArea), etLivingArea);
             }
             dummyLayout.requestFocus();
         }
@@ -163,15 +176,15 @@ public class Search extends Fragment implements View.OnFocusChangeListener,View.
 
     @Override
     public void onClick(View v) {
-        if (v == bStatus) {
-            dialogSingleChoice(res.getStringArray(R.array.StatusArrayForMan), "status");
-        } else if (v == bEda) {
-            dialogSingleChoice(res.getStringArray(R.array.WitnessArray), "My Eda");
-        } else if (v == bArea) {
-            placePicker();
-        } else if (v == bView) {
-            dialogMultiChoice(res.getStringArray(R.array.ViewArray), "My view");
-        } else if (v == bSearch) {
+//        if (v == etStatus) {
+//            dialogSingleChoice(res.getStringArray(R.array.StatusArrayForMan), "status");
+//        } else if (v == etWitness) {
+//            dialogSingleChoice(res.getStringArray(R.array.WitnessArray), "My Eda");
+//        } else if (v == etLivingArea) {
+//            placePicker();
+//        } else if (v == etView) {
+//            dialogMultiChoice(res.getStringArray(R.array.ViewArray), "My view");
+        if (v == bSearch) {
             bSearchOnClick();
         }
     }
@@ -195,7 +208,7 @@ public class Search extends Fragment implements View.OnFocusChangeListener,View.
         if (requestCode == PLACE_PICKER_REQUEST) {
             if (resultCode == getActivity().RESULT_OK) {
                 Place place = PlacePicker.getPlace(getActivity(), data);
-                bArea.setText(place.getAddress());
+                etLivingArea.setText(place.getAddress());
             }
         }
     }
@@ -221,7 +234,7 @@ public class Search extends Fragment implements View.OnFocusChangeListener,View.
                 // ------------ Enter values to Share preference ----------------
                 switch (title) {
                     case "status": {
-                        bStatus.setText(choice[0]);
+                        etStatus.setText(choice[0]);
                         editor.putString(Finals.DB.AboutMe.STATUS, choice[0]);
                         editor.commit();
 

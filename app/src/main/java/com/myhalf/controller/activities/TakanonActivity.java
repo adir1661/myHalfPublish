@@ -1,4 +1,4 @@
-package com.myhalf.controller;
+package com.myhalf.controller.activities;
 
 import android.app.Activity;
 import android.os.Bundle;

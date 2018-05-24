@@ -1,7 +1,6 @@
 package com.myhalf.controller.tools;
 
 import android.app.Activity;
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.myhalf.R;
-import com.myhalf.controller.ChatBubble;
+import com.myhalf.controller.activities.ChatBubble;
 import com.myhalf.model.backend.Finals;
 
 import java.util.List;

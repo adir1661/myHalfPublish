@@ -33,7 +33,7 @@
             android:value="AIzaSyCM72TAs3WGPsVk5WvPJGkHBnRlEksUTPw" />
 
         <activity
-            android:name=".controller.RegisterActivity"
+            android:name=".controller.activities.RegisterActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Background"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden">
@@ -43,10 +43,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".controller.LoginActivity" />
-        <activity android:name=".controller.MatchMakerRegistering" />
+        <activity android:name=".controller.activities.LoginActivity" />
+        <activity android:name=".controller.activities.MatchMakerRegistering" />
         <activity
-            android:name=".controller.SingleChatActivity"
+            android:name=".controller.activities.SingleChatActivity"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -57,7 +57,7 @@
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".controller.TakanonActivity" />
+        <activity android:name=".controller.activities.TakanonActivity" />
 
         <service
             android:name=".controller.services.CheckNewsService"
@@ -80,9 +80,9 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".controller.Openning" />
+        <activity android:name=".controller.activities.Openning" />
         <activity
-            android:name=".controller.DeleteAccount"
+            android:name=".controller.activities.DeleteAccount"
             android:label="@string/title_activity_delete_account"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".controller.navigation.TakanonActivity"></activity>

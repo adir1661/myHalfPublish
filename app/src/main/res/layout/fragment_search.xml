@@ -86,17 +86,24 @@
             </LinearLayout>
 
                 <EditText
-                    android:id="@+id/bStatus"
+                    android:id="@+id/etStatus"
                     style="@style/EditTextLikeButton"
                     android:hint="@string/status"/>
 
+            <CheckBox
+                android:id="@+id/cbWithChildren"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="גם עם ילדים"
+                android:visibility="gone"/>
+
                 <EditText
-                    android:id="@+id/bWitness"
+                    android:id="@+id/etWitness"
                     style="@style/EditTextLikeButton"
                     android:hint="@string/witness"/>
 
                 <EditText
-                    android:id="@+id/bView"
+                    android:id="@+id/etView"
                     style="@style/EditTextLikeButton"
                     android:hint="@string/view"/>
 
@@ -115,7 +122,7 @@
                     android:layout_width="100dp"
                     android:layout_gravity="start"/>
                 <EditText
-                    android:id="@+id/bCity"
+                    android:id="@+id/etLivingArea"
                     style="@style/EditTextLikeButton"
                     android:hint="@string/city"/>
 

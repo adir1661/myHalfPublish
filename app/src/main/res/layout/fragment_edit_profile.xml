@@ -154,7 +154,7 @@
                     app:cardElevation="-3dp">
 
                     <EditText
-                        android:id="@+id/bStatus"
+                        android:id="@+id/etStatus"
                         android:name=".MyActivity"
                         style="@style/EditTextLikeButton"
                         android:hint="@string/status"
@@ -193,12 +193,12 @@
 
 
                 <EditText
-                    android:id="@+id/bWitness"
+                    android:id="@+id/etWitness"
                     style="@style/EditTextLikeButton"
                     android:hint="@string/witness" />
 
                 <EditText
-                    android:id="@+id/bView"
+                    android:id="@+id/etView"
                     style="@style/EditTextLikeButton"
                     android:hint="@string/view" />
 
@@ -208,7 +208,7 @@
                     android:hint="@string/livingArea" />
 
                 <EditText
-                    android:id="@+id/bCity"
+                    android:id="@+id/etLivingArea"
                     style="@style/EditTextLikeButton"
                     android:hint="@string/city" />
 

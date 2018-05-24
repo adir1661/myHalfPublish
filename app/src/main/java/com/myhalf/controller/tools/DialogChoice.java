@@ -1,25 +1,17 @@
 package com.myhalf.controller.tools;
 
-import android.animation.ArgbEvaluator;
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.myhalf.R;
-import com.myhalf.controller.MyUser;
+import com.myhalf.controller.activities.MyUser;
 import com.myhalf.model.entities.UserSeeker;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class DialogChoice {
@@ -53,7 +45,7 @@ public class DialogChoice {
 
                     if (title.equals(res.getString(R.string.status)) ) {
                         activityUser.getAboutMe().setStatus(myChoice);
-                        markAsSigned(activity, editText, myChoice);
+                        OtherTools.markAsSigned(activity, editText, myChoice);
                         // case of view is etStatus - open radio button:
                         if (view != null) {
                             if (!myChoice.equals(res.getString(R.string.single)) &&
@@ -65,7 +57,7 @@ public class DialogChoice {
                         }
                     } else if (title.equals(res.getString(R.string.livingArea)) ) {
                         activityUser.getAboutMe().setLivingArea(myChoice);
-                        markAsSigned(activity, editText, myChoice);
+                        OtherTools.markAsSigned(activity, editText, myChoice);
                     }
                     }
 //                    myChoiceFlag = false;
@@ -136,15 +128,15 @@ public class DialogChoice {
                 Resources res =  activity.getResources();
 
                 if (title.equals(res.getString(R.string.view))){
-                    List<String> listOfChoices = allChoicesToArray(stringOptions, itemsChecked);
+                    List<String> listOfChoices = OtherTools.allChoicesToArray(stringOptions, itemsChecked);
                     activityUser.getAboutMe().setView(listOfChoices);
                     String myChoices = OtherTools.ListToString(listOfChoices);
-                    markAsSigned(activity, editText, myChoices);
+                    OtherTools.markAsSigned(activity, editText, myChoices);
                 }else if (title.equals(res.getString(R.string.witness))) { //
-                    List<String> listOfChoices = allChoicesToArray(stringOptions, itemsChecked);
+                    List<String> listOfChoices = OtherTools.allChoicesToArray(stringOptions, itemsChecked);
                     activityUser.getAboutMe().setWitness(listOfChoices);
                     String myChoices = OtherTools.ListToString(listOfChoices);
-                    markAsSigned(activity, editText, myChoices);
+                    OtherTools.markAsSigned(activity, editText, myChoices);
                 }
             }
         });
@@ -154,55 +146,6 @@ public class DialogChoice {
     }
 
     // ----------------- help function -----------------
-
-    public static List<String> allChoicesToArray(String[] str, boolean[] boolArray) {
-        int arraySize = countTrues(boolArray);
-        String[] array = new String[arraySize];
-        int j = 0;
-        for (int i = 0; i < str.length; i++)
-            if (boolArray[i]) {
-                array[j] = str[i];
-                j++;
-            }
-        return Arrays.asList(array);
-    }
-
-    private static int countTrues(boolean[] bool) {
-        int count = 0;
-        for (int i = 0; i < bool.length; i++) {
-            if (bool[i]) {
-                count++;
-            }
-
-        }
-        return count;
-    }
-
-    private static void markAsSigned(Activity activity, EditText editText, @Nullable String myChoices) {
-
-        Drawable img = activity.getResources().getDrawable(R.drawable.ic_done_all_white_24dp);
-        int h = img.getIntrinsicHeight();
-        int w = img.getIntrinsicWidth();
-        img.setBounds(0, 0, w, h);
-
-        if (myChoices != null)
-            editText.setText(myChoices);
-        else
-            editText.setText(editText.getHint());
-        editText.setCompoundDrawables(null, null, img, null);
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            ObjectAnimator animator = ObjectAnimator.ofArgb(editText,"textColor" , ContextCompat.getColor(activity.getApplicationContext(), R.color.black)
-                    ,ContextCompat.getColor(activity.getApplicationContext(), R.color.marked_blue));
-            animator.setDuration(1000);
-            animator.setStartDelay(300);
-            animator.setRepeatMode(ValueAnimator.REVERSE);
-            animator.setEvaluator(new ArgbEvaluator());
-            animator.start();
-        }else {
-            editText.setTextColor(ContextCompat.getColor(activity.getApplicationContext(), R.color.marked_blue));
-        }
-    }
 
 
 }

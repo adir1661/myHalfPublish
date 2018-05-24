@@ -8,7 +8,7 @@ import com.firebase.jobdispatcher.GooglePlayDriver;
 import com.firebase.jobdispatcher.Job;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
-import com.myhalf.controller.MyUser;
+import com.myhalf.controller.activities.MyUser;
 import com.myhalf.model.entities.UserSeeker;
 
 

@@ -1,4 +1,4 @@
-package com.myhalf.controller;
+package com.myhalf.controller.activities;
 
 import android.app.DatePickerDialog;
 import android.app.FragmentManager;
@@ -31,13 +31,11 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.myhalf.R;
 import com.myhalf.controller.asynctasks.RegisterAsync;
 import com.myhalf.controller.navigation.NavigationDraw;
-import com.myhalf.controller.navigation.Takanon;
 import com.myhalf.controller.navigation.TakanonActivity;
 import com.myhalf.controller.tools.Formatter;
 import com.myhalf.model.backend.DBManager;
 import com.myhalf.model.backend.DBManagerFactory;
 import com.myhalf.model.backend.Finals;
-import com.myhalf.model.datasource.Tools;
 import com.myhalf.model.entities.DateBuilt;
 import com.myhalf.model.entities.Enums;
 import com.myhalf.model.entities.UserSeeker;

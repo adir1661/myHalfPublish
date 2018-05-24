@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.myhalf.controller.navigation.Settings"
+    tools:context=".controller.navigation.Settings"
     android:orientation="vertical">
 
     <TextView
@@ -62,7 +62,7 @@
 
 
         <EditText
-            android:id="@+id/bStatus"
+            android:id="@+id/etStatus"
             style="@style/EditTextLikeButton"
             android:hint="@string/status"/>
 
@@ -93,7 +93,7 @@
         </LinearLayout>
 
         <EditText
-            android:id="@+id/bView"
+            android:id="@+id/etView"
             style="@style/EditTextLikeButton"
             android:hint="@string/view"/>
 

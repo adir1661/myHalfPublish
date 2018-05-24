@@ -71,29 +71,34 @@ public class DialogChoice {
     // ---------Dialog Multi-Choice----------
     public static void dialogMultiChoice(final Activity activity, final String[] stringOptions,
                                          final String title, final EditText editText ) {
-        final boolean[] boolOption = new boolean[stringOptions.length];
+        final boolean[] itemsChecked = new boolean[stringOptions.length];
 
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle(title);
-        final boolean[] flag = {false};
-        builder.setMultiChoiceItems(stringOptions, boolOption, new DialogInterface.OnMultiChoiceClickListener() {
+        builder.setMultiChoiceItems(stringOptions, itemsChecked, new DialogInterface.OnMultiChoiceClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-                boolOption[which] = isChecked;
+                itemsChecked[which] = isChecked;
             }
         });
-//        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//            if (title.equals(R.string.view)){
-//                activityUser.getAboutMe().setView(allChoicesToArray(stringOptions, boolOption));
-//                markAsSigned(activity, editText,null);
-//            }else if (title.equals(R.string.witness)) {
-//                activityUser.getAboutMe().setWitness(allChoicesToArray(stringOptions, boolOption));
-//                markAsSigned(activity, editText,null);
-//            }
-//                }
-//        });
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Resources res =  activity.getResources();
+
+                if (title.equals(res.getString(R.string.view))){
+                    List<String> listOfChoices = OtherTools.allChoicesToArray(stringOptions, itemsChecked);
+                    activityUser.getAboutMe().setView(listOfChoices);
+                    String myChoices = OtherTools.ListToString(listOfChoices);
+                    OtherTools.markAsSigned(activity, editText, myChoices);
+                }else if (title.equals(res.getString(R.string.witness))) { //
+                    List<String> listOfChoices = OtherTools.allChoicesToArray(stringOptions, itemsChecked);
+                    activityUser.getAboutMe().setWitness(listOfChoices);
+                    String myChoices = OtherTools.ListToString(listOfChoices);
+                    OtherTools.markAsSigned(activity, editText, myChoices);
+                }
+            }
+        });
         builder.setNegativeButton(activity.getResources().getString(R.string.cancel), null);
         AlertDialog dialog = builder.create();
         dialog.show();

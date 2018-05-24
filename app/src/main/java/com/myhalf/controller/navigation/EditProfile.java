@@ -86,7 +86,7 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
     private EditText etLivingArea;
 
     private String myUCropChoiceButton = "";
-    private boolean myChoiceFlag = false;
+
 
     private Uri pictureUri;
     boolean uploadedJustNow = false;

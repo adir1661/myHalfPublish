@@ -46,7 +46,7 @@ public class Search extends Fragment implements View.OnFocusChangeListener,View.
     DBManager DB_users = DBManagerFactory.getSeekerManager();
     UserSeeker activityUser = MyUser.getUserSeeker();
 
-    Activity activity = getActivity();
+    private Activity activity;
 
     private LinearLayout dummyLayout;
     private EditText fromAge;
@@ -137,20 +137,14 @@ public class Search extends Fragment implements View.OnFocusChangeListener,View.
         cbWithChildren = v.findViewById(R.id.cbWithChildren);
         bSearch = v.findViewById(R.id.search);
 
-        etStatus.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                if (b) {
-                    String[] array = res.getStringArray(R.array.StatusArrayForMan);
-                    dialogSingleChoice(array, "status");
-                    view.clearFocus();
-                }
-            }
-        });
-//        etStatus.setOnClickListener(this);
+        activity = getActivity();
+
+        //-----------------OnClick & OnFocus---------------------
+        etStatus.setOnFocusChangeListener(this);
         etWitness.setOnFocusChangeListener(this);
         etLivingArea.setOnFocusChangeListener(this);
         etView.setOnFocusChangeListener(this);
+
         bSearch.setOnClickListener(this);
     }
     @Override

@@ -148,7 +148,7 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
         imageButton4 = v.findViewById(R.id.imageButton4);
         imageButton5 = v.findViewById(R.id.imageButton5);
         etStatus = v.findViewById(R.id.etStatus);
-        etCity = v.findViewById(R.id.etLivingArea);
+        etCity = v.findViewById(R.id.etCity);
         etWitness = v.findViewById(R.id.etWitness);
         etView = v.findViewById(R.id.etView);
         bGoToSearch = v.findViewById(R.id.bGoToSearch);
@@ -218,7 +218,7 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
                 else if (activityUser.getAboutMe().getGender() == Enums.Gender.FEMALE)
                     DialogChoice.dialogSingleChoice(activity, res.getStringArray(R.array.StatusArrayForWoman), res.getString(R.string.status), etStatus, rgChildren);
             } else if (v == etWitness) {
-                DialogChoice.dialogMultiChoiceLimited(activity, res.getStringArray(R.array.Witness), res.getString(R.string.witness), etWitness, 2);
+                DialogChoice.dialogMultiChoiceLimited(activity, res.getStringArray(R.array.WitnessArray), res.getString(R.string.witness), etWitness, 2);
             } else if (v == etView) {
                 DialogChoice.dialogMultiChoiceLimited(activity, res.getStringArray(R.array.ViewArray), res.getString(R.string.view), etView, 2);
             } else if (v == etLivingArea) {

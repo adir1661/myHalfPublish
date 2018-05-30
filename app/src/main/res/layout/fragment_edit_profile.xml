@@ -273,10 +273,10 @@
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     android:inputType="textMultiLine"
-                    android:lines="8"
-                    android:minLines="6"
+                    android:minLines="4"
+                    android:maxLines="6"
+                    android:maxLength="500"
                     android:gravity="top|start"
-                    android:maxLines="10"
                     android:hint="זה המקום להרחיב על עצמך, מה אתה עושה, מהו הסגנון שלך, מה אתה מחפש.."
                     android:scrollbars="vertical"
                     style="@style/EditTextLikeButton"/>

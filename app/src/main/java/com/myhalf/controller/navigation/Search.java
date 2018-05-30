@@ -157,7 +157,7 @@ public class Search extends Fragment implements View.OnFocusChangeListener,View.
                 else if (activityUser.getAboutMe().getGender() == Enums.Gender.FEMALE)
                     DialogChoice.dialogMultiChoice(activity, res.getStringArray(R.array.StatusArrayForMan), res.getString(R.string.status), etStatus);
             } else if (v == etWitness) {
-                DialogChoice.dialogMultiChoiceLimited(activity, res.getStringArray(R.array.WitnessArray), res.getString(R.string.witness), etWitness, 2);
+                DialogChoice.dialogMultiChoiceLimited(activity, res.getStringArray(R.array.Witness), res.getString(R.string.witness), etWitness, 2);
             } else if (v == etView) {
                 DialogChoice.dialogMultiChoiceLimited(activity, res.getStringArray(R.array.ViewArray), res.getString(R.string.view), etView, 2);
             } else if (v == etLivingArea) {

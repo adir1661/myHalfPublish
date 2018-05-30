@@ -1,7 +1,6 @@
 package com.myhalf.model.datasource;
 
 import android.content.ContentValues;
-import android.database.Cursor;
 
 import com.myhalf.model.backend.DBManager;
 import com.myhalf.model.backend.Finals;
@@ -21,7 +20,7 @@ public class Seeker_MySql implements DBManager {
 
 
     @Override
-    public boolean isExist(String email, String password) {
+    public boolean isExist(String email) {
         return false;
     }
 

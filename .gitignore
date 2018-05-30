@@ -22,3 +22,7 @@ local.properties
 .gradle/4.4/javaCompile/taskJars.bin
 .gradle/4.4/javaCompile/taskHistory.bin
 .gradle/buildOutputCleanup/cache.properties
+
+*.lock
+
+*.bin

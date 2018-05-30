@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
                 String email = etEmail.getText().toString();
                 String password = etPassword.getText().toString();
 
-                if (userList.isExist(email,password)){
+                if (userList.isExist(email)){
                     Intent LoginIntent = new Intent(LoginActivity.this, EditProfile.class);
                     startActivity(LoginIntent);
                 }else{

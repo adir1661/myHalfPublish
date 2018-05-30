@@ -14,6 +14,7 @@ import com.myhalf.model.entities.UserSeeker;
 
 import java.util.List;
 
+
 public class DialogChoice {
 
     private static String myChoice;

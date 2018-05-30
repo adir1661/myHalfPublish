@@ -1,7 +1,6 @@
 package com.myhalf.model.datasource;
 
 import android.content.ContentValues;
-import android.database.Cursor;
 
 import com.myhalf.model.backend.DBManager;
 import com.myhalf.model.entities.User;
@@ -13,7 +12,7 @@ public class Match_MySql implements DBManager {
     private final String username="abargil";
     private final String webURL= "http://"+username+".vlab.ct.ac.il/abargil_/";
     @Override
-    public boolean isExist(String email, String password) {
+    public boolean isExist(String email) {
         return false;
     }
 

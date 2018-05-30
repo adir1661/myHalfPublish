@@ -1,20 +1,26 @@
 package com.myhalf.controller.navigation;
 
 import android.Manifest;
+import android.animation.ArgbEvaluator;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,13 +38,16 @@ import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.places.AutocompleteFilter;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.myhalf.R;
-import com.myhalf.controller.activities.MyUser;
+import com.myhalf.controller.MyUser;
 import com.myhalf.controller.tools.DialogChoice;
 import com.myhalf.controller.tools.GoogleApiTools;
 import com.myhalf.controller.tools.Listeners;
@@ -53,6 +62,8 @@ import com.myhalf.model.entities.UserSeeker;
 import com.yalantis.ucrop.UCrop;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
@@ -73,7 +84,6 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
     private ImageButton imageButton3;
     private ImageButton imageButton4;
     private ImageButton imageButton5;
-
     private EditText etStatus;
     private EditText etCity;
     private EditText etWitness;
@@ -219,7 +229,7 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
                 else if (activityUser.getAboutMe().getGender() == Enums.Gender.FEMALE)
                     DialogChoice.dialogSingleChoice(activity, res.getStringArray(R.array.StatusArrayForWoman), res.getString(R.string.status), etStatus, rgChildren);
             } else if (v == etWitness) {
-                DialogChoice.dialogMultiChoiceLimited(activity, res.getStringArray(R.array.WitnessArray), res.getString(R.string.witness), etWitness, 2);
+                DialogChoice.dialogMultiChoiceLimited(activity, res.getStringArray(R.array.Witness), res.getString(R.string.witness), etWitness, 2);
             } else if (v == etView) {
                 DialogChoice.dialogMultiChoiceLimited(activity, res.getStringArray(R.array.ViewArray), res.getString(R.string.view), etView, 2);
             } else if (v == etLivingArea) {

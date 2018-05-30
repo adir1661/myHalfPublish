@@ -76,14 +76,14 @@ public class OtherTools {
     }
 
     public static String ListToString(List<String> stringList){
-        String string = new String();
+        StringBuilder string = new StringBuilder("");
         if (!stringList.isEmpty()) {
             for (String item : stringList) {
-                string += bigLetterFirst(item) + ", ";
+                string.append(bigLetterFirst(item)).append(", ");
             }
-            string = string.substring(0, string.length() - 2);
+            string = new StringBuilder(string.substring(0, string.length() - 2));
         }
-        return string;
+        return string.toString();
     }
 
     public static String fixLinesAndSize(@NonNull String string) {
@@ -94,11 +94,11 @@ public class OtherTools {
         return string;
     }
 
-    public static String bigLetterFirst(String userName) {
+    public static String bigLetterFirst(String string) {
 
-        if (userName!= null && userName.length() >= 1)
-            return userName.substring(0, 1).toUpperCase() + userName.substring(1).toLowerCase();
-        else return userName;
+        if (string!= null&&string.length() >= 1)
+            return string.substring(0, 1).toUpperCase() + string.substring(1).toLowerCase();
+        else return string;
     }
 
     public static void markAsSigned(Activity activity, EditText editText, @Nullable String myChoices) {

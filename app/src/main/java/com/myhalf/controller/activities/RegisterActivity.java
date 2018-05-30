@@ -22,11 +22,19 @@ import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.myhalf.R;
 import com.myhalf.controller.asynctasks.RegisterAsync;
@@ -49,13 +57,13 @@ import java.util.List;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private static final int RC_SIGN_IN = 123;
+    private static final int GOOGLE_SIGN_IN = 124;
     private final String TAG = RegisterActivity.class.getSimpleName();
     DBManager DB_users = DBManagerFactory.getSeekerManager();
     UserSeeker activityUser = MyUser.getUserSeeker();
-    private static final int RC_SIGN_IN = 123;
     private FirebaseAuth mFBAuth;
-    private FirebaseUser mFBUSer;
-
+    private GoogleSignInClient mGoogleSignInClient;
 
 
     private EditText etUserName;
@@ -70,6 +78,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private String birthday = "";
     private boolean flag_dateClicked = false;
     private CheckBox cbTakanon;
+    private SignInButton googleSignInButton;
 
     private TextView tvTakanon;
 
@@ -80,21 +89,32 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_registering);
 //        callFireBaseAuthUi();
         findViews();
+        initSignIn();
+    }
+
+    private void initSignIn() {
         mFBAuth = FirebaseAuth.getInstance();
         Bundle bundle = getIntent().getExtras();
-        if (bundle!=null&&bundle.containsKey(Finals.App.SIGN_OUT)&& bundle.getBoolean(Finals.App.SIGN_OUT)){
+        if (bundle != null && bundle.containsKey(Finals.App.SIGN_OUT) && bundle.getBoolean(Finals.App.SIGN_OUT)) {
             FragmentManager fm = getFragmentManager();
-            for(int i = 0; i < fm.getBackStackEntryCount(); ++i) {
+            for (int i = 0; i < fm.getBackStackEntryCount(); ++i) {
                 fm.popBackStack();
             }
         }
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
     }
+
     @Override
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        mFBUSer = mFBAuth.getCurrentUser();
-        updateUI(mFBUSer,false);
+        FirebaseUser mFBUSer = mFBAuth.getCurrentUser();
+        updateUI(mFBUSer, false);
     }
 
     @Override
@@ -102,13 +122,23 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RC_SIGN_IN) {
             IdpResponse response = IdpResponse.fromResultIntent(data);
-
             if (resultCode == RESULT_OK) {
                 // Successfully signed in
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 // ...
             } else {
                 // Sign in failed, check response for error code
+                // ...
+            }
+        } else if (requestCode == GOOGLE_SIGN_IN) {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                // Google Sign In was successful, authenticate with Firebase
+                GoogleSignInAccount account = task.getResult(ApiException.class);
+                firebaseAuthWithGoogle(account);
+            } catch (ApiException e) {
+                // Google Sign In failed, update UI appropriately
+                Log.w(TAG, "Google sign in failed", e);
                 // ...
             }
         }
@@ -129,7 +159,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 RC_SIGN_IN);
     }
 
-
     private void findViews() {
         etUserName = findViewById(R.id.etUserName);
         etEmail = findViewById(R.id.etEmail);
@@ -142,6 +171,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         radioGroupGender = findViewById(R.id.radioGroupGender);
         cbTakanon = findViewById(R.id.cbTakanon);
         tvTakanon = findViewById(R.id.tvTakanon);
+        googleSignInButton = findViewById(R.id.google_sign_in_button);
+
 
         radioWoman.setOnClickListener(this);
         radioMan.setOnClickListener(this);
@@ -149,6 +180,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         bBirthday.setOnClickListener(this);
         tvToLogin.setOnClickListener(this);
         tvTakanon.setOnClickListener(this);
+        googleSignInButton.setOnClickListener(this);
+
     }
 
     @Override
@@ -166,7 +199,15 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             String herName = ((EditText) findViewById(R.id.etUserName)).getText().toString();
         } else if (v == tvTakanon) {
             takanonOnClick();
+        } else if (v == googleSignInButton) {
+            googleSignInOnClick();
+
         }
+    }
+
+    private void googleSignInOnClick() {
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, GOOGLE_SIGN_IN);
     }
 
     private void takanonOnClick() {
@@ -217,7 +258,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private void bRegisterOnClick() {
         if (
                 etUserName.getText().toString().isEmpty()
-                        || etPassword.getText().toString().isEmpty()
+                        || (etPassword.getText().toString().isEmpty())
                         || etEmail.getText().toString().isEmpty()
                         || !(radioMan.isChecked() || radioWoman.isChecked())
                         || !flag_dateClicked
@@ -260,52 +301,77 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                                         // Sign in success, update UI with the signed-in user's information
                                         Log.d(TAG, "createUserWithEmail:success");
                                         FirebaseUser user = mFBAuth.getCurrentUser();
+                                        activityUser.getAboutMe().setName(user.getDisplayName());
+                                        activityUser.setEmailAdress(user.getEmail());
+                                        activityUser.setPassword(null);
+                                        activityUser.setCellPhone(user.getPhoneNumber());
                                         updateUI(user, true);
                                     } else {
                                         // If sign in fails, display a message to the user.
                                         Log.w(TAG, "createUserWithEmail:failure", task.getException());
                                         Toast.makeText(RegisterActivity.this, "Authentication failed.",
                                                 Toast.LENGTH_SHORT).show();
-                                        updateUI(null, true);
+                                        updateUI((FirebaseUser) null, true);
                                     }
 
                                     // ...
                                 }
                             }
                     );
-            BoxLoaderView boxLoader = findViewById(R.id.progress);
+//            BoxLoaderView boxLoader = findViewById(R.id.progress);
 
         }
     }
 
-    private void updateUI(@Nullable FirebaseUser user, boolean firstSigned) {
-        if (user!=null){//user already signed in
-            if (firstSigned) {
+    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
+        Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
+
+        AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+        mFBAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "signInWithCredential:success");
+                            FirebaseUser user = mFBAuth.getCurrentUser();
+                            updateUI((FirebaseUser) user, true);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "signInWithCredential:failure", task.getException());
+                            Toast.makeText(RegisterActivity.this, "Authentication Failed.", Toast.LENGTH_SHORT).show();
+                            updateUI((FirebaseUser) null, true);
+                        }
+
+                        // ...
+                    }
+                });
+    }
+
+    private void updateUI(@Nullable FirebaseUser user, boolean newUser) {
+        if (user != null) {//user already signed in
+            if (newUser) {
                 registerUser();
             }
             goToNavDraw();
-        }else {
-            if (firstSigned){
+        } else {
+            if (newUser) {
                 //inform user that he cannot use specific email
-                Toast.makeText(this,"User email already used!",Toast.LENGTH_SHORT).show();
-            }else {
-                // he is first logged in. or signed out, and then in.
+                Toast.makeText(this, "User email already used!", Toast.LENGTH_SHORT).show();
+            } else {
+                // he is first logged in. or signed out, and then in, so just move on.
             }
-
         }
-
     }
 
     private void registerUser() {
-        RegisterAsync async = new RegisterAsync(this,DB_users);
+        RegisterAsync async = new RegisterAsync(this, DB_users);
         async.execute(activityUser);
     }
 
     private void goToNavDraw() {
         Intent intent = new Intent(RegisterActivity.this, NavigationDraw.class);
-        intent.putExtra(Finals.App.FROM_REGISTER_ACTIVITY,true);
+        intent.putExtra(Finals.App.FROM_REGISTER_ACTIVITY, true);
         startActivity(intent);
     }
 }
-
-

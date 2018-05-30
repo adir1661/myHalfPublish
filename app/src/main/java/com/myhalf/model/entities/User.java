@@ -2,15 +2,15 @@ package com.myhalf.model.entities;
 
 import android.app.Notification;
 
-import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.ServerTimestamp;
+import com.navi.adir.myhalflib.chat.HasId;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public abstract class User implements Serializable {
+public abstract class User implements Serializable, HasId {
     private static final long serialVersionUID = 1L;
 
     protected String id;

@@ -26,7 +26,7 @@ public class Seeker_cFireStore implements DBManager {
 
 
     @Override
-    public boolean isExist(String email, String password) {
+    public boolean isExist(String email) {
         return false;
     }
 

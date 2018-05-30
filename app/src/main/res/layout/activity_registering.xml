@@ -1,37 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/first_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    android:layout_marginTop="0dp"
+    android:orientation="vertical">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="80dp">
+            android:layout_marginTop="80dp"
+            android:orientation="vertical">
 
-            <com.nipunbirla.boxloader.BoxLoaderView
-                android:id="@+id/progress"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:strokeColor="#995876"
-                app:loaderColor="#C67890"
-                app:strokeWidth="20"
-                app:speed="10"/>
+
+
 
             <com.github.florent37.materialtextfield.MaterialTextField
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin"
-                android:layout_marginRight="@dimen/margin"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 app:mtf_image="@drawable/ic_action_name"
                 app:mtf_labelColor="#666">
 
@@ -42,7 +36,8 @@
                     android:ems="10"
                     android:gravity="start"
                     android:hint="@string/name"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    />
 
             </com.github.florent37.materialtextfield.MaterialTextField>
 
@@ -50,8 +45,8 @@
             <com.github.florent37.materialtextfield.MaterialTextField
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin"
-                android:layout_marginRight="@dimen/margin"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 app:mtf_image="@drawable/ic_action_mail"
                 app:mtf_labelColor="#666">
 
@@ -69,8 +64,8 @@
             <com.github.florent37.materialtextfield.MaterialTextField
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin"
-                android:layout_marginRight="@dimen/margin"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 app:mtf_image="@drawable/ic_lock"
                 app:mtf_labelColor="#666">
 
@@ -85,21 +80,20 @@
             </com.github.florent37.materialtextfield.MaterialTextField>
 
 
-
-                <Button
-                    android:layout_marginTop="20dp"
-                    android:drawableStart="@drawable/ic_action_birthday"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
-                    android:id="@+id/bBirthday"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="#ffb8b8"
-                    android:text="@string/birthday"
-                    android:textColor="#ffffff"
-                    android:textSize="22sp"
-                    android:drawableLeft="@drawable/ic_action_birthday" />
+            <Button
+                android:id="@+id/bBirthday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="20dp"
+                android:background="#ffb8b8"
+                android:drawableLeft="@drawable/ic_action_birthday"
+                android:drawableStart="@drawable/ic_action_birthday"
+                android:text="@string/birthday"
+                android:textColor="#ffffff"
+                android:textSize="22sp" />
 
             <RadioGroup
                 android:id="@+id/radioGroupGender"
@@ -139,42 +133,52 @@
                     android:id="@+id/cbTakanon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/get_takanon"/>
+                    android:text="@string/get_takanon" />
 
                 <TextView
                     android:id="@+id/tvTakanon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/takanon"/>
+                    android:text="@string/takanon" />
             </LinearLayout>
 
             <Button
                 android:id="@+id/bRegister"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginTop="10dp"
                 android:background="#ffb8b8"
+                android:elevation="6dp"
                 android:text="@string/forRegistering"
                 android:textColor="#ffffff"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
+            <com.google.android.gms.common.SignInButton
+                android:id="@+id/google_sign_in_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="10dp" />
+
+
             <!--<Button-->
-                <!--android:id="@+id/bRegisterAsMatch"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="60dp"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:layout_marginLeft="30dp"-->
-                <!--android:layout_marginRight="30dp"-->
-                <!--android:layout_marginTop="10dp"-->
-                <!--android:background="#ffb8b8"-->
-                <!--android:text="@string/RegisterAsMatch"-->
-                <!--android:textColor="#ffffff"-->
-                <!--android:textSize="24sp"-->
-                <!--android:textStyle="bold" />-->
+            <!--android:id="@+id/bRegisterAsMatch"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="60dp"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:layout_marginLeft="30dp"-->
+            <!--android:layout_marginRight="30dp"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:background="#ffb8b8"-->
+            <!--android:text="@string/RegisterAsMatch"-->
+            <!--android:textColor="#ffffff"-->
+            <!--android:textSize="24sp"-->
+            <!--android:textStyle="bold" />-->
 
 
             <TextView
@@ -187,6 +191,15 @@
                 android:gravity="center"
                 android:text="@string/bRegistered"
                 android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp" />
+            </LinearLayout>
 
         </LinearLayout>
 

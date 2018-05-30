@@ -1,6 +1,8 @@
 package com.myhalf.controller.tools;
 
 import android.app.Activity;
+import android.content.Context;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,30 +13,33 @@ import android.widget.TextView;
 import com.myhalf.R;
 import com.myhalf.controller.activities.ChatBubble;
 import com.myhalf.model.backend.Finals;
+import com.myhalf.model.entities.UserSeeker;
+import com.navi.adir.myhalflib.chat.Message;
 
 import java.util.List;
 
-public class MessageAdapter extends ArrayAdapter<ChatBubble> {
+public class MessageAdapter extends ArrayAdapter<Message<UserSeeker>> {
 
     private Activity activity;
-    private List<ChatBubble> messages;
+    private List<Message<UserSeeker>> messages;
 
-    public MessageAdapter(Activity context, int resource, List<ChatBubble> objects) {
+    public MessageAdapter(Activity context, int resource, List<Message<UserSeeker>> objects) {
         super(context, resource, objects);
         this.activity = context;
         this.messages = objects;
     }
 
+    @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         ViewHolder holder;
         LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
 
         int layoutResource = 0; // determined by view type
-        ChatBubble ChatBubble = getItem(position);
+        Message<UserSeeker> ChatBubble = getItem(position);
         int viewType = getItemViewType(position);
 
-        if (ChatBubble.isMyMessage()) {
+        if (ChatBubble != null && ChatBubble.isMyMessage()) {
             layoutResource = R.layout.left_chat_bubble;
         }
         else {
@@ -49,7 +54,7 @@ public class MessageAdapter extends ArrayAdapter<ChatBubble> {
             convertView.setTag(holder);
         }
         //set message content
-        holder.msg.setText(ChatBubble.getContent() + "\n"+ChatBubble.getMessageTime().toString() );
+        holder.msg.setText(ChatBubble.getText() + "\n"+ChatBubble.getMessageTime().toString() );
         ImageView imageView= holder.getImageView();
         Storage.getFromStorage(activity, Finals.FireBase.storage.MAIN_PICTURE,imageView,ChatBubble.getSender());
         return convertView;

@@ -14,6 +14,7 @@ import com.myhalf.model.datasource.Tools;
 import com.myhalf.model.entities.UserSeeker;
 
 import java.lang.ref.WeakReference;
+import java.nio.channels.Channels;
 
 public class RegisterAsync extends AsyncTask<UserSeeker, ProgressBar, Void> {
     private DBManager dbManager;
@@ -21,16 +22,14 @@ public class RegisterAsync extends AsyncTask<UserSeeker, ProgressBar, Void> {
 
     public RegisterAsync(Activity activity, DBManager dbManager) {
         this.dbManager = dbManager;
-        mActivity = new WeakReference<Activity>(activity);
+        mActivity = new WeakReference<>(activity);
     }
 
     @Override
     protected Void doInBackground(UserSeeker... userSeeker) {
-
         // ----------------- Send to data base -----------------------
         String id = dbManager.addUser(Tools.userSeekerToContentValues(userSeeker[0]));
         userSeeker[0].setId(id);
-        //-------------- Shared Preferences  - save in the app ---------------
         return null;
     }
 

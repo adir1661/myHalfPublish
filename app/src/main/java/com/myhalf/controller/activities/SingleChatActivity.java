@@ -27,6 +27,7 @@ import com.myhalf.controller.tools.MessageAdapter;
 import com.myhalf.controller.tools.Storage;
 import com.myhalf.model.backend.Finals;
 import com.myhalf.model.entities.UserSeeker;
+import com.navi.adir.myhalflib.chat.Message;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -54,7 +55,7 @@ public class SingleChatActivity extends AppCompatActivity {
     private View btnSend;
     private EditText etInput;
     boolean myMessage = true;
-    private List<ChatBubble> ChatBubbles;
+    private List<Message<UserSeeker>> messageList;
     private MessageAdapter adapter;
     BroadcastReceiver mReceiver;
     IntentFilter mIntentFilter;
@@ -68,13 +69,13 @@ public class SingleChatActivity extends AppCompatActivity {
 
         setActivityView();
 
-        ChatBubbles = new ArrayList<>();
+        messageList = new ArrayList<>();
         listView = findViewById(R.id.list_msg);
         btnSend = findViewById(R.id.btn_chat_send);
         etInput = findViewById(R.id.etInput);
 
         //set ListView adapter first
-        adapter = new MessageAdapter(this, 0, ChatBubbles);
+        adapter = new MessageAdapter(this, 0, messageList);
         listView.setAdapter(adapter);
 
         //event for button SEND
@@ -93,8 +94,8 @@ public class SingleChatActivity extends AppCompatActivity {
                     myMessage = false;
                     String name = intent.getExtras().getString("name");
                     String text = intent.getExtras().getString("text");
-                    ChatBubble ChatBubble = new ChatBubble(text, myMessage,currentTime,otherUser);
-                    ChatBubbles.add(ChatBubble);
+                    Message<UserSeeker> ChatBubble = new Message<>(String.valueOf(System.currentTimeMillis()),text, myMessage,currentTime,otherUser);
+                    messageList.add(ChatBubble);
                     adapter.notifyDataSetChanged();
                 }
             }
@@ -124,8 +125,8 @@ public class SingleChatActivity extends AppCompatActivity {
             Date currentTime = Calendar.getInstance().getTime();
             myMessage = true;// make the text on the  left side
             //add message to list
-            ChatBubble ChatBubble = new ChatBubble(etInput.getText().toString(), myMessage,currentTime,activityUser);
-            ChatBubbles.add(ChatBubble);
+            Message<UserSeeker> ChatBubble = new Message<UserSeeker>(String.valueOf(System.currentTimeMillis()),etInput.getText().toString(), myMessage,currentTime,activityUser);
+            messageList.add(ChatBubble);
             adapter.notifyDataSetChanged();
             sendFCMPush(activityUser.getAboutMe().getName(), etInput.getText().toString(),token);
             etInput.setText("");
@@ -155,8 +156,8 @@ public class SingleChatActivity extends AppCompatActivity {
         String token = FCM_RECEIVER_TOKEN;
 
         JSONObject obj = null;
-        JSONObject objData = null;
-        JSONObject dataobjData = null;
+        JSONObject objData ;
+        JSONObject dataobjData;
 
         try {
             obj = new JSONObject();

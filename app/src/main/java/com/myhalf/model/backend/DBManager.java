@@ -1,7 +1,6 @@
 package com.myhalf.model.backend;
 
 import android.content.ContentValues;
-import android.database.Cursor;
 
 import com.myhalf.model.entities.User;
 
@@ -9,7 +8,7 @@ import java.util.List;
 
 public interface DBManager {
 
-    public boolean isExist(String email, String password);
+    public boolean isExist(String email);
 
     User getUser(String Email);
 

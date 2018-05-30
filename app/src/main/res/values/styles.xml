@@ -58,7 +58,7 @@
 
     <style name="EditTextLikeButton">
         <item name="android:layout_margin">5dp</item>
-
+        <item name="android:inputType">textNoSuggestions</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">40dp</item>
         <item name="android:layout_gravity">center_horizontal</item>

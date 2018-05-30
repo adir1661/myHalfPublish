@@ -14,8 +14,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.myhalf.R;
+import com.myhalf.controller.MyUser;
 import com.myhalf.controller.activities.SingleChatActivity;
-import com.myhalf.controller.activities.MyUser;
 import com.myhalf.controller.tools.OtherTools;
 import com.myhalf.controller.tools.Storage;
 import com.myhalf.model.backend.DBManager;
@@ -99,23 +99,23 @@ public class FullProfile extends Fragment implements View.OnClickListener {
 
     private void findViews() {
         View v = getView();
-        vbMainPicture = (ImageView) v.findViewById(R.id.ivMainPicture);
-        tvNameAndAge = (TextView) v.findViewById(R.id.tvName);
-        tvStatus = (TextView) v.findViewById(R.id.tvStatus);
-        tvView = (TextView) v.findViewById(R.id.tvView);
-        tvCity = (TextView) v.findViewById(R.id.tvCity);
-        ImageView1 = (ImageView) v.findViewById(R.id.ImageView1);
-        ImageView2 = (ImageView) v.findViewById(R.id.ImageView2);
-        ImageView3 = (ImageView) v.findViewById(R.id.ImageView3);
-        ImageView4 = (ImageView) v.findViewById(R.id.ImageView4);
-        ImageView5 = (ImageView) v.findViewById(R.id.ImageView5);
-        tvFreeDescription = (TextView) v.findViewById(R.id.tvFreeDescription);
-        tvHeight = (TextView) v.findViewById(R.id.tvHeight);
-        tvEda = (TextView) v.findViewById(R.id.tvEda);
-        tvLanguage = (TextView) v.findViewById(R.id.tvLanguage);
-        bToChat = (Button) v.findViewById(R.id.bToChat);
-        bChangeDetails = (Button) v.findViewById(R.id.bChangeDetails);
-        tvFreeDescriptionTitle = (TextView) v.findViewById(R.id.tvFreeDescriptionTitle);
+        vbMainPicture =  v.findViewById(R.id.ivMainPicture);
+        tvNameAndAge =  v.findViewById(R.id.tvName);
+        tvStatus =  v.findViewById(R.id.tvStatus);
+        tvView =  v.findViewById(R.id.tvView);
+        tvCity =  v.findViewById(R.id.tvCity);
+        ImageView1 =  v.findViewById(R.id.ImageView1);
+        ImageView2 =  v.findViewById(R.id.ImageView2);
+        ImageView3 =  v.findViewById(R.id.ImageView3);
+        ImageView4 =  v.findViewById(R.id.ImageView4);
+        ImageView5 =  v.findViewById(R.id.ImageView5);
+        tvFreeDescription =  v.findViewById(R.id.tvFreeDescription);
+        tvHeight =  v.findViewById(R.id.tvHeight);
+        tvEda =  v.findViewById(R.id.tvEda);
+        tvLanguage =  v.findViewById(R.id.tvLanguage);
+        bToChat =  v.findViewById(R.id.bToChat);
+        bChangeDetails =  v.findViewById(R.id.bChangeDetails);
+        tvFreeDescriptionTitle =  v.findViewById(R.id.tvFreeDescriptionTitle);
 
         bToChat.setOnClickListener(this);
         bChangeDetails.setOnClickListener(this);

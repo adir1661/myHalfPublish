@@ -1,28 +1,22 @@
 package com.myhalf.controller.navigation;
 
 import android.Manifest;
-import android.animation.ArgbEvaluator;
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
-import android.os.Bundle;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -38,10 +32,7 @@ import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
-import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.api.Status;
-import com.google.android.gms.location.places.AutocompleteFilter;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.google.firebase.storage.FirebaseStorage;
@@ -62,8 +53,6 @@ import com.myhalf.model.entities.UserSeeker;
 import com.yalantis.ucrop.UCrop;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
@@ -100,7 +89,6 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
 
     private Uri pictureUri;
     boolean uploadedJustNow = false;
-
     private StorageReference storageReference;
     private static final int PICK_FROM_CAMERA = 1;
     private static final int PICK_FROM_GALLERY = 2;
@@ -123,8 +111,8 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
 
         storageReference = FirebaseStorage.getInstance().getReference();
         if (activityUser != null)
-            tvName.setText(activityUser.getAboutMe().getName());
-        activityUser.getAboutMe().setHeight(sbHeight.getProgress());
+            tvName.setText(activityUser.getAboutMe().getName() +" " +activityUser.getAboutMe().getBirthday().findAge());
+//        activityUser.getAboutMe().setHeight(sbHeight.getProgress());
         Storage.getFromStorage(this, Finals.FireBase.storage.MAIN_PICTURE, ibMainPicture, activityUser);
         Storage.getFromStorage(this, Finals.FireBase.storage.SMALL_PICTURE_1, imageButton1, activityUser);
         Storage.getFromStorage(this, Finals.FireBase.storage.SMALL_PICTURE_2, imageButton2, activityUser);
@@ -150,6 +138,7 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
     }
 
     private void findViews() {
+        activityUser = MyUser.getUserSeeker();
         View v = getView();
         dummyLayout = v.findViewById(R.id.dummyLayout);
         ibMainPicture = v.findViewById(R.id.ibMainPicture);

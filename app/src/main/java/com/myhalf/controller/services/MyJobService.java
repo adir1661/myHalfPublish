@@ -23,7 +23,7 @@ public class MyJobService extends JobService {
         try {
             if (jobParameters.getTag() == Finals.App.JOB_UPDATE) {
                 UserSeeker userSeeker = (UserSeeker) jobParameters.getExtras().get(Finals.App.USER_SEEKER);
-                DB_users.updateUser(userSeeker.getId(), Tools.userSeekerToContentValues(userSeeker));
+                DB_users.updateUser(userSeeker.getId(), userSeeker);
                 return true;
             } else {
                 throw new Exception("there is error in job service bundle probably didn't came on the right way");

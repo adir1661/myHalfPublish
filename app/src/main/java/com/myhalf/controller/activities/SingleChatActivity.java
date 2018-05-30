@@ -23,6 +23,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.myhalf.R;
+import com.myhalf.controller.MyUser;
 import com.myhalf.controller.tools.MessageAdapter;
 import com.myhalf.controller.tools.Storage;
 import com.myhalf.model.backend.Finals;

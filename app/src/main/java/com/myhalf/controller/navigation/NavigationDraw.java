@@ -31,9 +31,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.myhalf.R;
+import com.myhalf.controller.MyUser;
 import com.myhalf.controller.activities.RegisterActivity;
 import com.myhalf.controller.asynctasks.getUserAsync;
-import com.myhalf.controller.activities.MyUser;
 import com.myhalf.controller.tools.MyFragmentManager;
 import com.myhalf.controller.tools.OtherTools;
 import com.myhalf.controller.tools.UpdateAsync;
@@ -68,9 +68,6 @@ public class NavigationDraw extends AppCompatActivity implements NavigationView.
             logInDefaultUser();
 
 
-//        signInFirebaseAnonymously();
-
-
         Toolbar toolbar = findViewById(R.id.tool_bar);
 //        toolbar.setTitle("My Half");
         setSupportActionBar(toolbar);
@@ -92,18 +89,6 @@ public class NavigationDraw extends AppCompatActivity implements NavigationView.
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-//    // Register which actions the Broadcast can receive
-//        MyBroadcastReceiver br = new MyBroadcastReceiver();
-//        IntentFilter actionsFilter = new IntentFilter();
-//        actionsFilter.addAction("android.intent.action.TIME_SET");
-//        actionsFilter.addAction("android.intent.action.BOOT_COMPLETED");
-//        actionsFilter.addAction("android.provider.Telephony.SMS_RECEIVED");
-////        actionsFilter.addAction("com.javacodegeeks.android.A_CUSTOM_INTENT");
-//        actionsFilter.addAction("android.intent.action.BATTERY_LOW");
-//        actionsFilter.addAction("android.intent.action.HEADSET_PLUG");
-////        startService(new Intent(this,CheckNewsService.class));
-//        this.registerReceiver(br, actionsFilter);
 
         getFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
             @Override
@@ -127,7 +112,6 @@ public class NavigationDraw extends AppCompatActivity implements NavigationView.
                                 Toast.makeText(NavigationDraw.this, "testing account online", Toast.LENGTH_LONG).show();
                             else
                                 Toast.makeText(NavigationDraw.this, "testing account adir is online", Toast.LENGTH_LONG).show();
-
 //                            updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.

@@ -18,7 +18,6 @@ public class Seeker_MySql implements DBManager {
     private final String username = "abargil";
     private final String webURL = "http://" + username + ".vlab.jct.ac.il/";
 
-
     @Override
     public boolean isExist(String email) {
         return false;
@@ -32,10 +31,10 @@ public class Seeker_MySql implements DBManager {
     }
 
     @Override
-    public String addUser(ContentValues contentValues) {
+    public String addUser(User user) {
         String str ="";
         try {
-            str = PhpTools.POST(webURL + "insertUser.php", contentValues);
+            str = PhpTools.POST(webURL + "insertUser.php", Tools.userSeekerToContentValues((UserSeeker) user));
             str = PhpTools.removeSpaces(str);
         } catch (IOException e) {
             e.printStackTrace();
@@ -61,9 +60,9 @@ public class Seeker_MySql implements DBManager {
 
 
     @Override
-    public boolean updateUser(String id, ContentValues values) {
+    public boolean updateUser(String id, User values) {
         try {
-            PhpTools.POST(webURL + "updateUser.php", values);
+            PhpTools.POST(webURL + "updateUser.php",Tools.userSeekerToContentValues((UserSeeker) values));
             return true;
 
         } catch (IOException e) {

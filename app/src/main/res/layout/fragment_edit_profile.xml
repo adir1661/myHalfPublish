@@ -14,7 +14,7 @@
         android:layout_height="0dp"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        android:orientation="horizontal"></LinearLayout>
+        android:orientation="horizontal" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -158,6 +158,7 @@
                         android:name=".MyActivity"
                         style="@style/EditTextLikeButton"
                         android:hint="@string/status"
+                        android:inputType="textNoSuggestions"
                         android:label="My new title" />
                 </android.support.v7.widget.CardView>
 
@@ -208,7 +209,7 @@
                     android:hint="@string/livingArea" />
 
                 <EditText
-                    android:id="@+id/etLivingArea"
+                    android:id="@+id/etCity"
                     style="@style/EditTextLikeButton"
                     android:hint="@string/city" />
 

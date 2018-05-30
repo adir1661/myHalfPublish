@@ -15,7 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.SearchView;
 
 import com.myhalf.R;
-import com.myhalf.controller.activities.MyUser;
+import com.myhalf.controller.MyUser;
 import com.myhalf.model.backend.DBManager;
 import com.myhalf.model.backend.DBManagerFactory;
 import com.myhalf.model.backend.Finals;

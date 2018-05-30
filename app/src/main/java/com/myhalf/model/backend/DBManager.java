@@ -12,11 +12,11 @@ public interface DBManager {
 
     User getUser(String Email);
 
-    String addUser(ContentValues contentValues);
+    String addUser(User user);
 
     public  boolean removeUser(long id);
 
-    boolean updateUser(String id, ContentValues values);
+    boolean updateUser(String id, User user);
 
     List<? extends User> getUsersList();//"? extends User" this is a way to interface a list that
 

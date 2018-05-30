@@ -37,6 +37,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.myhalf.R;
+import com.myhalf.controller.MyUser;
 import com.myhalf.controller.asynctasks.RegisterAsync;
 import com.myhalf.controller.navigation.NavigationDraw;
 import com.myhalf.controller.navigation.TakanonActivity;
@@ -301,9 +302,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                                         // Sign in success, update UI with the signed-in user's information
                                         Log.d(TAG, "createUserWithEmail:success");
                                         FirebaseUser user = mFBAuth.getCurrentUser();
-                                        activityUser.getAboutMe().setName(user.getDisplayName());
-                                        activityUser.setEmailAdress(user.getEmail());
-                                        activityUser.setPassword(null);
+//                                        activityUser.getAboutMe().setName(user.getDisplayName());
+//                                        activityUser.setEmailAdress(user.getEmail());
+//                                        activityUser.setPassword(null);
+                                        activityUser.setId(user.getEmail());
                                         activityUser.setCellPhone(user.getPhoneNumber());
                                         updateUI(user, true);
                                     } else {
@@ -352,8 +354,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         if (user != null) {//user already signed in
             if (newUser) {
                 registerUser();
+            }else {
+                goToNavDraw();
             }
-            goToNavDraw();
         } else {
             if (newUser) {
                 //inform user that he cannot use specific email
@@ -365,7 +368,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void registerUser() {
-        RegisterAsync async = new RegisterAsync(this, DB_users);
+        RegisterAsync async = new RegisterAsync(this, DB_users, new RegisterAsync.Implementation() {
+            @Override
+            public void onPostExecute() {
+                goToNavDraw();
+            }
+        });
         async.execute(activityUser);
     }
 

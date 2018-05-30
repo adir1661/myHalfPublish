@@ -29,7 +29,7 @@ public class UpdateAsync extends AsyncTask<UserSeeker, ProgressBar, Void> {
     @Override
     protected Void doInBackground(UserSeeker... userSeeker) {
         if (userSeeker[0].getId()!=null)
-        dbManager.updateUser(userSeeker[0].getId(), Tools.userSeekerToContentValues(userSeeker[0]));
+        dbManager.updateUser(userSeeker[0].getId(), userSeeker[0]);
         return null;
     }
 

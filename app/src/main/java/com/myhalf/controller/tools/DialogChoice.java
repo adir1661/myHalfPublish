@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.myhalf.R;
-import com.myhalf.controller.activities.MyUser;
+import com.myhalf.controller.MyUser;
 import com.myhalf.model.entities.UserSeeker;
 
 import java.util.List;
@@ -65,6 +65,7 @@ public class DialogChoice {
 
 
         });
+        builder.setNegativeButton(activity.getString(R.string.cancel),null);
         AlertDialog dialog = builder.create();
         dialog.show();
     }
@@ -120,7 +121,7 @@ public class DialogChoice {
                 itemsChecked[which] = isChecked;
 
                 if (count > maxChoices) {
-                    Toast.makeText(activity, "You selected too many.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity, "You selected too many choices.", Toast.LENGTH_SHORT).show();
                     itemsChecked[which] = false;
                     count--;
                     ((AlertDialog) dialog).getListView().setItemChecked(which, false);

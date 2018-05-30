@@ -59,15 +59,20 @@ public class Seeker_cFireStore implements DBManager {
                     e.printStackTrace();
                 }
         }
-        return null;
+        try {
+            throw new Exception("user not set...");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override
-    public String addUser(ContentValues contentValues) {
-        final UserSeeker userSeeker = Tools.ContentValuesToUserSeeker(contentValues);
+    public String addUser(User user) {
+        final UserSeeker userSeeker = (UserSeeker) user;
         final DocumentReference docRef = db.collection(Finals.FireBase.FirestoreCloud.MAIN_COLLECTION).document(userSeeker.getEmailAdress());
         String id = docRef.getId();
-        contentValues.put(Finals.DB.User.ID,id);
+        userSeeker.setId(id);
 
         docRef.set(userSeeker)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -91,8 +96,8 @@ public class Seeker_cFireStore implements DBManager {
     }
 
     @Override
-    public boolean updateUser(String id, ContentValues values) {
-        UserSeeker userSeeker = Tools.ContentValuesToUserSeeker(values);
+    public boolean updateUser(String id, User values) {
+        UserSeeker userSeeker = (UserSeeker) values;
         DocumentReference washingtonRef = db.collection(Finals.FireBase.FirestoreCloud.MAIN_COLLECTION).document(id);
 
 // Set the "isCapital" field of the city 'DC'

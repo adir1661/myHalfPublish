@@ -22,7 +22,7 @@ public class Match_MySql implements DBManager {
     }
 
     @Override
-    public String addUser(ContentValues contentValues) {
+    public String addUser(User contentValues) {
         return "0";
     }
 
@@ -32,7 +32,7 @@ public class Match_MySql implements DBManager {
     }
 
     @Override
-    public boolean updateUser(String id, ContentValues values) {
+    public boolean updateUser(String id, User values) {
         return false;
     }
 

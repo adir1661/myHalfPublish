@@ -53,6 +53,9 @@ import com.myhalf.model.entities.UserSeeker;
 import com.yalantis.ucrop.UCrop;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
@@ -106,12 +109,25 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         findViews();
+        attachUserToView();
+
+    }
+
+    private void attachUserToView() {
         if (activityUser.getAboutMe().getGender() == Enums.Gender.FEMALE)
             ibMainPicture.setImageResource(R.drawable.student_female);
-
         storageReference = FirebaseStorage.getInstance().getReference();
         if (activityUser != null)
-            tvName.setText(activityUser.getAboutMe().getName() +" " +activityUser.getAboutMe().getBirthday().findAge());
+            tvName.setText(activityUser.getAboutMe().getName() + " " + activityUser.getAboutMe().getBirthday().findAge());
+        List<EditText> listEditText = new ArrayList<>(Arrays.asList(etWitness, etStatus, etCity, etDescription, etLivingArea, etView));
+        OtherTools.setEditText(getActivity(), etStatus, activityUser.getAboutMe().getStatus());
+        OtherTools.setEditText(getActivity(), etWitness, activityUser.getAboutMe().getWitness());
+        OtherTools.setEditText(getActivity(), etView, activityUser.getAboutMe().getView());
+        OtherTools.setEditText(getActivity(), etCity, activityUser.getAboutMe().getCity());
+        OtherTools.setEditText(getActivity(), etDescription, activityUser.getAboutMe().getFreeDescription());
+        OtherTools.setEditText(getActivity(), etLivingArea, activityUser.getAboutMe().getLivingArea());
+        tvHeight.setText(String.valueOf(activityUser.getAboutMe().getHeight()));
+
 //        activityUser.getAboutMe().setHeight(sbHeight.getProgress());
         Storage.getFromStorage(this, Finals.FireBase.storage.MAIN_PICTURE, ibMainPicture, activityUser);
         Storage.getFromStorage(this, Finals.FireBase.storage.SMALL_PICTURE_1, imageButton1, activityUser);
@@ -140,27 +156,26 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
     private void findViews() {
         activityUser = MyUser.getUserSeeker();
         View v = getView();
-        dummyLayout = v.findViewById(R.id.dummyLayout);
-        ibMainPicture = v.findViewById(R.id.ibMainPicture);
-        imageButton1 = v.findViewById(R.id.imageButton1);
-        imageButton2 = v.findViewById(R.id.imageButton2);
-        imageButton3 = v.findViewById(R.id.imageButton3);
-        imageButton4 = v.findViewById(R.id.imageButton4);
-        imageButton5 = v.findViewById(R.id.imageButton5);
-        etStatus = v.findViewById(R.id.etStatus);
-        etCity = v.findViewById(R.id.etCity);
-        etWitness = v.findViewById(R.id.etWitness);
-        etView = v.findViewById(R.id.etView);
-        bGoToSearch = v.findViewById(R.id.bGoToSearch);
-        etView = v.findViewById(R.id.etView);
-        etDescription = v.findViewById(R.id.etDescription);
-        tvName = v.findViewById(R.id.tvName);
-        rgChildren =  v.findViewById(R.id.radioGroupChildren);
-        etLivingArea = v.findViewById(R.id.etLivingArea);
-
-        sbHeight = v.findViewById(R.id.sbHeight);
-        tvHeight = v.findViewById(R.id.etHieght);
-
+        if (v != null) {
+            dummyLayout = v.findViewById(R.id.dummyLayout);
+            ibMainPicture = v.findViewById(R.id.ibMainPicture);
+            imageButton1 = v.findViewById(R.id.imageButton1);
+            imageButton2 = v.findViewById(R.id.imageButton2);
+            imageButton3 = v.findViewById(R.id.imageButton3);
+            imageButton4 = v.findViewById(R.id.imageButton4);
+            imageButton5 = v.findViewById(R.id.imageButton5);
+            etStatus = v.findViewById(R.id.etStatus);
+            etCity = v.findViewById(R.id.etCity);
+            etWitness = v.findViewById(R.id.etWitness);
+            etView = v.findViewById(R.id.etView);
+            bGoToSearch = v.findViewById(R.id.bGoToSearch);
+            etDescription = v.findViewById(R.id.etDescription);
+            tvName = v.findViewById(R.id.tvName);
+            rgChildren = v.findViewById(R.id.radioGroupChildren);
+            etLivingArea = v.findViewById(R.id.etLivingArea);
+            sbHeight = v.findViewById(R.id.sbHeight);
+            tvHeight = v.findViewById(R.id.etHieght);
+        }
         activity = getActivity();
 
         //----------------OnClick---------------------
@@ -224,12 +239,11 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
             } else if (v == etLivingArea) {
                 DialogChoice.dialogSingleChoice(activity, res.getStringArray(R.array.livingAreaArray), res.getString(R.string.livingArea), etLivingArea, null);
             } else if (v == etCity) {
-                GoogleApiTools.callGooglePlaces(this,PLACE_AUTOCOMPLETE_REQUEST_CODE);
+                GoogleApiTools.callGooglePlaces(this, PLACE_AUTOCOMPLETE_REQUEST_CODE);
             }
             dummyLayout.requestFocus();
         }
     }
-
 
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -401,6 +415,7 @@ public class EditProfile extends Fragment implements View.OnClickListener, View.
             String city = (String) place.getName();
             activityUser.getAboutMe().setCity(city);
             Log.i(getTag(), "Place: " + place.getName());
+            OtherTools.markAsSigned(getActivity(),etCity,city);
 //            DialogChoice.markAsSigned(etCity, city, null);
         } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
             Status status = PlaceAutocomplete.getStatus(getActivity(), data);

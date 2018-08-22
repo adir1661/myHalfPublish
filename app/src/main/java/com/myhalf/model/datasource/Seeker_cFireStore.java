@@ -2,6 +2,7 @@ package com.myhalf.model.datasource;
 
 import android.content.ContentValues;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -31,14 +32,14 @@ public class Seeker_cFireStore implements DBManager {
     }
 
     @Override
-    public User getUser(String email) {
+    public User getUser(String email) throws Exception {
         final UserSeeker[] userSeeker = new UserSeeker[1];
-        Task<QuerySnapshot> is = db.collection(Finals.FireBase.FirestoreCloud.MAIN_COLLECTION).
+        Task<QuerySnapshot> task = db.collection(Finals.FireBase.FirestoreCloud.MAIN_COLLECTION).
                 whereEqualTo(Finals.FireBase.FirestoreCloud.EMAIL,email).
                 get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot documentSnapshots) {
-                userSeeker[0] = documentSnapshots.toObjects(UserSeeker.class).toArray(new UserSeeker[0])[0];
+                userSeeker[0] = documentSnapshots.toObjects(UserSeeker.class).toArray(new UserSeeker[1])[0];
 
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -47,11 +48,18 @@ public class Seeker_cFireStore implements DBManager {
                 e.printStackTrace();
             }
         });
+        return waitForTask(userSeeker, task);
+    }
+
+    @Nullable
+    private User waitForTask(UserSeeker[] userSeeker, Task<QuerySnapshot> task) throws Exception {
         int counter = 0;
-        while (counter <= 60) {
-            if (is.isComplete())
+        while (counter <= 160) {
+            if (task.isSuccessful())
                 return userSeeker[0];
-            else
+            else if (task.isComplete()){
+                throw new Exception("Error getting User from Firestore, task completed but not successful...");
+            }else
                 try {
                     Thread.sleep(250);
                     counter++;
@@ -59,12 +67,7 @@ public class Seeker_cFireStore implements DBManager {
                     e.printStackTrace();
                 }
         }
-        try {
-            throw new Exception("user not set...");
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
+            throw new Exception("Error getting User from Firestore, too much time ...");
     }
 
     @Override

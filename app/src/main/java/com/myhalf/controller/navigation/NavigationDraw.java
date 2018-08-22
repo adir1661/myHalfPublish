@@ -22,7 +22,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -90,12 +89,12 @@ public class NavigationDraw extends AppCompatActivity implements NavigationView.
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        getFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
-            @Override
-            public void onBackStackChanged() {
-                activityUser = MyUser.getUserSeeker();
-            }
-        });
+//        getFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+//            @Override
+//            public void onBackStackChanged() {
+//                activityUser = MyUser.getUserSeeker();
+//            }
+//        });
     }
 
     private void logInDefaultUser() {
@@ -138,11 +137,15 @@ public class NavigationDraw extends AppCompatActivity implements NavigationView.
 
                 @Override
                 public void onPostExecute(UserSeeker userSeeker) {
-                    MyUser.setUserSeeker(userSeeker);
-                    FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                    EditProfile fragment = new EditProfile();
-                    fragmentTransaction.add(R.id.NavigationDrawContainer, fragment);
-                    fragmentTransaction.commit();
+                    if (userSeeker == null){
+                        Toast.makeText(NavigationDraw.this,"the user hasnt Load to the activity...",Toast.LENGTH_SHORT).show();
+                    } else {
+                        activityUser = MyUser.setUserSeeker(userSeeker);
+                        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                        EditProfile fragment = new EditProfile();
+                        fragmentTransaction.add(R.id.NavigationDrawContainer, fragment);
+                        fragmentTransaction.commit();
+                    }
                     //TODO end progressanimation
                 }
             });

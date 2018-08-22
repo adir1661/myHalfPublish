@@ -8,6 +8,19 @@ public class Message<T extends HasId> {
 
     private String id;
     private String text;
+    private boolean myMessage;
+    private Date messageTime =null;
+    private T sender = null;
+
+
+
+    public Message(String id_,String content, boolean myMessage, Date messageTime,T userSender) {
+        id=id_;
+        this.text = content;
+        this.myMessage = myMessage;
+        this.messageTime = messageTime;
+        sender = userSender;
+    }
 
     public boolean isMyMessage() {
         return myMessage;
@@ -17,17 +30,6 @@ public class Message<T extends HasId> {
         this.myMessage = myMessage;
     }
 
-    private boolean myMessage;
-    private Date messageTime =null;
-    private T sender = null;
-
-    public Message(String id_,String content, boolean myMessage, Date messageTime,T userSeeker) {
-        id=id_;
-        this.text = content;
-        this.myMessage = myMessage;
-        this.messageTime = messageTime;
-        sender = userSeeker;
-    }
     public String getId() {
         return id;
     }
@@ -35,7 +37,6 @@ public class Message<T extends HasId> {
     public void setId(String id) {
         this.id = id;
     }
-
 
     public String getText() {
         return text;

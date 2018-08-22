@@ -10,7 +10,7 @@ public interface DBManager {
 
     public boolean isExist(String email);
 
-    User getUser(String Email);
+    User getUser(String Email) throws Exception;
 
     String addUser(User user);
 

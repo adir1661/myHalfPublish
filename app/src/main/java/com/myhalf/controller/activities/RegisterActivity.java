@@ -238,7 +238,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 }
                 bBirthday.setText(date);
                 birthday = date;
-
             }
         };
 
@@ -286,6 +285,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 gender = Enums.Gender.FEMALE;
             MyUser.dismissUserSeeker();
             activityUser = MyUser.getUserSeeker();
+
             activityUser.getAboutMe().setName(username);
             activityUser.setEmailAdress(email);
             activityUser.setPassword(password);
@@ -337,12 +337,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mFBAuth.getCurrentUser();
-                            updateUI((FirebaseUser) user, true);
+                            updateUI( user, true);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
                             Toast.makeText(RegisterActivity.this, "Authentication Failed.", Toast.LENGTH_SHORT).show();
-                            updateUI((FirebaseUser) null, true);
+                            updateUI( null, true);
                         }
 
                         // ...
@@ -350,15 +350,15 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 });
     }
 
-    private void updateUI(@Nullable FirebaseUser user, boolean newUser) {
+    private void updateUI(@Nullable FirebaseUser user, boolean isNewUser) {
         if (user != null) {//user already signed in
-            if (newUser) {
+            if (isNewUser) {
                 registerUser();
             }else {
                 goToNavDraw();
             }
         } else {
-            if (newUser) {
+            if (isNewUser) {
                 //inform user that he cannot use specific email
                 Toast.makeText(this, "User email already used!", Toast.LENGTH_SHORT).show();
             } else {
@@ -375,6 +375,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             }
         });
         async.execute(activityUser);
+        //TODO: start a progressbar here to notify user process is active.
     }
 
     private void goToNavDraw() {

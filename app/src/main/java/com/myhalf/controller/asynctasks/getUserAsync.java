@@ -2,42 +2,47 @@ package com.myhalf.controller.asynctasks;
 
 import android.app.Activity;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.myhalf.model.backend.DBManager;
 import com.myhalf.model.entities.UserSeeker;
 
 import java.lang.ref.WeakReference;
 
-/**
- * Created by Adir on 5/15/2018.
- */
+
 public class getUserAsync extends AsyncTask<String, Void, UserSeeker> {
 
-    DBManager dbManager;
-    WeakReference<Activity> mActivity;
-    Implementation completeListener;
+    private DBManager dbManager;
+    private WeakReference<Activity> mActivity;
+    private Implementation mImplementation;
 
-    public getUserAsync( Activity activity, DBManager dbManager, Implementation onCompleteListener) {
+    public getUserAsync( Activity activity, DBManager dbManager, Implementation implementation) {
         this.dbManager = dbManager;
         mActivity = new WeakReference<>(activity);
-        completeListener = onCompleteListener;
+        mImplementation = implementation;
     }
 
     @Override
     protected void onPostExecute(UserSeeker userSeeker) {
         super.onPostExecute(userSeeker);
-        completeListener.onPostExecute(userSeeker);
+        mImplementation.onPostExecute(userSeeker);
     }
 
     @Override
     protected UserSeeker doInBackground(String... strings) {
-        return (UserSeeker) dbManager.getUser(strings[0]);
+        try {
+            return (UserSeeker) dbManager.getUser(strings[0]);
+        } catch (Exception e) {
+            Log.d(getClass().getSimpleName(),e.getMessage());
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        completeListener.onPreExecute();
+        mImplementation.onPreExecute();
 
         //TODO: make on progress animation
     }

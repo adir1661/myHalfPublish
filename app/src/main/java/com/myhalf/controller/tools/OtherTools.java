@@ -1,5 +1,6 @@
 package com.myhalf.controller.tools;
 
+import android.animation.Animator;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
@@ -101,7 +102,7 @@ public class OtherTools {
         else return string;
     }
 
-    public static void markAsSigned(Activity activity, EditText editText, @Nullable String myChoices) {
+    public static void markAsSigned(final Activity activity, final EditText editText, @Nullable String myChoices) {
 
         Drawable img = activity.getResources().getDrawable(R.drawable.ic_done_all_white_24dp);
         int h = img.getIntrinsicHeight();
@@ -121,6 +122,28 @@ public class OtherTools {
             animator.setStartDelay(300);
             animator.setRepeatMode(ValueAnimator.REVERSE);
             animator.setEvaluator(new ArgbEvaluator());
+            animator.addListener(new Animator.AnimatorListener() {
+                @Override
+                public void onAnimationStart(Animator animation) {
+
+                }
+
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    editText.setTextColor(ContextCompat.getColor(activity.getApplicationContext(),R.color.marked_blue));
+
+                }
+
+                @Override
+                public void onAnimationCancel(Animator animation) {
+
+                }
+
+                @Override
+                public void onAnimationRepeat(Animator animation) {
+
+                }
+            });
             animator.start();
         }else {
             editText.setTextColor(ContextCompat.getColor(activity.getApplicationContext(), R.color.marked_blue));
@@ -148,5 +171,16 @@ public class OtherTools {
 
         }
         return count;
+    }
+
+    public static void setEditText(Activity activity,EditText editText, List<String> strings) {
+        if (strings.size() > 0)
+            setEditText(activity,editText, ListToString(strings));
+    }
+
+    public static void setEditText(Activity activity, EditText editText, String string) {
+        if (string != "" && string != null) {
+            markAsSigned(activity,editText,string);
+        }
     }
 }

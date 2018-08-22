@@ -45,7 +45,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 /**
  * Created by CardUser on 11/10/2017.
  */
-//TODO: make it fragment inside nevigation drawer
+//TODO: make it fragment inside nevigation drawer(reconsider)
 
 public class SingleChatActivity extends AppCompatActivity {
     UserSeeker activityUser = MyUser.getUserSeeker();
@@ -149,14 +149,15 @@ public class SingleChatActivity extends AppCompatActivity {
         }
         super.onPause();
     }
-    private void sendFCMPush(String name ,String message,String FCM_RECEIVER_TOKEN ) {// methud to send the message via firebase throug http post request
+    private void sendFCMPush(String name ,String message,String FCM_RECEIVER_TOKEN ) {// methud to send the message via firebase through http post request
 
         final String Legacy_SERVER_KEY = Finals.FireBase.LEGACY_SERVER_KEY;
-        String msg = message;
+        String messege = message;
         String title = name;
         String token = FCM_RECEIVER_TOKEN;
+        String url = Finals.FireBase.FCM_PUSH_URL;//"https://fcm.googleapis.com/fcm/send"
 
-        JSONObject obj = null;
+        JSONObject obj =null;
         JSONObject objData ;
         JSONObject dataobjData;
 
@@ -164,7 +165,7 @@ public class SingleChatActivity extends AppCompatActivity {
             obj = new JSONObject();
             objData = new JSONObject();
 
-            objData.put("body", msg);
+            objData.put("body", messege);
             objData.put("title", title);
             objData.put("sound", "default");
             objData.put("icon", "icon_name"); //   icon_name image must be there in drawable
@@ -172,7 +173,7 @@ public class SingleChatActivity extends AppCompatActivity {
             objData.put("priority", "high");
 
             dataobjData = new JSONObject();
-            dataobjData.put("text", msg);
+            dataobjData.put("text", messege);
             dataobjData.put("title", title);
 
             obj.put("to", token);
@@ -184,26 +185,27 @@ public class SingleChatActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-        JsonObjectRequest jsObjRequest = new JsonObjectRequest(Request.Method.POST, Finals.FireBase.FCM_PUSH_URL, obj,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response){
-                        Log.e("!_@@_SUCESS", response + "");
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.e("!_@@_Errors--", error + "");
-                    }
-                }) {
+        Response.Listener<JSONObject> responseListener = new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response){
+                Log.e("!_@@_SUCESS", response + "");
+            }
+        };
+        Response.ErrorListener responseErrorListener =new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("!_@@_Errors--", error + "");
+            }
+        };
+        JsonObjectRequest jsObjRequest = new JsonObjectRequest(Request.Method.POST,url ,
+                obj,responseListener,responseErrorListener) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("Authorization", "key=" + Legacy_SERVER_KEY);
                 params.put("Content-Type", "application/json");
                 return params;
+                // emplained here https://firebase.google.com/docs/cloud-messaging/send-message
             }
         };
         RequestQueue requestQueue = Volley.newRequestQueue(this);

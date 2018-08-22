@@ -1,6 +1,7 @@
 package com.myhalf.controller;
 
 
+import com.myhalf.model.entities.User;
 import com.myhalf.model.entities.UserMatch;
 import com.myhalf.model.entities.UserSeeker;
 
@@ -16,8 +17,9 @@ public class MyUser {
         return userSeeker;
     }
 
-    public static void setUserSeeker( UserSeeker userSeeker1){
+    public static UserSeeker setUserSeeker(UserSeeker userSeeker1){
         userSeeker = userSeeker1;
+        return userSeeker;
     }
 
     public static  UserMatch getUserMatch(){

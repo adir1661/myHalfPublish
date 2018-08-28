@@ -73,10 +73,10 @@ dependencies {
 //    annotationProcessor 'com.github.bumptech.glide:compiler:3.7.0'
     implementation 'com.firebaseui:firebase-ui-auth:3.2.2'
     // Required only if Facebook login support is required
-    compile('com.facebook.android:facebook-android-sdk:4.27.0')
+    implementation('com.facebook.android:facebook-android-sdk:4.27.0')
     implementation 'com.github.nipun-birla:BoxLoaderView:0.0.1'
 
-    compile project(path: ':myhalflib')
+    implementation project(path: ':myhalflib')
 }
 
 
